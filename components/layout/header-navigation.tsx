@@ -70,25 +70,27 @@ export function HeaderNavigation() {
   }
 
   return (
-    <>
-      <nav className="hidden min-w-0 flex-1 overflow-x-auto [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden lg:block">
-        <div className="mx-auto flex w-max items-center gap-1 rounded-full bg-surface-muted/80 p-1">
-          {desktopItems.map((item) =>
-            item.items?.length ? (
-              <NavDropdown key={item.href} item={item} />
-            ) : (
-              <NavLink key={item.href} href={item.href} label={item.label} />
-            ),
-          )}
+    <div className="min-w-0">
+      <nav className="hidden min-w-0 items-center justify-center lg:flex" aria-label="ძირითადი ნავიგაცია">
+        <div className="min-w-0 max-w-full overflow-x-auto px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto flex w-max items-center gap-1 rounded-full border border-white/80 bg-white/60 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.06)] backdrop-blur-xl">
+            {desktopItems.map((item) =>
+              item.items?.length ? (
+                <NavDropdown key={item.href} item={item} />
+              ) : (
+                <NavLink key={item.href} href={item.href} label={item.label} />
+              ),
+            )}
+          </div>
         </div>
       </nav>
 
-      <div ref={menuRef} className="relative lg:hidden">
+      <div ref={menuRef} className="relative flex items-center justify-end lg:hidden">
         <button
           type="button"
           aria-expanded={mobileMenuOpen}
           aria-controls="mobile-nav-panel"
-          className="inline-flex items-center gap-2 rounded-full border border-border bg-white px-4 py-2 text-sm font-medium text-secondary"
+          className="inline-flex h-11 items-center gap-2.5 rounded-full border border-border bg-white/90 px-4 text-sm font-medium text-secondary shadow-sm backdrop-blur-sm transition hover:bg-white"
           onClick={() => {
             if (mobileMenuOpen) {
               closeMobileMenu();
@@ -98,20 +100,20 @@ export function HeaderNavigation() {
             setMobileMenuOpen(true);
           }}
         >
-          <span>მენიუ</span>
+          <span className="whitespace-nowrap">მენიუ</span>
           {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
         </button>
 
         <div
           id="mobile-nav-panel"
           className={cn(
-            "absolute right-0 z-50 mt-3 w-72 max-w-[calc(100vw-2rem)] transition duration-200 ease-out",
+            "absolute right-0 top-full z-50 mt-3 w-[22rem] max-w-[calc(100vw-2rem)] transition duration-200 ease-out",
             mobileMenuOpen
               ? "pointer-events-auto translate-y-0 opacity-100"
               : "pointer-events-none -translate-y-1 opacity-0",
           )}
         >
-          <div className="space-y-2 rounded-3xl border border-border bg-white/95 p-4 shadow-2xl backdrop-blur-xl">
+          <div className="space-y-2 rounded-[1.8rem] border border-border bg-white/95 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
             {headerNavigation.map((item) =>
               item.items?.length ? (
                 <MobileDropdownGroup
@@ -127,7 +129,7 @@ export function HeaderNavigation() {
                   key={item.href}
                   href={item.href}
                   className={cn(
-                    "block rounded-2xl px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
+                    "block rounded-[1.2rem] px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
                     isActivePath(pathname, item.href) && "bg-surface-muted text-secondary",
                   )}
                   onClick={closeMobileMenu}
@@ -139,7 +141,7 @@ export function HeaderNavigation() {
           </div>
         </div>
       </div>
-    </>
+    </div>
   );
 }
 
@@ -161,12 +163,12 @@ function MobileDropdownGroup({
     (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
 
   return (
-    <div className="rounded-2xl bg-surface-muted/45 p-1">
+    <div className="rounded-[1.35rem] bg-surface-muted/55 p-1">
       <div className="flex min-w-0 items-center gap-2">
         <Link
           href={item.href}
           className={cn(
-            "min-w-0 flex-1 rounded-[1rem] px-3 py-3 text-sm font-medium leading-6 text-secondary",
+            "min-w-0 flex-1 rounded-[1rem] px-3.5 py-3 text-sm font-medium leading-6 text-secondary",
             active && "text-secondary",
           )}
           onClick={onNavigate}
@@ -198,7 +200,7 @@ function MobileDropdownGroup({
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block rounded-[1rem] px-3 py-2.5 text-sm leading-6 text-muted transition hover:bg-white hover:text-secondary",
+                  "block rounded-[1rem] px-3.5 py-2.5 text-sm leading-6 text-muted transition hover:bg-white hover:text-secondary",
                   isActivePath(pathname, child.href) && "bg-white text-secondary shadow-sm",
                 )}
                 onClick={onNavigate}

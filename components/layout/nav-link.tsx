@@ -18,7 +18,7 @@ export function NavLink({
     <Link
       href={href}
       className={cn(
-        "shrink-0 whitespace-nowrap rounded-full px-4 py-2 text-sm font-medium text-muted transition hover:bg-white/70 hover:text-secondary",
+        "inline-flex h-11 shrink-0 items-center whitespace-nowrap rounded-full px-4 text-[0.95rem] font-medium leading-none text-muted transition hover:bg-white hover:text-secondary",
         active && "bg-white text-secondary shadow-sm",
       )}
     >

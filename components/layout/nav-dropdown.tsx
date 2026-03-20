@@ -140,15 +140,15 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
     >
       <div
         className={cn(
-          "flex items-center rounded-full text-sm font-medium transition",
+          "flex h-11 items-center rounded-full pl-1.5 pr-1 text-[0.95rem] font-medium leading-none transition",
           open || isActive
             ? "bg-white text-secondary shadow-sm"
-            : "text-muted hover:bg-white/70 hover:text-secondary",
+            : "text-muted hover:bg-white hover:text-secondary",
         )}
       >
         <Link
           href={item.href}
-          className="whitespace-nowrap px-4 py-2"
+          className="inline-flex min-w-0 items-center whitespace-nowrap px-3 py-2"
           onFocus={openImmediately}
         >
           {item.label}
@@ -158,7 +158,7 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
           aria-expanded={open}
           aria-controls={panelId}
           aria-haspopup="menu"
-          className="mr-1 inline-flex h-8 w-8 items-center justify-center rounded-full text-muted transition hover:bg-surface-muted hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
+          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-surface-muted hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
           onClick={toggleOpen}
           onFocus={openImmediately}
         >
@@ -190,7 +190,7 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
               key={child.href}
               href={child.href}
               role="menuitem"
-              className="block min-w-0 rounded-[1rem] px-3 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary"
+              className="block min-w-0 rounded-[1rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary"
               onClick={() => setOpen(false)}
             >
               <span className="block break-words">{child.label}</span>
