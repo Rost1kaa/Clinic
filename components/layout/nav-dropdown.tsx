@@ -142,8 +142,8 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
         className={cn(
           "flex h-11 items-center rounded-full pl-1.5 pr-1 text-[0.95rem] font-medium leading-none transition",
           open || isActive
-            ? "bg-white text-secondary shadow-sm"
-            : "text-muted hover:bg-white hover:text-secondary",
+            ? "bg-surface-muted text-secondary"
+            : "text-muted hover:bg-surface-muted/80 hover:text-secondary",
         )}
       >
         <Link
@@ -158,7 +158,7 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
           aria-expanded={open}
           aria-controls={panelId}
           aria-haspopup="menu"
-          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-surface-muted hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
+          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
           onClick={toggleOpen}
           onFocus={openImmediately}
         >
