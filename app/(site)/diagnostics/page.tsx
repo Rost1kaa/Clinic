@@ -30,7 +30,7 @@ export default async function DiagnosticsPage() {
       <section className="section-shell pt-0">
         <div className="container-shell grid gap-6 lg:grid-cols-2">
           {diagnostics.map((item) => (
-            <Card key={item.id} className="p-6">
+            <Card key={item.id} id={item.slug} className="scroll-mt-28 p-6">
               <CardHeader>
                 <CardTitle>{item.name}</CardTitle>
                 <CardDescription>{item.description}</CardDescription>

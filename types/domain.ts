@@ -16,6 +16,10 @@ export interface NavigationItem {
   description?: string;
 }
 
+export interface HeaderNavigationItem extends NavigationItem {
+  items?: NavigationItem[];
+}
+
 export interface MarketingImage {
   src: string;
   alt: string;

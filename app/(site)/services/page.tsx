@@ -30,7 +30,7 @@ export default async function ServicesPage() {
         description="აირჩიეთ თქვენზე მორგებული ფორმატი და შემდეგ კონკრეტული სპეციალისტი ან სერვისი."
       />
 
-      <section id="home" className="section-shell pt-0">
+      <section id="home-visit" className="section-shell scroll-mt-28 pt-0">
         <div className="container-shell space-y-10">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
@@ -62,7 +62,7 @@ export default async function ServicesPage() {
         </div>
       </section>
 
-      <section id="online" className="section-shell bg-white/45">
+      <section id="online-consultation" className="section-shell scroll-mt-28 bg-white/45">
         <div className="container-shell space-y-10">
           <div className="space-y-3">
             <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">

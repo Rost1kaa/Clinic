@@ -11,11 +11,14 @@ export async function SiteFooter() {
     <footer className="mt-20 border-t border-white/70 bg-[#f0f7f6]">
       <div className="container-shell grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-5">
-          <div className="space-y-2">
-            <p className="font-serif text-3xl text-secondary">{settings.companyName}</p>
-            <p className="max-w-xl text-sm leading-7 text-muted">
-              {settings.tagline}
-            </p>
+          <div className="space-y-1.5">
+            <div className="space-y-1">
+              <p className="font-serif text-3xl leading-none text-secondary">მედსერვისი</p>
+              <p className="text-[0.72rem] font-medium tracking-[0.16em] text-muted">
+                სამედიცინო ჯგუფი
+              </p>
+            </div>
+            <p className="max-w-xl text-sm leading-7 text-muted">{settings.tagline}</p>
           </div>
           <div className="grid gap-3 text-sm text-muted">
             <a className="flex items-center gap-3" href={formatPhoneHref(settings.phone)}>
@@ -79,7 +82,7 @@ export async function SiteFooter() {
       </div>
       <div className="soft-divider" />
       <div className="container-shell flex flex-col gap-3 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
-        <p>© {new Date().getFullYear()} Velora Care. ყველა უფლება დაცულია.</p>
+        <p>© {new Date().getFullYear()} მედსერვისი. ყველა უფლება დაცულია.</p>
         <p>Private medical company with in-home and online care services.</p>
       </div>
     </footer>

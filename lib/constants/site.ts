@@ -1,4 +1,4 @@
-import type { NavigationItem } from "@/types/domain";
+import type { HeaderNavigationItem, NavigationItem } from "@/types/domain";
 
 export const siteConfig = {
   name: "Velora Care",
@@ -21,6 +21,50 @@ export const mainNavigation: NavigationItem[] = [
   { href: "/services", label: "სერვისები" },
   { href: "/specialties", label: "სპეციალობები" },
   { href: "/diagnostics", label: "დიაგნოსტიკა" },
+  { href: "/laboratory", label: "ლაბორატორია" },
+  { href: "/news", label: "სიახლეები" },
+  { href: "/about", label: "ჩვენ შესახებ" },
+  { href: "/contact", label: "კონტაქტი" },
+  { href: "/booking", label: "დაჯავშნა" },
+];
+
+export const headerNavigation: HeaderNavigationItem[] = [
+  { href: "/", label: "მთავარი" },
+  {
+    href: "/services",
+    label: "სერვისები",
+    items: [
+      { href: "/services#home-visit", label: "ბინაზე მომსახურება" },
+      { href: "/services#online-consultation", label: "ონლაინ კონსულტაცია" },
+    ],
+  },
+  {
+    href: "/specialties",
+    label: "სპეციალობები",
+    items: [
+      { href: "/specialties/therapist", label: "თერაპევტი" },
+      { href: "/specialties/cardiologist", label: "კარდიოლოგი" },
+      { href: "/specialties/neurologist", label: "ნევროლოგი" },
+      { href: "/specialties/endocrinologist", label: "ენდოკრინოლოგი" },
+      { href: "/specialties/palliative-care", label: "პალიატიური სპეციალისტი" },
+      { href: "/specialties/nurse-home-visit", label: "ექთანი ბინაზე" },
+    ],
+  },
+  {
+    href: "/diagnostics",
+    label: "დიაგნოსტიკა",
+    items: [
+      {
+        href: "/diagnostics#electrocardiography-ecg",
+        label: "ელექტროკარდიოგრაფია (ECG)",
+      },
+      { href: "/diagnostics#echocardiography", label: "ექოკარდიოსკოპია" },
+      { href: "/diagnostics#abdominal-ultrasound", label: "მუცლის ექოსკოპია" },
+      { href: "/diagnostics#radiology-xray", label: "რენტგენოლოგია" },
+      { href: "/diagnostics#holter-monitoring", label: "ჰოლტერის მონიტორინგი" },
+      { href: "/diagnostics#instrumental-diagnostics", label: "ინსტრუმენტული კვლევები" },
+    ],
+  },
   { href: "/laboratory", label: "ლაბორატორია" },
   { href: "/news", label: "სიახლეები" },
   { href: "/about", label: "ჩვენ შესახებ" },
