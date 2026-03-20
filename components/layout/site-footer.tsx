@@ -83,7 +83,7 @@ export async function SiteFooter() {
       <div className="soft-divider" />
       <div className="container-shell flex flex-col gap-3 py-5 text-sm text-muted sm:flex-row sm:items-center sm:justify-between">
         <p>© {new Date().getFullYear()} მედსერვისი. ყველა უფლება დაცულია.</p>
-        <p>Private medical company with in-home and online care services.</p>
+        <p>კერძო სამედიცინო კომპანია ბინაზე და ონლაინ მომსახურებით.</p>
       </div>
     </footer>
   );
