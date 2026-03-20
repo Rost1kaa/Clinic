@@ -66,10 +66,6 @@ export const headerNavigation: HeaderNavigationItem[] = [
     ],
   },
   { href: "/laboratory", label: "ლაბორატორია" },
-  { href: "/news", label: "სიახლეები" },
-  { href: "/about", label: "ჩვენ შესახებ" },
-  { href: "/contact", label: "კონტაქტი" },
-  { href: "/booking", label: "დაჯავშნა" },
 ];
 
 export const footerNavigation: NavigationItem[] = [

@@ -25,10 +25,7 @@ export function HeaderNavigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
 
-  const desktopItems = useMemo(
-    () => headerNavigation.filter((item) => item.href !== "/booking"),
-    [],
-  );
+  const navigationItems = useMemo(() => headerNavigation, []);
 
   function closeMobileMenu() {
     setMobileMenuOpen(false);
@@ -74,8 +71,8 @@ export function HeaderNavigation() {
       <nav className="hidden min-w-0 items-center justify-center lg:flex" aria-label="ძირითადი ნავიგაცია">
         <div className="min-w-0 max-w-full px-2 py-1">
           <div className="mx-auto w-fit">
-            <div className="inline-flex items-center gap-1 overflow-hidden rounded-full border border-border/80 bg-white/92 px-1.5 py-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] ring-1 ring-white/70 backdrop-blur-xl">
-              {desktopItems.map((item) =>
+            <div className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white/92 px-1.5 py-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] ring-1 ring-white/70 backdrop-blur-xl">
+              {navigationItems.map((item) =>
                 item.items?.length ? (
                   <NavDropdown key={item.href} item={item} />
                 ) : (
@@ -116,7 +113,7 @@ export function HeaderNavigation() {
           )}
         >
           <div className="space-y-2 rounded-[1.8rem] border border-border bg-white/95 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
-            {headerNavigation.map((item) =>
+            {navigationItems.map((item) =>
               item.items?.length ? (
                 <MobileDropdownGroup
                   key={item.href}
