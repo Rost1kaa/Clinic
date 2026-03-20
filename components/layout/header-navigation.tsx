@@ -72,15 +72,17 @@ export function HeaderNavigation() {
   return (
     <div className="min-w-0">
       <nav className="hidden min-w-0 items-center justify-center lg:flex" aria-label="ძირითადი ნავიგაცია">
-        <div className="min-w-0 max-w-full overflow-x-auto px-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
-          <div className="mx-auto flex w-max items-center gap-1 rounded-full border border-white/80 bg-white/60 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.06)] backdrop-blur-xl">
-            {desktopItems.map((item) =>
-              item.items?.length ? (
-                <NavDropdown key={item.href} item={item} />
-              ) : (
-                <NavLink key={item.href} href={item.href} label={item.label} />
-              ),
-            )}
+        <div className="min-w-0 max-w-full overflow-x-auto px-2 py-1 [scrollbar-width:none] [-ms-overflow-style:none] [&::-webkit-scrollbar]:hidden">
+          <div className="mx-auto w-fit">
+            <div className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white/90 px-1.5 py-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] ring-1 ring-white/70 backdrop-blur-xl">
+              {desktopItems.map((item) =>
+                item.items?.length ? (
+                  <NavDropdown key={item.href} item={item} />
+                ) : (
+                  <NavLink key={item.href} href={item.href} label={item.label} />
+                ),
+              )}
+            </div>
           </div>
         </div>
       </nav>
