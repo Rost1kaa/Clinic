@@ -17,7 +17,7 @@ export const siteConfig = {
 };
 
 export const mainNavigation: NavigationItem[] = [
-  { href: "/", label: "მთავარი" },
+  { href: "/", label: "საწყისი" },
   { href: "/services", label: "სერვისები" },
   { href: "/specialties", label: "სპეციალობები" },
   { href: "/diagnostics", label: "დიაგნოსტიკა" },
@@ -29,7 +29,7 @@ export const mainNavigation: NavigationItem[] = [
 ];
 
 export const headerNavigation: HeaderNavigationItem[] = [
-  { href: "/", label: "მთავარი" },
+  { href: "/", label: "საწყისი" },
   {
     href: "/services",
     label: "სერვისები",
