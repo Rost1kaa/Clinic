@@ -26,7 +26,7 @@ export default async function AdminLayout({
     <DashboardShell
       roleLabel={context.profile?.roles?.name ?? context.roleKey ?? "staff"}
       profileName={context.profile?.full_name ?? "Admin"}
-      profileEmail={context.profile?.email ?? context.user?.email ?? "admin@velora.ge"}
+      profileEmail={context.profile?.email ?? context.user?.email ?? "admin@medservice.ge"}
     >
       {children}
     </DashboardShell>

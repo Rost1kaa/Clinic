@@ -56,11 +56,11 @@ const imagery = {
 };
 
 export const siteSettings: SiteSettings = {
-  companyName: "Velora Care",
+  companyName: "მედსერვისი",
   tagline:
     "სამედიცინო გუნდი, რომელიც თქვენს სახლსა და ციფრულ არხებს ერთნაირი სიზუსტით ემსახურება.",
   address: "თბილისი, ვაჟა-ფშაველას გამზირი 47",
-  email: "care@velora.ge",
+  email: "care@medservice.ge",
   phone: "+995 32 2 58 58 58",
   hours: [
     "ორშაბათი - პარასკევი: 09:00 - 21:00",
@@ -644,7 +644,7 @@ export const newsPosts: NewsPost[] = [
     slug: "home-cardiology-ecg-launch",
     title: "სახლში კარდიოლოგიური ვიზიტი უკვე ECG მხარდაჭერით",
     excerpt:
-      "Velora Care-მა განაახლა კარდიოლოგიური სერვისი, რათა სახლში ვიზიტს ECG და შემდგომი შეფასების ერთიანი პროცესი დაუმატოს.",
+      "მედსერვისმა განაახლა კარდიოლოგიური სერვისი, რათა სახლში ვიზიტს ECG და შემდგომი შეფასების ერთიანი პროცესი დაუმატოს.",
     categorySlug: "updates",
     tags: ["კარდიოლოგია", "სახლში ვიზიტი", "ECG"],
     coverImage: imagery.homeVisit,

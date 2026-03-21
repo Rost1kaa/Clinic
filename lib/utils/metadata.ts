@@ -1,16 +1,18 @@
 import type { Metadata } from "next";
+import { siteConfig } from "@/lib/constants/site";
 import { env } from "@/lib/utils/env";
 
 type MetadataInput = {
   title?: string;
+  absoluteTitle?: string;
   description?: string;
   path?: string;
   image?: string;
 };
 
-const defaultTitle = "Velora Care | პრემიუმ სამედიცინო სერვისები სახლში და ონლაინ";
+const defaultTitle = siteConfig.legalName;
 const defaultDescription =
-  "Velora Care აერთიანებს სხვადასხვა სპეციალობის ექიმთა გუნდებს, სახლთან მოსულ ვიზიტებს, ონლაინ კონსულტაციებს, დიაგნოსტიკასა და ლაბორატორიულ მომსახურებას.";
+  "მედსერვისი აერთიანებს სხვადასხვა სპეციალობის ექიმთა გუნდებს, სახლში ვიზიტებს, ონლაინ კონსულტაციებს, დიაგნოსტიკასა და ლაბორატორიულ მომსახურებას.";
 
 export function absoluteUrl(path = "/") {
   return `${env.siteUrl}${path === "/" ? "" : path}`;
@@ -18,16 +20,19 @@ export function absoluteUrl(path = "/") {
 
 export function buildMetadata({
   title,
+  absoluteTitle,
   description = defaultDescription,
   path = "/",
   image = "/opengraph-image",
 }: MetadataInput = {}): Metadata {
-  const resolvedTitle = title ? `${title} | Velora Care` : defaultTitle;
+  const resolvedTitle =
+    absoluteTitle ?? (title ? `${title} | ${siteConfig.name}` : defaultTitle);
   const url = absoluteUrl(path);
   const resolvedImage = image.startsWith("http") ? image : absoluteUrl(image);
 
   return {
     metadataBase: new URL(env.siteUrl),
+    applicationName: siteConfig.name,
     title: resolvedTitle,
     description,
     alternates: {
@@ -37,7 +42,7 @@ export function buildMetadata({
       title: resolvedTitle,
       description,
       url,
-      siteName: "Velora Care",
+      siteName: siteConfig.legalName,
       locale: "ka_GE",
       type: "website",
       images: [{ url: resolvedImage, width: 1200, height: 630, alt: resolvedTitle }],

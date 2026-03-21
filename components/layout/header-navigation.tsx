@@ -22,7 +22,33 @@ function isActivePath(pathname: string, href: string) {
 
 export function DesktopHeaderNavigation() {
   const desktopNavRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<number | null>(null);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
+
+  function clearCloseTimer() {
+    if (closeTimerRef.current !== null) {
+      window.clearTimeout(closeTimerRef.current);
+      closeTimerRef.current = null;
+    }
+  }
+
+  function openDropdownMenu(href: string) {
+    clearCloseTimer();
+    setOpenDropdown(href);
+  }
+
+  function scheduleDropdownClose(href: string) {
+    clearCloseTimer();
+    closeTimerRef.current = window.setTimeout(() => {
+      setOpenDropdown((current) => (current === href ? null : current));
+      closeTimerRef.current = null;
+    }, 140);
+  }
+
+  function toggleDropdownMenu(href: string) {
+    clearCloseTimer();
+    setOpenDropdown((current) => (current === href ? null : href));
+  }
 
   useEffect(() => {
     if (!openDropdown) {
@@ -50,6 +76,14 @@ export function DesktopHeaderNavigation() {
     };
   }, [openDropdown]);
 
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current !== null) {
+        window.clearTimeout(closeTimerRef.current);
+      }
+    };
+  }, []);
+
   return (
     <nav className="min-w-0" aria-label="ძირითადი ნავიგაცია">
       <div
@@ -62,10 +96,10 @@ export function DesktopHeaderNavigation() {
               key={item.href}
               item={item}
               open={openDropdown === item.href}
-              onToggle={() =>
-                setOpenDropdown((current) => (current === item.href ? null : item.href))
-              }
+              onToggle={() => toggleDropdownMenu(item.href)}
               onClose={() => setOpenDropdown(null)}
+              onHoverStart={() => openDropdownMenu(item.href)}
+              onHoverEnd={() => scheduleDropdownClose(item.href)}
             />
           ) : (
             <NavLink key={item.href} href={item.href} label={item.label} />

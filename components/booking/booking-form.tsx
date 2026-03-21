@@ -495,7 +495,7 @@ export function BookingForm({
                 </div>
                 <label className="flex min-w-0 items-start gap-3 rounded-[1.75rem] border border-border bg-white p-4 text-sm leading-6 text-muted sm:p-5">
                   <input type="checkbox" className="mt-1 h-4 w-4" {...form.register("consent")} />
-                  ვადასტურებ, რომ მოწოდებული ინფორმაცია სწორია და Velora Care-ს შეუძლია გამოიყენოს იგი ჯავშნის დამუშავებისთვის.
+                  ვადასტურებ, რომ მოწოდებული ინფორმაცია სწორია და მედსერვისს შეუძლია გამოიყენოს იგი ჯავშნის დამუშავებისთვის.
                 </label>
                 <FieldError message={form.formState.errors.consent?.message} />
               </div>

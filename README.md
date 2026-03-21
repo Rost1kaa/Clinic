@@ -1,4 +1,4 @@
-# Velora Care
+# მედსერვისი - სამედიცინო ჯგუფი
 
 Production-grade medical services booking platform built with Next.js App Router, TypeScript, Tailwind CSS, Supabase, and PostgreSQL.
 

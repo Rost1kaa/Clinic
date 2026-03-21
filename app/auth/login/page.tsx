@@ -16,7 +16,7 @@ export default async function LoginPage({ searchParams }: Props) {
           <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
             Admin Login
           </p>
-          <h1 className="font-serif text-4xl text-secondary">Velora Care Dashboard</h1>
+          <h1 className="font-serif text-4xl text-secondary">მედსერვისი ადმინისტრირება</h1>
           <p className="text-muted">
             გამოიყენეთ Supabase Auth-ით შექმნილი ადმინისტრატორის ანგარიში.
           </p>

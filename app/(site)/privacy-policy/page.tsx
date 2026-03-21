@@ -13,7 +13,7 @@ export default function PrivacyPolicyPage() {
       <PageHero
         eyebrow="კონფიდენციალურობა"
         title="როგორ ვიცავთ პერსონალურ და სამედიცინო მონაცემებს"
-        description="Velora Care იყენებს მინიმალური წვდომის, სერვერული ვალიდაციის და როლებზე დაფუძნებული ავტორიზაციის პრინციპებს."
+        description="მედსერვისი იყენებს მინიმალური წვდომის, სერვერული ვალიდაციის და როლებზე დაფუძნებული ავტორიზაციის პრინციპებს."
       />
       <section className="section-shell pt-0">
         <div className="container-shell">

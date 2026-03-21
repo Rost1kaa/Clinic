@@ -20,11 +20,15 @@ export function NavDropdown({
   open,
   onToggle,
   onClose,
+  onHoverStart,
+  onHoverEnd,
 }: {
   item: HeaderNavigationItem;
   open: boolean;
   onToggle: () => void;
   onClose: () => void;
+  onHoverStart: () => void;
+  onHoverEnd: () => void;
 }) {
   const pathname = usePathname();
   const active =
@@ -32,7 +36,11 @@ export function NavDropdown({
     (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
 
   return (
-    <div className="relative shrink-0">
+    <div
+      className="relative shrink-0"
+      onMouseEnter={onHoverStart}
+      onMouseLeave={onHoverEnd}
+    >
       <div
         className={cn(
           "flex h-10 items-center rounded-full px-1 text-[0.95rem] font-medium leading-none transition",
@@ -62,10 +70,15 @@ export function NavDropdown({
       </div>
 
       <div
+        aria-hidden="true"
+        className="absolute left-1/2 top-full h-3 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2"
+      />
+
+      <div
         role="menu"
         aria-label={item.label}
         className={cn(
-          "absolute left-1/2 top-full z-50 mt-3 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2 transition duration-200 ease-out",
+          "absolute left-1/2 top-full z-50 mt-2.5 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2 transition duration-200 ease-out",
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
             : "pointer-events-none translate-y-1 opacity-0",

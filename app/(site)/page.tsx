@@ -19,12 +19,13 @@ import {
   CardHeader,
   CardTitle,
 } from "@/components/ui/card";
+import { siteConfig } from "@/lib/constants/site";
 import { getHomePageData } from "@/lib/data/public";
 import { formatDate, formatMoney } from "@/lib/utils/format";
 import { absoluteUrl, buildMetadata } from "@/lib/utils/metadata";
 
 export const metadata = buildMetadata({
-  title: "მთავარი",
+  absoluteTitle: siteConfig.legalName,
   path: "/",
 });
 
@@ -195,7 +196,7 @@ export default async function HomePage() {
           <SectionHeader
             eyebrow="ძირითადი სერვისები"
             title="აირჩიეთ საჭირო სამედიცინო გზა"
-            description="Velora Care აერთიანებს მულტიდისციპლინურ გუნდს, მობილურ დიაგნოსტიკასა და მოქნილ მომსახურებას პაციენტის ცხოვრების რიტმზე მორგებით."
+            description="მედსერვისი აერთიანებს მულტიდისციპლინურ გუნდს, მობილურ დიაგნოსტიკასა და მოქნილ მომსახურებას პაციენტის ცხოვრების რიტმზე მორგებით."
           />
           <div className="mt-10 grid gap-6 lg:grid-cols-2">
             {[
@@ -328,7 +329,7 @@ export default async function HomePage() {
       <section className="section-shell bg-white/45">
         <div className="container-shell space-y-12">
           <SectionHeader
-            eyebrow="რატომ Velora Care"
+            eyebrow="რატომ მედსერვისი"
             title="პროცესი აგებულია ნდობაზე, სიმშვიდესა და სიზუსტეზე"
             description="დიზაინიდან სერვისამდე ყველაფერი გათვლილია იმაზე, რომ პაციენტმა თავი იგრძნოს დაცულად და ინფორმირებულად."
           />

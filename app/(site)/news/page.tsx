@@ -35,7 +35,7 @@ export default async function NewsPage({ searchParams }: Props) {
       <PageHero
         eyebrow="სიახლეები"
         title="კლინიკური განახლებები, რჩევები და პლატფორმის სიახლეები"
-        description="Velora Care-ის ახალი სერვისები, გზამკვლევები და სამედიცინო კომუნიკაციის პრაქტიკული მასალები."
+        description="მედსერვისის ახალი სერვისები, გზამკვლევები და სამედიცინო კომუნიკაციის პრაქტიკული მასალები."
       />
       <section className="section-shell pt-0">
         <div className="container-shell space-y-8">

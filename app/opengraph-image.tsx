@@ -48,10 +48,8 @@ export default function OpenGraphImage() {
             V
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
-            <div style={{ fontSize: 44, fontWeight: 700 }}>Velora Care</div>
-            <div style={{ fontSize: 20, color: "#587273" }}>
-              Premium medical booking platform
-            </div>
+            <div style={{ fontSize: 44, fontWeight: 700 }}>მედსერვისი</div>
+            <div style={{ fontSize: 20, color: "#587273" }}>სამედიცინო ჯგუფი</div>
           </div>
         </div>
 

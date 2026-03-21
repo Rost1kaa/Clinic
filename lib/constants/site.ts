@@ -1,12 +1,12 @@
 import type { HeaderNavigationItem, NavigationItem } from "@/types/domain";
 
 export const siteConfig = {
-  name: "Velora Care",
-  legalName: "Velora Care Medical Group",
+  name: "მედსერვისი",
+  legalName: "მედსერვისი - სამედიცინო ჯგუფი",
   shortDescription:
     "სანდო სამედიცინო მხარდაჭერა სახლში, ონლაინ და დიაგნოსტიკის სრულ სპექტრში.",
   phone: "+995 32 2 58 58 58",
-  email: "care@velora.ge",
+  email: "care@medservice.ge",
   address: "თბილისი, ვაჟა-ფშაველას გამზირი 47",
   hours: [
     "ორშაბათი - პარასკევი: 09:00 - 21:00",

@@ -94,7 +94,7 @@ export function DashboardShell({
     return (
       pageMeta[pathname as keyof typeof pageMeta] ?? {
         title: "Admin",
-        description: "ადმინისტრაციული ხელსაწყოები Velora Care გუნდისთვის.",
+        description: "ადმინისტრაციული ხელსაწყოები მედსერვისი გუნდისთვის.",
       }
     );
   }, [pathname]);
@@ -127,10 +127,8 @@ export function DashboardShell({
                 V
               </div>
               <div className="min-w-0">
-                <p className="truncate font-serif text-xl text-secondary">Velora Admin</p>
-                <p className="truncate text-xs uppercase tracking-[0.22em] text-muted">
-                  Medical Operations
-                </p>
+                <p className="truncate font-serif text-xl text-secondary">მედსერვისი</p>
+                <p className="truncate text-xs uppercase tracking-[0.22em] text-muted">სამედიცინო ჯგუფი</p>
               </div>
             </Link>
 
@@ -216,7 +214,7 @@ export function DashboardShell({
             <div className="rounded-[1.5rem] border border-border/70 bg-white/80 p-4 text-sm text-muted">
               <p className="font-medium text-secondary">Secure workspace</p>
               <p className="mt-1 leading-6">
-                Supabase Auth session protected admin გარემო Velora Care გუნდისთვის.
+                Supabase Auth session protected admin გარემო მედსერვისი გუნდისთვის.
               </p>
             </div>
 

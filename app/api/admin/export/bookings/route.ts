@@ -63,7 +63,7 @@ export async function GET(request: Request) {
   return new NextResponse(lines.join("\n"), {
     headers: {
       "Content-Type": "text/csv; charset=utf-8",
-      "Content-Disposition": 'attachment; filename="velora-bookings.csv"',
+      "Content-Disposition": 'attachment; filename="medservice-bookings.csv"',
     },
   });
 }
