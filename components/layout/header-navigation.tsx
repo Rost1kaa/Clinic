@@ -1,11 +1,12 @@
 "use client";
 
 import Link from "next/link";
-import { ChevronDown, Menu, X } from "lucide-react";
+import { CalendarDays, ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useEffect, useMemo, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { NavDropdown } from "@/components/layout/nav-dropdown";
 import { NavLink } from "@/components/layout/nav-link";
+import { Button } from "@/components/ui/button";
 import { headerNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils/cn";
 import type { HeaderNavigationItem } from "@/types/domain";
@@ -19,33 +20,24 @@ function isActivePath(pathname: string, href: string) {
   return pathname === targetPath || (targetPath !== "/" && pathname.startsWith(targetPath));
 }
 
-export function HeaderNavigation() {
-  const pathname = usePathname();
-  const menuRef = useRef<HTMLDivElement>(null);
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
-
-  const navigationItems = useMemo(() => headerNavigation, []);
-
-  function closeMobileMenu() {
-    setMobileMenuOpen(false);
-    setExpandedGroups([]);
-  }
+export function DesktopHeaderNavigation() {
+  const desktopNavRef = useRef<HTMLDivElement>(null);
+  const [openDropdown, setOpenDropdown] = useState<string | null>(null);
 
   useEffect(() => {
-    if (!mobileMenuOpen) {
+    if (!openDropdown) {
       return;
     }
 
     function handlePointerDown(event: PointerEvent) {
-      if (!menuRef.current?.contains(event.target as Node)) {
-        closeMobileMenu();
+      if (!desktopNavRef.current?.contains(event.target as Node)) {
+        setOpenDropdown(null);
       }
     }
 
     function handleKeyDown(event: KeyboardEvent) {
       if (event.key === "Escape") {
-        closeMobileMenu();
+        setOpenDropdown(null);
       }
     }
 
@@ -56,7 +48,70 @@ export function HeaderNavigation() {
       document.removeEventListener("pointerdown", handlePointerDown);
       document.removeEventListener("keydown", handleKeyDown);
     };
-  }, [mobileMenuOpen]);
+  }, [openDropdown]);
+
+  return (
+    <nav className="min-w-0" aria-label="ძირითადი ნავიგაცია">
+      <div
+        ref={desktopNavRef}
+        className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white/90 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] backdrop-blur-xl"
+      >
+        {headerNavigation.map((item) =>
+          item.items?.length ? (
+            <NavDropdown
+              key={item.href}
+              item={item}
+              open={openDropdown === item.href}
+              onToggle={() =>
+                setOpenDropdown((current) => (current === item.href ? null : item.href))
+              }
+              onClose={() => setOpenDropdown(null)}
+            />
+          ) : (
+            <NavLink key={item.href} href={item.href} label={item.label} />
+          ),
+        )}
+      </div>
+    </nav>
+  );
+}
+
+export function MobileHeaderNavigation() {
+  const pathname = usePathname();
+  const mobileMenuRef = useRef<HTMLDivElement>(null);
+  const [menuOpen, setMenuOpen] = useState(false);
+  const [expandedGroups, setExpandedGroups] = useState<string[]>([]);
+
+  function closeMenu() {
+    setMenuOpen(false);
+    setExpandedGroups([]);
+  }
+
+  useEffect(() => {
+    if (!menuOpen) {
+      return;
+    }
+
+    function handlePointerDown(event: PointerEvent) {
+      if (!mobileMenuRef.current?.contains(event.target as Node)) {
+        closeMenu();
+      }
+    }
+
+    function handleKeyDown(event: KeyboardEvent) {
+      if (event.key === "Escape") {
+        closeMenu();
+      }
+    }
+
+    document.addEventListener("pointerdown", handlePointerDown);
+    document.addEventListener("keydown", handleKeyDown);
+
+    return () => {
+      document.removeEventListener("pointerdown", handlePointerDown);
+      document.removeEventListener("keydown", handleKeyDown);
+    };
+  }, [menuOpen]);
 
   function toggleGroup(href: string) {
     setExpandedGroups((current) =>
@@ -67,76 +122,60 @@ export function HeaderNavigation() {
   }
 
   return (
-    <div className="min-w-0">
-      <nav className="hidden min-w-0 items-center justify-center lg:flex" aria-label="ძირითადი ნავიგაცია">
-        <div className="min-w-0 max-w-full px-2 py-1">
-          <div className="mx-auto w-fit">
-            <div className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white/92 px-1.5 py-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] ring-1 ring-white/70 backdrop-blur-xl">
-              {navigationItems.map((item) =>
-                item.items?.length ? (
-                  <NavDropdown key={item.href} item={item} />
-                ) : (
-                  <NavLink key={item.href} href={item.href} label={item.label} />
-                ),
-              )}
-            </div>
-          </div>
-        </div>
-      </nav>
+    <div ref={mobileMenuRef} className="relative lg:hidden">
+      <button
+        type="button"
+        aria-expanded={menuOpen}
+        aria-controls="mobile-nav-panel"
+        className="inline-flex h-11 items-center gap-2.5 rounded-full border border-border bg-white/92 px-4 text-sm font-medium text-secondary shadow-sm backdrop-blur-sm transition hover:bg-white"
+        onClick={() => setMenuOpen((current) => !current)}
+      >
+        <span className="whitespace-nowrap">მენიუ</span>
+        {menuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
+      </button>
 
-      <div ref={menuRef} className="relative flex items-center justify-end lg:hidden">
-        <button
-          type="button"
-          aria-expanded={mobileMenuOpen}
-          aria-controls="mobile-nav-panel"
-          className="inline-flex h-11 items-center gap-2.5 rounded-full border border-border bg-white/90 px-4 text-sm font-medium text-secondary shadow-sm backdrop-blur-sm transition hover:bg-white"
-          onClick={() => {
-            if (mobileMenuOpen) {
-              closeMobileMenu();
-              return;
-            }
-
-            setMobileMenuOpen(true);
-          }}
-        >
-          <span className="whitespace-nowrap">მენიუ</span>
-          {mobileMenuOpen ? <X className="h-4 w-4" /> : <Menu className="h-4 w-4" />}
-        </button>
-
-        <div
-          id="mobile-nav-panel"
-          className={cn(
-            "absolute right-0 top-full z-50 mt-3 w-[22rem] max-w-[calc(100vw-2rem)] transition duration-200 ease-out",
-            mobileMenuOpen
-              ? "pointer-events-auto translate-y-0 opacity-100"
-              : "pointer-events-none -translate-y-1 opacity-0",
+      <div
+        id="mobile-nav-panel"
+        className={cn(
+          "absolute right-0 top-full z-50 mt-3 w-80 max-w-[calc(100vw-2rem)] transition duration-200 ease-out",
+          menuOpen
+            ? "pointer-events-auto translate-y-0 opacity-100"
+            : "pointer-events-none -translate-y-1 opacity-0",
+        )}
+      >
+        <div className="space-y-2 rounded-[1.8rem] border border-border bg-white/96 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
+          {headerNavigation.map((item) =>
+            item.items?.length ? (
+              <MobileDropdownGroup
+                key={item.href}
+                item={item}
+                pathname={pathname}
+                expanded={expandedGroups.includes(item.href)}
+                onToggle={() => toggleGroup(item.href)}
+                onNavigate={closeMenu}
+              />
+            ) : (
+              <Link
+                key={item.href}
+                href={item.href}
+                className={cn(
+                  "block rounded-[1.15rem] px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
+                  isActivePath(pathname, item.href) && "bg-surface-muted text-secondary",
+                )}
+                onClick={closeMenu}
+              >
+                <span className="block break-words">{item.label}</span>
+              </Link>
+            ),
           )}
-        >
-          <div className="space-y-2 rounded-[1.8rem] border border-border bg-white/95 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
-            {navigationItems.map((item) =>
-              item.items?.length ? (
-                <MobileDropdownGroup
-                  key={item.href}
-                  item={item}
-                  expanded={expandedGroups.includes(item.href)}
-                  pathname={pathname}
-                  onToggle={() => toggleGroup(item.href)}
-                  onNavigate={closeMobileMenu}
-                />
-              ) : (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  className={cn(
-                    "block rounded-[1.2rem] px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
-                    isActivePath(pathname, item.href) && "bg-surface-muted text-secondary",
-                  )}
-                  onClick={closeMobileMenu}
-                >
-                  <span className="block break-words">{item.label}</span>
-                </Link>
-              ),
-            )}
+
+          <div className="pt-2">
+            <Button asChild className="w-full rounded-[1.3rem]">
+              <Link href="/booking" onClick={closeMenu}>
+                <CalendarDays className="h-4 w-4" />
+                დაჯავშნა
+              </Link>
+            </Button>
           </div>
         </div>
       </div>
@@ -146,14 +185,14 @@ export function HeaderNavigation() {
 
 function MobileDropdownGroup({
   item,
-  expanded,
   pathname,
+  expanded,
   onToggle,
   onNavigate,
 }: {
   item: HeaderNavigationItem;
-  expanded: boolean;
   pathname: string;
+  expanded: boolean;
   onToggle: () => void;
   onNavigate: () => void;
 }) {
@@ -162,7 +201,7 @@ function MobileDropdownGroup({
     (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
 
   return (
-    <div className="rounded-[1.35rem] bg-surface-muted/55 p-1">
+    <div className="rounded-[1.35rem] bg-surface-muted/60 p-1">
       <div className="flex min-w-0 items-center gap-2">
         <Link
           href={item.href}

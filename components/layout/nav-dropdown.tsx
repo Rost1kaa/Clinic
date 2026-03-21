@@ -3,12 +3,8 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
-import { useEffect, useId, useRef, useState } from "react";
 import { cn } from "@/lib/utils/cn";
 import type { HeaderNavigationItem } from "@/types/domain";
-
-const OPEN_DELAY_MS = 90;
-const CLOSE_DELAY_MS = 140;
 
 function getPathWithoutHash(href: string) {
   return href.split("#")[0] ?? href;
@@ -19,148 +15,45 @@ function isActivePath(pathname: string, href: string) {
   return pathname === targetPath || (targetPath !== "/" && pathname.startsWith(targetPath));
 }
 
-export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
+export function NavDropdown({
+  item,
+  open,
+  onToggle,
+  onClose,
+}: {
+  item: HeaderNavigationItem;
+  open: boolean;
+  onToggle: () => void;
+  onClose: () => void;
+}) {
   const pathname = usePathname();
-  const panelId = useId();
-  const rootRef = useRef<HTMLDivElement>(null);
-  const timerRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-  const [open, setOpen] = useState(false);
-  const [panelPosition, setPanelPosition] = useState({
-    left: 0,
-    top: 0,
-    width: 304,
-  });
-
-  const isActive =
+  const active =
     isActivePath(pathname, item.href) ||
     (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
 
-  function clearTimer() {
-    if (timerRef.current) {
-      clearTimeout(timerRef.current);
-      timerRef.current = null;
-    }
-  }
-
-  function queueOpen() {
-    clearTimer();
-    timerRef.current = setTimeout(() => setOpen(true), OPEN_DELAY_MS);
-  }
-
-  function queueClose() {
-    clearTimer();
-    timerRef.current = setTimeout(() => setOpen(false), CLOSE_DELAY_MS);
-  }
-
-  function toggleOpen() {
-    clearTimer();
-    setOpen((value) => !value);
-  }
-
-  function openImmediately() {
-    clearTimer();
-    setOpen(true);
-  }
-
-  useEffect(() => {
-    return () => clearTimer();
-  }, []);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    function handlePointerDown(event: PointerEvent) {
-      if (!rootRef.current?.contains(event.target as Node)) {
-        setOpen(false);
-      }
-    }
-
-    function handleKeyDown(event: KeyboardEvent) {
-      if (event.key === "Escape") {
-        setOpen(false);
-      }
-    }
-
-    document.addEventListener("pointerdown", handlePointerDown);
-    document.addEventListener("keydown", handleKeyDown);
-
-    return () => {
-      document.removeEventListener("pointerdown", handlePointerDown);
-      document.removeEventListener("keydown", handleKeyDown);
-    };
-  }, [open]);
-
-  useEffect(() => {
-    if (!open) {
-      return;
-    }
-
-    function updatePosition() {
-      const rect = rootRef.current?.getBoundingClientRect();
-
-      if (!rect) {
-        return;
-      }
-
-      const viewportPadding = 16;
-      const preferredWidth = 304;
-      const width = Math.min(preferredWidth, window.innerWidth - viewportPadding * 2);
-      const halfWidth = width / 2;
-      const idealCenter = rect.left + rect.width / 2;
-      const left = Math.min(
-        Math.max(idealCenter, viewportPadding + halfWidth),
-        window.innerWidth - viewportPadding - halfWidth,
-      );
-
-      setPanelPosition({
-        left,
-        top: rect.bottom + 12,
-        width,
-      });
-    }
-
-    updatePosition();
-    window.addEventListener("resize", updatePosition);
-    window.addEventListener("scroll", updatePosition, true);
-
-    return () => {
-      window.removeEventListener("resize", updatePosition);
-      window.removeEventListener("scroll", updatePosition, true);
-    };
-  }, [open]);
-
   return (
-    <div
-      ref={rootRef}
-      className="relative shrink-0"
-      onMouseEnter={queueOpen}
-      onMouseLeave={queueClose}
-    >
+    <div className="relative shrink-0">
       <div
         className={cn(
-          "flex h-11 items-center rounded-full pl-1.5 pr-1 text-[0.95rem] font-medium leading-none transition",
-          open || isActive
+          "flex h-10 items-center rounded-full px-1 text-[0.95rem] font-medium leading-none transition",
+          open || active
             ? "bg-surface-muted text-secondary"
             : "text-muted hover:bg-surface-muted/80 hover:text-secondary",
         )}
       >
         <Link
           href={item.href}
-          className="inline-flex min-w-0 items-center whitespace-nowrap px-3 py-2"
-          onFocus={openImmediately}
+          className="inline-flex min-w-0 items-center whitespace-nowrap px-3.5"
+          onClick={onClose}
         >
           {item.label}
         </Link>
         <button
           type="button"
           aria-expanded={open}
-          aria-controls={panelId}
           aria-haspopup="menu"
           className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
-          onClick={toggleOpen}
-          onFocus={openImmediately}
+          onClick={onToggle}
         >
           <ChevronDown
             className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")}
@@ -169,29 +62,26 @@ export function NavDropdown({ item }: { item: HeaderNavigationItem }) {
       </div>
 
       <div
-        id={panelId}
         role="menu"
         aria-label={item.label}
         className={cn(
-          "fixed left-0 top-0 z-50 -translate-x-1/2 transition duration-200 ease-out",
+          "absolute left-1/2 top-full z-50 mt-3 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2 transition duration-200 ease-out",
           open
             ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none -translate-y-1 opacity-0",
+            : "pointer-events-none translate-y-1 opacity-0",
         )}
-        style={{
-          left: panelPosition.left,
-          top: panelPosition.top,
-          width: panelPosition.width,
-        }}
       >
-        <div className="overflow-hidden rounded-[1.5rem] border border-border bg-white/95 p-2 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
+        <div className="overflow-hidden rounded-[1.45rem] border border-border bg-white/98 p-2 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
           {item.items?.map((child) => (
             <Link
               key={child.href}
               href={child.href}
               role="menuitem"
-              className="block min-w-0 rounded-[1rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary"
-              onClick={() => setOpen(false)}
+              className={cn(
+                "block rounded-[1rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
+                isActivePath(pathname, child.href) && "bg-surface-muted text-secondary",
+              )}
+              onClick={onClose}
             >
               <span className="block break-words">{child.label}</span>
             </Link>

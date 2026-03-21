@@ -54,10 +54,7 @@ export const headerNavigation: HeaderNavigationItem[] = [
     href: "/diagnostics",
     label: "დიაგნოსტიკა",
     items: [
-      {
-        href: "/diagnostics#electrocardiography-ecg",
-        label: "ელექტროკარდიოგრაფია (ECG)",
-      },
+      { href: "/diagnostics#electrocardiography-ecg", label: "ელექტროკარდიოგრაფია" },
       { href: "/diagnostics#echocardiography", label: "ექოკარდიოსკოპია" },
       { href: "/diagnostics#abdominal-ultrasound", label: "მუცლის ექოსკოპია" },
       { href: "/diagnostics#radiology-xray", label: "რენტგენოლოგია" },

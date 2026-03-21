@@ -1,12 +1,15 @@
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
-import { HeaderNavigation } from "@/components/layout/header-navigation";
+import {
+  DesktopHeaderNavigation,
+  MobileHeaderNavigation,
+} from "@/components/layout/header-navigation";
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
   return (
-    <header className="sticky top-0 z-40 border-b border-white/60 bg-background/80 backdrop-blur-xl">
-      <div className="mx-auto grid w-full max-w-[86rem] grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:px-8 lg:py-4">
+    <header className="sticky top-0 z-40 border-b border-white/70 bg-background/82 backdrop-blur-xl">
+      <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:px-8 lg:py-4">
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3.5">
           <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.35rem] bg-primary text-lg font-bold text-white shadow-lg shadow-primary/20">
             V
@@ -21,17 +24,18 @@ export function SiteHeader() {
           </div>
         </Link>
 
-        <div className="min-w-0 lg:justify-self-stretch">
-          <HeaderNavigation />
+        <div className="hidden min-w-0 justify-center lg:flex">
+          <DesktopHeaderNavigation />
         </div>
 
-        <div className="hidden shrink-0 items-center justify-end lg:flex">
-          <Button asChild size="sm" className="shadow-lg shadow-primary/20">
+        <div className="flex shrink-0 items-center justify-end gap-2">
+          <Button asChild size="sm" className="hidden shadow-lg shadow-primary/20 lg:inline-flex">
             <Link href="/booking" className="whitespace-nowrap">
               <CalendarDays className="h-4 w-4" />
               დაჯავშნა
             </Link>
           </Button>
+          <MobileHeaderNavigation />
         </div>
       </div>
     </header>
