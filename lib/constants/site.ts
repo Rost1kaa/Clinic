@@ -62,7 +62,6 @@ export const headerNavigation: HeaderNavigationItem[] = [
       { href: "/diagnostics#instrumental-diagnostics", label: "ინსტრუმენტული კვლევები" },
     ],
   },
-  { href: "/laboratory", label: "ლაბორატორია" },
 ];
 
 export const footerNavigation: NavigationItem[] = [
