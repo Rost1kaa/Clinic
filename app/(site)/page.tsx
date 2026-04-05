@@ -57,7 +57,7 @@ export default async function HomePage() {
 
       <section className="section-shell pt-8">
         <div className="container-shell">
-          <div className="grid gap-8 lg:grid-cols-[1.18fr_0.82fr]">
+          <div className="grid items-start gap-8 lg:grid-cols-[1.18fr_0.82fr] lg:items-center">
             <div className="mesh-panel p-8 sm:p-10 lg:p-12">
               <Badge variant="accent">ბინაზე ვიზიტი და ონლაინ კონსულტაცია</Badge>
               <div className="mt-6 space-y-6">
@@ -82,8 +82,8 @@ export default async function HomePage() {
               </div>
             </div>
 
-            <div className="surface-card overflow-hidden p-4">
-              <div className="relative aspect-[5/4] overflow-hidden rounded-[1.5rem]">
+            <div className="surface-card mx-auto flex h-fit w-full max-w-[32rem] flex-col items-center overflow-hidden p-4 sm:p-5">
+              <div className="relative aspect-[5/4] w-full max-w-[27rem] overflow-hidden rounded-[1.5rem]">
                 <Image
                   src={services[0]?.image?.src ?? ""}
                   alt={services[0]?.image?.alt ?? ""}
@@ -92,12 +92,17 @@ export default async function HomePage() {
                   priority
                 />
               </div>
-              <div className="grid gap-3 p-4 sm:grid-cols-2">
+              <div className="grid w-full max-w-[27rem] gap-3 p-4 pt-5 sm:grid-cols-2 sm:px-0 sm:pb-0">
                 {stats.slice(0, 2).map((stat) => (
-                  <div key={stat.label} className="rounded-3xl bg-surface-muted p-4">
+                  <div
+                    key={stat.label}
+                    className="flex h-full flex-col items-center justify-center rounded-3xl bg-surface-muted p-4 text-center sm:p-5"
+                  >
                     <p className="text-2xl font-semibold text-secondary">{stat.value}</p>
                     <p className="mt-1 text-sm font-medium text-secondary">{stat.label}</p>
-                    <p className="mt-2 text-sm leading-6 text-muted">{stat.description}</p>
+                    <p className="mt-2 max-w-[16rem] text-sm leading-6 text-muted">
+                      {stat.description}
+                    </p>
                   </div>
                 ))}
               </div>
