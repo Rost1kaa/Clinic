@@ -19,7 +19,7 @@ export default function GlobalError({
       <body className="min-h-screen bg-background">
         <div className="container-shell flex min-h-screen items-center justify-center py-24">
           <div className="surface-card max-w-2xl space-y-6 p-10 text-center">
-            <p className="text-sm font-semibold uppercase tracking-[0.28em] text-danger">
+            <p className="text-sm font-semibold text-danger">
               ტექნიკური შეფერხება
             </p>
             <h1 className="font-serif text-4xl text-secondary">

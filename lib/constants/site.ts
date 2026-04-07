@@ -2,6 +2,7 @@ import type { HeaderNavigationItem, NavigationItem } from "@/types/domain";
 
 export const siteConfig = {
   name: "მედსერვისი",
+  subtitle: "სამედიცინო ჯგუფი",
   legalName: "მედსერვისი - სამედიცინო ჯგუფი",
   shortDescription:
     "სანდო სამედიცინო მხარდაჭერა სახლში, ონლაინ და დიაგნოსტიკის სრულ სპექტრში.",
@@ -12,8 +13,6 @@ export const siteConfig = {
     "ორშაბათი - პარასკევი: 09:00 - 21:00",
     "შაბათი - კვირა: 10:00 - 18:00",
   ],
-  emergencyNote:
-    "გადაუდებელი მდგომარეობის შემთხვევაში დაუყოვნებლივ მიმართეთ 112-ს.",
 };
 
 export const mainNavigation: NavigationItem[] = [

@@ -1,10 +1,26 @@
+"use client";
+
+import * as React from "react";
+import { useScrollReveal } from "@/components/motion/scroll-reveal";
 import { cn } from "@/lib/utils/cn";
 
 export function Card({
   className,
+  style,
   ...props
 }: React.HTMLAttributes<HTMLDivElement>) {
-  return <div className={cn("surface-card min-w-0 overflow-hidden", className)} {...props} />;
+  const { ref, revealClassName, revealStyle } = useScrollReveal<HTMLDivElement>({
+    variant: "card",
+  });
+
+  return (
+    <div
+      ref={ref}
+      className={cn("surface-card min-w-0 overflow-hidden", revealClassName, className)}
+      style={{ ...revealStyle, ...style }}
+      {...props}
+    />
+  );
 }
 
 export function CardHeader({
@@ -20,7 +36,7 @@ export function CardTitle({
 }: React.HTMLAttributes<HTMLHeadingElement>) {
   return (
     <h3
-      className={cn("break-words font-serif text-2xl leading-tight text-secondary", className)}
+      className={cn("break-words font-serif text-xl leading-snug text-secondary", className)}
       {...props}
     />
   );
@@ -32,7 +48,7 @@ export function CardDescription({
 }: React.HTMLAttributes<HTMLParagraphElement>) {
   return (
     <p
-      className={cn("min-w-0 break-words text-base leading-7 text-muted", className)}
+      className={cn("min-w-0 break-words text-sm leading-6 text-muted", className)}
       {...props}
     />
   );

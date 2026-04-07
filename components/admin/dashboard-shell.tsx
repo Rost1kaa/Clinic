@@ -16,6 +16,7 @@ import {
   Sparkles,
   X,
 } from "lucide-react";
+import { BrandLogo } from "@/components/branding/brand-logo";
 import { adminNavigation } from "@/lib/constants/site";
 import { signOutAction } from "@/lib/actions/auth";
 import { Badge } from "@/components/ui/badge";
@@ -113,7 +114,7 @@ export function DashboardShell({
       <div className="mx-auto flex min-h-screen w-full max-w-[1680px]">
         <aside
           className={cn(
-            "fixed inset-y-3 left-3 z-50 flex w-[19rem] max-w-[calc(100vw-1.5rem)] flex-col rounded-[2rem] border border-white/65 bg-white/90 p-4 shadow-[0_24px_80px_rgba(10,55,58,0.12)] backdrop-blur-xl transition-transform duration-200 lg:sticky lg:inset-y-auto lg:left-auto lg:top-3 lg:ml-3 lg:h-[calc(100vh-1.5rem)] lg:translate-x-0",
+            "fixed inset-y-3 left-3 z-50 flex w-[19rem] max-w-[calc(100vw-1.5rem)] flex-col rounded-[1.5rem] border border-white/65 bg-white/90 p-4 shadow-[0_24px_80px_rgba(10,55,58,0.12)] backdrop-blur-xl transition-transform duration-200 lg:sticky lg:inset-y-auto lg:left-auto lg:top-3 lg:ml-3 lg:h-[calc(100vh-1.5rem)] lg:translate-x-0",
             mobileSidebarOpen ? "translate-x-0" : "-translate-x-[calc(100%+1rem)]",
           )}
         >
@@ -123,27 +124,26 @@ export function DashboardShell({
               className="flex min-w-0 items-center gap-3"
               onClick={() => setMobileSidebarOpen(false)}
             >
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-primary text-base font-bold text-white shadow-lg shadow-primary/20">
-                V
-              </div>
-              <div className="min-w-0">
-                <p className="truncate font-serif text-xl text-secondary">მედსერვისი</p>
-                <p className="truncate text-xs uppercase tracking-[0.22em] text-muted">სამედიცინო ჯგუფი</p>
-              </div>
+              <BrandLogo
+                className="min-w-0"
+                markClassName="h-12 w-12"
+                titleClassName="text-xl"
+                subtitleClassName="text-xs"
+              />
             </Link>
 
             <button
               type="button"
-              className="inline-flex h-10 w-10 items-center justify-center rounded-2xl border border-border bg-white text-secondary lg:hidden"
+              className="inline-flex h-10 w-10 items-center justify-center rounded-xl border border-border bg-white text-secondary lg:hidden"
               onClick={() => setMobileSidebarOpen(false)}
             >
               <X className="h-4 w-4" />
             </button>
           </div>
 
-          <div className="mt-6 rounded-[1.75rem] border border-border/80 bg-surface-muted/70 p-4">
+          <div className="mt-6 rounded-[1.25rem] border border-border/80 bg-surface-muted/70 p-4">
             <div className="flex items-center gap-3">
-              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-secondary text-sm font-semibold text-white">
+              <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-secondary text-sm font-semibold text-white">
                 {initialsFromName(profileName)}
               </div>
               <div className="min-w-0">
@@ -172,7 +172,7 @@ export function DashboardShell({
                   href={item.href}
                   onClick={() => setMobileSidebarOpen(false)}
                   className={cn(
-                    "group flex min-w-0 items-center gap-3 rounded-[1.35rem] px-4 py-3 text-sm transition",
+                    "group flex min-w-0 items-center gap-3 rounded-[1rem] px-4 py-3 text-sm transition",
                     isActive
                       ? "bg-primary text-white shadow-lg shadow-primary/15"
                       : "text-muted hover:bg-surface-muted hover:text-secondary",
@@ -180,7 +180,7 @@ export function DashboardShell({
                 >
                   <span
                     className={cn(
-                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-2xl border transition",
+                      "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition",
                       isActive
                         ? "border-white/15 bg-white/10 text-white"
                         : "border-border bg-white text-secondary group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:text-primary",
@@ -211,7 +211,7 @@ export function DashboardShell({
           </nav>
 
           <div className="mt-auto space-y-3 pt-6">
-            <div className="rounded-[1.5rem] border border-border/70 bg-white/80 p-4 text-sm text-muted">
+            <div className="rounded-[1.15rem] border border-border/70 bg-white/80 p-4 text-sm text-muted">
               <p className="font-medium text-secondary">Secure workspace</p>
               <p className="mt-1 leading-6">
                 Supabase Auth session protected admin გარემო მედსერვისი გუნდისთვის.
@@ -222,7 +222,7 @@ export function DashboardShell({
               <Button
                 type="submit"
                 variant="secondary"
-                className="w-full justify-between rounded-[1.35rem] border-danger/15 bg-white px-4 py-6 text-secondary hover:border-danger/30 hover:text-danger"
+                className="w-full justify-between rounded-xl border-danger/15 bg-white px-4 py-6 text-secondary hover:border-danger/30 hover:text-danger"
               >
                 <span className="inline-flex items-center gap-2">
                   <LogOut className="h-4 w-4" />
@@ -240,7 +240,7 @@ export function DashboardShell({
               <div className="flex min-w-0 items-center gap-3">
                 <button
                   type="button"
-                  className="inline-flex h-11 w-11 items-center justify-center rounded-2xl border border-border bg-white text-secondary lg:hidden"
+                  className="inline-flex h-11 w-11 items-center justify-center rounded-xl border border-border bg-white text-secondary lg:hidden"
                   onClick={() => setMobileSidebarOpen(true)}
                 >
                   <Menu className="h-4 w-4" />
@@ -266,7 +266,7 @@ export function DashboardShell({
                     პარამეტრები
                   </Link>
                 </Button>
-                <div className="flex h-11 w-11 items-center justify-center rounded-2xl bg-secondary text-sm font-semibold text-white">
+                <div className="flex h-11 w-11 items-center justify-center rounded-xl bg-secondary text-sm font-semibold text-white">
                   {initialsFromName(profileName)}
                 </div>
               </div>

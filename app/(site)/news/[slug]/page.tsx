@@ -88,7 +88,7 @@ export default async function NewsDetailsPage({ params }: Props) {
 
           <aside className="space-y-6">
             <Card className="p-6">
-              <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+              <p className="text-sm font-semibold text-primary">
                 დაკავშირებული სტატიები
               </p>
               <div className="mt-5 grid gap-4">

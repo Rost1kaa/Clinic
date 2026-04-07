@@ -5,5 +5,5 @@ export function LoadingSkeleton({
 }: {
   className?: string;
 }) {
-  return <div className={cn("animate-pulse rounded-2xl bg-surface-strong", className)} />;
+  return <div className={cn("animate-pulse rounded-xl bg-surface-strong", className)} />;
 }

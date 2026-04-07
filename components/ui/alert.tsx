@@ -19,7 +19,7 @@ export function Alert({
   };
 
   return (
-    <div className={cn("min-w-0 overflow-hidden rounded-3xl border p-5", styles[tone], className)}>
+    <div className={cn("min-w-0 overflow-hidden rounded-2xl border p-5", styles[tone], className)}>
       <Badge variant={tone === "danger" ? "accent" : "neutral"}>{title}</Badge>
       <p className="mt-3 break-words text-sm leading-6 text-muted-strong">{description}</p>
     </div>

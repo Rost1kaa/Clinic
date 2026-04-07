@@ -88,7 +88,7 @@ export function DesktopHeaderNavigation() {
     <nav className="min-w-0" aria-label="ძირითადი ნავიგაცია">
       <div
         ref={desktopNavRef}
-        className="inline-flex items-center gap-1 rounded-full border border-border/80 bg-white/90 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] backdrop-blur-xl"
+        className="inline-flex items-center gap-1 rounded-2xl border border-border/80 bg-white/90 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] backdrop-blur-xl"
       >
         {headerNavigation.map((item) =>
           item.items?.length ? (
@@ -161,7 +161,7 @@ export function MobileHeaderNavigation() {
         type="button"
         aria-expanded={menuOpen}
         aria-controls="mobile-nav-panel"
-        className="inline-flex h-11 items-center gap-2.5 rounded-full border border-border bg-white/92 px-4 text-sm font-medium text-secondary shadow-sm backdrop-blur-sm transition hover:bg-white"
+        className="inline-flex h-11 items-center gap-2.5 rounded-xl border border-border bg-white/92 px-4 text-sm font-medium text-secondary shadow-sm backdrop-blur-sm transition hover:bg-white"
         onClick={() => setMenuOpen((current) => !current)}
       >
         <span className="whitespace-nowrap">მენიუ</span>
@@ -177,7 +177,7 @@ export function MobileHeaderNavigation() {
             : "pointer-events-none -translate-y-1 opacity-0",
         )}
       >
-        <div className="space-y-2 rounded-[1.8rem] border border-border bg-white/96 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
+        <div className="space-y-2 rounded-[1.35rem] border border-border bg-white/96 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
           {headerNavigation.map((item) =>
             item.items?.length ? (
               <MobileDropdownGroup
@@ -193,7 +193,7 @@ export function MobileHeaderNavigation() {
                 key={item.href}
                 href={item.href}
                 className={cn(
-                  "block rounded-[1.15rem] px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
+                  "block rounded-[0.95rem] px-4 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
                   isActivePath(pathname, item.href) && "bg-surface-muted text-secondary",
                 )}
                 onClick={closeMenu}
@@ -204,7 +204,7 @@ export function MobileHeaderNavigation() {
           )}
 
           <div className="pt-2">
-            <Button asChild className="w-full rounded-[1.3rem]">
+            <Button asChild className="w-full rounded-xl">
               <Link href="/booking" onClick={closeMenu}>
                 <CalendarDays className="h-4 w-4" />
                 დაჯავშნა
@@ -235,12 +235,12 @@ function MobileDropdownGroup({
     (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
 
   return (
-    <div className="rounded-[1.35rem] bg-surface-muted/60 p-1">
+    <div className="rounded-[1.05rem] bg-surface-muted/60 p-1">
       <div className="flex min-w-0 items-center gap-2">
         <Link
           href={item.href}
           className={cn(
-            "min-w-0 flex-1 rounded-[1rem] px-3.5 py-3 text-sm font-medium leading-6 text-secondary",
+            "min-w-0 flex-1 rounded-[0.85rem] px-3.5 py-3 text-sm font-medium leading-6 text-secondary",
             active && "text-secondary",
           )}
           onClick={onNavigate}
@@ -250,7 +250,7 @@ function MobileDropdownGroup({
         <button
           type="button"
           aria-expanded={expanded}
-          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
+          className="inline-flex h-10 w-10 shrink-0 items-center justify-center rounded-lg text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
           onClick={onToggle}
         >
           <ChevronDown
@@ -272,7 +272,7 @@ function MobileDropdownGroup({
                 key={child.href}
                 href={child.href}
                 className={cn(
-                  "block rounded-[1rem] px-3.5 py-2.5 text-sm leading-6 text-muted transition hover:bg-white hover:text-secondary",
+                  "block rounded-[0.85rem] px-3.5 py-2.5 text-sm leading-6 text-muted transition hover:bg-white hover:text-secondary",
                   isActivePath(pathname, child.href) && "bg-white text-secondary shadow-sm",
                 )}
                 onClick={onNavigate}

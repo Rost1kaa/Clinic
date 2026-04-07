@@ -74,7 +74,7 @@ export function BookingSummary({
           <p className="font-medium text-secondary">გადახდა</p>
           <p className="break-words">{paymentMethodLabels[paymentMethod]}</p>
         </div>
-        <div className="rounded-[1.5rem] bg-surface-muted p-4 sm:p-5">
+        <div className="rounded-[1.1rem] bg-surface-muted p-4 sm:p-5">
           <p className="font-medium text-secondary">სავარაუდო ღირებულება</p>
           <p className="mt-2 break-words text-2xl font-semibold text-secondary">
             {item ? formatMoney(item.price) : "აირჩიეთ სერვისი"}

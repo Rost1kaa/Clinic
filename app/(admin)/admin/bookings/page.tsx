@@ -192,19 +192,19 @@ export default async function AdminBookingsPage({ searchParams }: Props) {
 
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     <div className="rounded-[1.25rem] border border-border/80 bg-surface-muted/50 p-4">
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">ფორმატი</p>
+                      <p className="text-xs text-muted">ფორმატი</p>
                       <p className="mt-2 break-words text-sm font-medium text-secondary">
                         {booking.service_type}
                       </p>
                     </div>
                     <div className="rounded-[1.25rem] border border-border/80 bg-surface-muted/50 p-4">
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">ვიზიტის დრო</p>
+                      <p className="text-xs text-muted">ვიზიტის დრო</p>
                       <p className="mt-2 break-words text-sm font-medium text-secondary">
                         {formatDateTime(booking.preferred_date)}
                       </p>
                     </div>
                     <div className="rounded-[1.25rem] border border-border/80 bg-surface-muted/50 p-4">
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">საფასური</p>
+                      <p className="text-xs text-muted">საფასური</p>
                       <p className="mt-2 break-words text-sm font-medium text-secondary">
                         {formatMoney(Number(booking.total_amount ?? 0))}
                       </p>

@@ -33,6 +33,11 @@ export function buildMetadata({
   return {
     metadataBase: new URL(env.siteUrl),
     applicationName: siteConfig.name,
+    icons: {
+      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
+      shortcut: ["/icon.svg"],
+      apple: [{ url: "/icon.svg" }],
+    },
     title: resolvedTitle,
     description,
     alternates: {

@@ -19,7 +19,7 @@ export function NavLink({
       href={href}
       aria-current={active ? "page" : undefined}
       className={cn(
-        "inline-flex h-10 shrink-0 items-center whitespace-nowrap rounded-full px-4 text-[0.95rem] font-medium leading-none text-muted transition hover:bg-surface-muted/80 hover:text-secondary",
+        "inline-flex h-10 shrink-0 items-center whitespace-nowrap rounded-xl px-4 text-[0.95rem] font-medium leading-none text-muted transition hover:bg-surface-muted/80 hover:text-secondary",
         active && "bg-surface-muted text-secondary",
       )}
     >

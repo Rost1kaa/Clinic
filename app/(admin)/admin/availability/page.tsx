@@ -194,17 +194,17 @@ export default async function AdminAvailabilityPage() {
 
                   <div className="grid gap-4 sm:grid-cols-2 xl:grid-cols-3">
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">ინტერვალი</p>
+                      <p className="text-xs text-muted">ინტერვალი</p>
                       <p className="mt-2 break-words text-sm font-medium text-secondary">
                         {formatDateTime(slot.slot_start)} - {formatDateTime(slot.slot_end)}
                       </p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">ტევადობა</p>
+                      <p className="text-xs text-muted">ტევადობა</p>
                       <p className="mt-2 text-sm font-medium text-secondary">{slot.capacity}</p>
                     </div>
                     <div>
-                      <p className="text-xs uppercase tracking-[0.2em] text-muted">დაკავშირებული რესურსი</p>
+                      <p className="text-xs text-muted">დაკავშირებული რესურსი</p>
                       <p className="mt-2 break-words text-sm font-medium text-secondary">
                         {slot.service_id ??
                           slot.diagnostic_id ??

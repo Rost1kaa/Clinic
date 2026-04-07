@@ -7,6 +7,29 @@ export const size = {
 
 export const contentType = "image/png";
 
+function OgBrandMark() {
+  return (
+    <svg viewBox="0 0 320 320" width="72" height="72" xmlns="http://www.w3.org/2000/svg">
+      <defs>
+        <clipPath id="og-brand-clip">
+          <circle cx="160" cy="160" r="108" />
+        </clipPath>
+      </defs>
+      <circle cx="160" cy="160" r="112" fill="none" stroke="#31958C" strokeWidth="4" />
+      <circle cx="160" cy="160" r="108" fill="#31958C" />
+      <polyline
+        points="60,160 95,160 115,120 138,200 158,100 178,220 198,160 260,160"
+        fill="none"
+        stroke="#FFFFFF"
+        strokeWidth="4"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+        clipPath="url(#og-brand-clip)"
+      />
+    </svg>
+  );
+}
+
 export default function OpenGraphImage() {
   return new ImageResponse(
     (
@@ -35,17 +58,12 @@ export default function OpenGraphImage() {
             style={{
               width: "72px",
               height: "72px",
-              borderRadius: "24px",
-              background: "#0c8c8f",
-              color: "white",
               display: "flex",
               alignItems: "center",
               justifyContent: "center",
-              fontSize: "36px",
-              fontWeight: 700,
             }}
           >
-            V
+            <OgBrandMark />
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 44, fontWeight: 700 }}>მედსერვისი</div>

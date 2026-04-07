@@ -588,7 +588,7 @@ export function BookingForm({
           />
 
           <Card className="min-w-0 p-5 sm:p-6">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+          <p className="text-sm font-semibold text-primary">
             სასარგებლო ინფორმაცია
           </p>
           <div className="mt-4 space-y-4 break-words text-sm leading-7 text-muted">

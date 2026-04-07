@@ -1,0 +1,18 @@
+<svg viewBox="0 0 320 320" xmlns="http://www.w3.org/2000/svg" aria-hidden="true">
+  <defs>
+    <clipPath id="medservice-logo-clip">
+      <circle cx="160" cy="160" r="108" />
+    </clipPath>
+  </defs>
+  <circle cx="160" cy="160" r="112" fill="none" stroke="#31958C" stroke-width="4" />
+  <circle cx="160" cy="160" r="108" fill="#31958C" />
+  <polyline
+    points="60,160 95,160 115,120 138,200 158,100 178,220 198,160 260,160"
+    fill="none"
+    stroke="#FFFFFF"
+    stroke-width="4"
+    stroke-linecap="round"
+    stroke-linejoin="round"
+    clip-path="url(#medservice-logo-clip)"
+  />
+</svg>

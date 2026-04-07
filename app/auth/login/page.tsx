@@ -13,7 +13,7 @@ export default async function LoginPage({ searchParams }: Props) {
     <div className="container-shell flex min-h-screen items-center justify-center py-16">
       <div className="surface-card w-full max-w-lg space-y-6 p-8">
         <div className="space-y-2 text-center">
-          <p className="text-sm font-semibold uppercase tracking-[0.24em] text-primary">
+          <p className="text-sm font-semibold text-primary">
             Admin Login
           </p>
           <h1 className="font-serif text-4xl text-secondary">მედსერვისი ადმინისტრირება</h1>

@@ -1,3 +1,6 @@
+"use client";
+
+import { useScrollReveal } from "@/components/motion/scroll-reveal";
 import { Badge } from "@/components/ui/badge";
 import { cn } from "@/lib/utils/cn";
 
@@ -14,13 +17,20 @@ export function SectionHeader({
   align?: "left" | "center";
   className?: string;
 }) {
+  const { ref, revealClassName, revealStyle } = useScrollReveal<HTMLDivElement>({
+    variant: "heading",
+  });
+
   return (
     <div
+      ref={ref}
       className={cn(
         "space-y-4",
+        revealClassName,
         align === "center" && "mx-auto max-w-3xl text-center",
         className,
       )}
+      style={revealStyle}
     >
       {eyebrow ? <Badge>{eyebrow}</Badge> : null}
       <div className="space-y-3">

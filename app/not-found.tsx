@@ -5,7 +5,7 @@ export default function NotFound() {
   return (
     <div className="container-shell flex min-h-screen items-center justify-center py-24">
       <div className="surface-card max-w-2xl space-y-6 p-10 text-center">
-        <p className="text-sm font-semibold uppercase tracking-[0.28em] text-primary">
+        <p className="text-sm font-semibold text-primary">
           404
         </p>
         <h1 className="font-serif text-4xl text-secondary">

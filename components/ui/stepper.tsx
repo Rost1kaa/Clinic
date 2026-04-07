@@ -18,13 +18,13 @@ export function Stepper({
             <div
               key={step}
               className={cn(
-                "min-w-0 rounded-[1.5rem] border px-4 py-3.5 text-sm transition",
+                "min-w-0 rounded-[1.1rem] border px-4 py-3.5 text-sm transition",
                 active && "border-primary bg-primary/8 text-primary",
                 complete && "border-success/20 bg-success/8 text-success",
                 !active && !complete && "border-border bg-white/90 text-muted",
               )}
             >
-              <p className="text-xs font-semibold uppercase tracking-[0.18em]">
+              <p className="text-xs font-semibold">
                 {String(index + 1).padStart(2, "0")}
               </p>
               <p className="mt-2 break-words text-sm font-medium leading-6">{step}</p>

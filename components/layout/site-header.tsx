@@ -1,5 +1,6 @@
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
+import { BrandLogo } from "@/components/branding/brand-logo";
 import {
   DesktopHeaderNavigation,
   MobileHeaderNavigation,
@@ -11,17 +12,13 @@ export function SiteHeader() {
     <header className="sticky top-0 z-40 border-b border-white/70 bg-background/82 backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:px-8 lg:py-4">
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3.5">
-          <div className="flex h-12 w-12 shrink-0 items-center justify-center rounded-[1.35rem] bg-primary text-lg font-bold text-white shadow-lg shadow-primary/20">
-            V
-          </div>
-          <div className="flex min-w-0 flex-col items-start justify-center gap-0.5">
-            <p className="whitespace-nowrap font-serif text-[1.16rem] leading-[1.04] text-secondary sm:text-[1.24rem]">
-              მედსერვისი
-            </p>
-            <p className="whitespace-nowrap text-[0.68rem] font-medium leading-[1.15] tracking-[0.14em] text-muted sm:text-[0.72rem]">
-              სამედიცინო ჯგუფი
-            </p>
-          </div>
+          <BrandLogo
+            className="min-w-0"
+            markClassName="h-12 w-12 drop-shadow-[0_12px_24px_rgba(49,149,140,0.18)]"
+            titleClassName="whitespace-nowrap text-[1.16rem] leading-[1.04] sm:text-[1.24rem]"
+            subtitleClassName="whitespace-nowrap text-[0.68rem] leading-[1.15] sm:text-[0.72rem]"
+            priority
+          />
         </Link>
 
         <div className="hidden min-w-0 justify-center lg:flex">

@@ -1,3 +1,6 @@
+"use client";
+
+import { useScrollReveal } from "@/components/motion/scroll-reveal";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 
@@ -12,10 +15,18 @@ export function PageHero({
   description: string;
   actions?: React.ReactNode;
 }) {
+  const { ref, revealClassName, revealStyle } = useScrollReveal<HTMLDivElement>({
+    variant: "hero",
+  });
+
   return (
     <section className="section-shell">
       <div className="container-shell">
-        <div className="mesh-panel p-8 sm:p-10 lg:p-14">
+        <div
+          ref={ref}
+          className={`mesh-panel p-8 sm:p-10 lg:p-14 ${revealClassName}`}
+          style={revealStyle}
+        >
           <div className="max-w-3xl space-y-6">
             <Badge variant="accent">{eyebrow}</Badge>
             <div className="space-y-4">

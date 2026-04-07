@@ -43,7 +43,7 @@ export function NavDropdown({
     >
       <div
         className={cn(
-          "flex h-10 items-center rounded-full px-1 text-[0.95rem] font-medium leading-none transition",
+          "flex h-10 items-center rounded-xl px-1 text-[0.95rem] font-medium leading-none transition",
           open || active
             ? "bg-surface-muted text-secondary"
             : "text-muted hover:bg-surface-muted/80 hover:text-secondary",
@@ -60,7 +60,7 @@ export function NavDropdown({
           type="button"
           aria-expanded={open}
           aria-haspopup="menu"
-          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-full text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
+          className="inline-flex h-8 w-8 shrink-0 items-center justify-center rounded-lg text-muted transition hover:bg-white hover:text-secondary focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)]"
           onClick={onToggle}
         >
           <ChevronDown
@@ -84,14 +84,14 @@ export function NavDropdown({
             : "pointer-events-none translate-y-1 opacity-0",
         )}
       >
-        <div className="overflow-hidden rounded-[1.45rem] border border-border bg-white/98 p-2 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
+        <div className="overflow-hidden rounded-[1.15rem] border border-border bg-white/98 p-2 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
           {item.items?.map((child) => (
             <Link
               key={child.href}
               href={child.href}
               role="menuitem"
               className={cn(
-                "block rounded-[1rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
+                "block rounded-[0.85rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
                 isActivePath(pathname, child.href) && "bg-surface-muted text-secondary",
               )}
               onClick={onClose}

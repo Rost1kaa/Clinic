@@ -70,16 +70,6 @@ export const siteSettings: SiteSettings = {
 
 export const stats: StatItem[] = [
   {
-    label: "მომსახურების ფორმატი",
-    value: "2 გზა",
-    description: "ბინაზე ვიზიტები და ონლაინ კონსულტაციები ერთ სივრცეში.",
-  },
-  {
-    label: "პაციენტის გზა",
-    value: "ერთიანი",
-    description: "დაჯავშნა, ვიზიტი და შემდგომი მართვა კოორდინირებულ პროცესში.",
-  },
-  {
     label: "სახლში მომსახურება",
     value: "6 დღე",
     description: "თბილისისა და მიმდებარე ზონების დაფარვა.",
