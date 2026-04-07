@@ -15,9 +15,9 @@ export async function SiteFooter() {
           <div className="space-y-1.5">
             <Link href="/" className="inline-flex">
               <BrandLogo
-                markClassName="h-14 w-14 drop-shadow-[0_14px_26px_rgba(42,200,62,0.16)]"
-                titleClassName="text-3xl"
-                subtitleClassName="text-[0.72rem]"
+                markClassName="h-[3.85rem] w-[3.85rem] drop-shadow-[0_14px_26px_rgba(42,200,62,0.16)] sm:h-[4rem] sm:w-[4rem]"
+                titleClassName="text-[1.9rem] sm:text-[2.05rem]"
+                subtitleClassName="text-[0.76rem] sm:text-[0.82rem]"
               />
             </Link>
             <p className="max-w-xl text-sm leading-7 text-muted">{settings.tagline}</p>

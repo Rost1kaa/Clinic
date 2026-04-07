@@ -19,7 +19,7 @@ export function LogoMark({
         src="/brand/medservisi.svg"
         alt={decorative ? "" : alt ?? `${siteConfig.name} ლოგო`}
         fill
-        sizes="(max-width: 768px) 48px, 64px"
+        sizes="(max-width: 768px) 64px, 96px"
         className="object-contain"
         priority={priority}
       />
@@ -45,12 +45,22 @@ export function BrandLogo({
   return (
     <div className={cn("font-ka-ui flex min-w-0 items-center gap-3.5", className)}>
       <LogoMark className={markClassName} decorative priority={priority} />
-      <div className="min-w-0">
-        <p className={cn("truncate font-serif text-xl leading-none text-secondary", titleClassName)}>
+      <div className="flex min-w-0 flex-col justify-center gap-0.5">
+        <p
+          className={cn(
+            "truncate font-ka-ui text-xl font-semibold leading-[1.04] text-secondary tracking-normal",
+            titleClassName,
+          )}
+        >
           {siteConfig.name}
         </p>
         {showSubtitle ? (
-          <p className={cn("truncate text-xs font-medium text-muted", subtitleClassName)}>
+          <p
+            className={cn(
+              "truncate text-xs font-medium leading-[1.2] text-muted tracking-normal",
+              subtitleClassName,
+            )}
+          >
             {siteConfig.subtitle}
           </p>
         ) : null}

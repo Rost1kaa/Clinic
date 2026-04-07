@@ -1,3 +1,4 @@
+import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
@@ -37,12 +38,76 @@ export default async function HomePage() {
   const featuredNews = latestNews.slice(0, 3);
   const homeVisitService =
     services.find((service) => service.serviceMode === "home_visit") ?? services[0];
-  const valuePointPatternPlacements = [
-    "-right-8 top-0",
-    "-left-8 bottom-0 [transform:scaleX(-1)]",
-    "-right-10 bottom-0",
-    "-left-10 top-2 [transform:scaleX(-1)]",
+  const valuePointBackgrounds = [
+    {
+      src: "/feature-cards/1.png",
+      position: "center 52%",
+    },
+    {
+      src: "/feature-cards/2.png",
+      position: "center center",
+    },
+    {
+      src: "/feature-cards/3.png",
+      position: "center center",
+    },
+    {
+      src: "/feature-cards/4.png",
+      position: "60% center",
+    },
   ] as const;
+  const testimonialMarqueeStyle = {
+    "--marquee-duration": "34s",
+    "--marquee-distance": "50%",
+  } as CSSProperties;
+  const renderTestimonialCard = (testimonial: (typeof testimonials)[number], keySuffix = "") => (
+    <Card
+      key={`${testimonial.id}${keySuffix}`}
+      className="group relative h-full w-[18.75rem] shrink-0 rounded-xl border border-white/60 bg-white/72 p-6 shadow-[0_2px_8px_rgba(15,48,22,0.035)] backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-white/75 hover:bg-white/76 hover:shadow-[0_6px_16px_rgba(15,48,22,0.05)] sm:w-[20rem] sm:p-7 lg:w-[21.5rem] xl:w-[22rem]"
+    >
+      <div className="pointer-events-none absolute inset-0" aria-hidden>
+        <div className="absolute inset-0 bg-[linear-gradient(155deg,rgba(255,255,255,0.9),rgba(238,249,240,0.76))]" />
+        <div className="absolute inset-px rounded-[0.95rem] border border-white/45 bg-[linear-gradient(180deg,rgba(255,255,255,0.22),rgba(255,255,255,0.04))]" />
+        <div className="absolute -right-12 top-2 h-28 w-28 rounded-full bg-primary/[0.12] blur-3xl transition-transform duration-300 group-hover:scale-110" />
+        <div className="absolute -left-6 bottom-0 h-24 w-24 rounded-full bg-primary/[0.08] blur-[60px] transition-transform duration-300 group-hover:scale-110" />
+        <div className="absolute right-0 top-0 h-24 w-32 opacity-65">
+          <svg
+            viewBox="0 0 160 120"
+            className="h-full w-full"
+            fill="none"
+            xmlns="http://www.w3.org/2000/svg"
+          >
+            <path
+              d="M12 88 C 54 30, 104 26, 152 48"
+              stroke="rgba(42,200,62,0.12)"
+              strokeWidth="1.05"
+              strokeLinecap="round"
+            />
+            <path
+              d="M6 108 C 66 56, 116 56, 156 76"
+              stroke="rgba(42,200,62,0.08)"
+              strokeWidth="1"
+              strokeLinecap="round"
+            />
+          </svg>
+        </div>
+        <div className="absolute left-0 top-0 text-[6.4rem] leading-none text-primary/[0.13]">
+          ❝
+        </div>
+      </div>
+      <CardContent className="relative z-10 flex h-full flex-col justify-between">
+        <p className="pr-2 text-[1.02rem] leading-relaxed text-secondary">
+          {testimonial.quote}
+        </p>
+        <div className="pt-5">
+          <p className="text-base font-semibold text-secondary">{testimonial.fullName}</p>
+          <p className="text-sm text-muted">
+            {testimonial.role} • {testimonial.location}
+          </p>
+        </div>
+      </CardContent>
+    </Card>
+  );
   return (
     <>
       <JsonLd
@@ -212,10 +277,10 @@ export default async function HomePage() {
                     href="/services#home-visit"
                     className="rounded-2xl border border-white/65 bg-white/72 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary/30"
                   >
-                    <p className="text-sm font-semibold text-primary">
-                      სამედიცინო მომსახურეობა ბინაზე
+                    <p className="text-[0.98rem] font-semibold leading-6 text-primary sm:text-[1.05rem]">
+                      მომსახურეობა ბინაზე
                     </p>
-                    <p className="mt-2 text-sm leading-6 text-secondary">
+                    <p className="mt-2 text-[0.95rem] leading-7 text-secondary sm:text-[0.99rem]">
                       ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული
                       დიაგნოსტიკა
                     </p>
@@ -225,10 +290,10 @@ export default async function HomePage() {
                     href="/services#online-consultation"
                     className="rounded-2xl border border-white/65 bg-white/72 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary/30"
                   >
-                    <p className="text-sm font-semibold text-primary">
-                      ონლაინ სპეციალისტის კონსულტაცია
+                    <p className="text-[0.98rem] font-semibold leading-6 text-primary sm:text-[1.05rem]">
+                      ონლაინ კონსულტაცია
                     </p>
-                    <p className="mt-2 text-sm leading-6 text-muted-strong">
+                    <p className="mt-2 text-[0.95rem] leading-7 text-muted-strong sm:text-[0.99rem]">
                       ვიდეოვიზიტი ანალიზების, სიმპტომებისა და შემდგომი მართვისთვის.
                     </p>
                   </Link>
@@ -398,66 +463,47 @@ export default async function HomePage() {
             className="max-w-3xl"
           />
           <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-4">
-            {valuePoints.map((point, index) => (
-              <Card
-                key={point.title}
-                className="group relative overflow-hidden rounded-xl border border-white/90 bg-white/74 p-6 text-center shadow-[0_18px_40px_rgba(20,74,30,0.1)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1.5 hover:shadow-[0_30px_62px_rgba(42,200,62,0.14),0_20px_42px_rgba(20,74,30,0.12)] sm:p-7"
-              >
-                <div className="pointer-events-none absolute inset-0" aria-hidden>
-                  <div className="absolute inset-0 bg-gradient-to-br from-white via-[#f3fbf6] to-[#e6f7ec] transition-all duration-300 group-hover:from-white group-hover:via-[#f7fdf9] group-hover:to-[#eefaf2]" />
-                  <div className="absolute inset-x-0 top-0 h-24 bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(255,255,255,0.32),transparent)]" />
-                  <div className="absolute inset-px rounded-[0.95rem] border border-white/60 bg-[radial-gradient(circle_at_top_left,rgba(255,255,255,0.56),transparent_42%)]" />
-                  <div className="absolute inset-0 opacity-[0.05] bg-[linear-gradient(rgba(42,200,62,0.55)_1px,transparent_1px),linear-gradient(90deg,rgba(42,200,62,0.55)_1px,transparent_1px)] bg-[size:22px_22px] [mask-image:linear-gradient(135deg,black_8%,transparent_78%)]" />
-                  <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/[0.1] blur-3xl transition-all duration-300 group-hover:bg-primary/[0.14] group-hover:scale-110" />
-                  <div className="absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-primary/[0.06] blur-[68px] transition-all duration-300 group-hover:bg-primary/[0.09]" />
-                  <div
-                    className={`absolute h-[82%] w-[82%] opacity-[0.72] transition-opacity duration-300 group-hover:opacity-[0.9] ${valuePointPatternPlacements[index % valuePointPatternPlacements.length]}`}
-                  >
-                    <div className="absolute inset-0 [mask-image:linear-gradient(145deg,transparent_4%,black_26%,black_72%,transparent_96%)]">
-                      <svg
-                        viewBox="0 0 260 220"
-                        className="h-full w-full"
-                        fill="none"
-                        xmlns="http://www.w3.org/2000/svg"
-                      >
-                        <path
-                          d="M22 174 C 64 78, 140 26, 244 34"
-                          stroke="rgba(42,200,62,0.15)"
-                          strokeWidth="1.15"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M6 196 C 82 114, 164 92, 252 106"
-                          stroke="rgba(42,200,62,0.1)"
-                          strokeWidth="1"
-                          strokeLinecap="round"
-                        />
-                        <path
-                          d="M40 210 C 112 146, 188 140, 254 148"
-                          stroke="rgba(42,200,62,0.08)"
-                          strokeWidth="1"
-                          strokeLinecap="round"
-                        />
-                        <circle cx="188" cy="56" r="4.5" fill="rgba(42,200,62,0.1)" />
-                        <circle cx="214" cy="76" r="2.5" fill="rgba(42,200,62,0.14)" />
-                      </svg>
-                    </div>
-                  </div>
-                </div>
+            {valuePoints.map((point, index) => {
+              const cardBackground =
+                valuePointBackgrounds[index % valuePointBackgrounds.length];
 
-                <div className="relative z-10">
-                  <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl bg-white/78 text-primary shadow-[0_12px_26px_rgba(42,200,62,0.14)] ring-1 ring-white/80">
-                    <IconMark name={point.icon} />
+              return (
+                <Card
+                  key={point.title}
+                  className="group relative overflow-hidden rounded-xl border border-white/35 bg-white/14 p-6 text-center shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:border-white/55 hover:bg-white/18 hover:shadow-none sm:p-7"
+                >
+                  <div className="pointer-events-none absolute inset-0" aria-hidden>
+                    <Image
+                      src={cardBackground.src}
+                      alt=""
+                      fill
+                      className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
+                      style={{ objectPosition: cardBackground.position }}
+                    />
+                    <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.5))] transition-opacity duration-300 ease-out group-hover:opacity-75" />
+                    <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(12,140,143,0.2)_0%,rgba(42,200,62,0.12)_48%,rgba(0,0,0,0.02)_100%)] transition-opacity duration-300 ease-out group-hover:opacity-70" />
+                    <div className="absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03),transparent)] transition-opacity duration-300 ease-out group-hover:opacity-60" />
+                    <div className="absolute inset-px rounded-[0.95rem] border border-white/34 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]" />
+                    <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/[0.12] blur-3xl transition-all duration-300 group-hover:bg-primary/[0.18] group-hover:scale-110" />
+                    <div className="absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-[#0C8C8F]/[0.12] blur-[68px] transition-all duration-300 group-hover:bg-[#0C8C8F]/[0.18]" />
                   </div>
-                  <CardHeader className="pt-5 text-center">
-                    <CardTitle className="text-lg leading-snug">{point.title}</CardTitle>
-                    <CardDescription className="text-sm leading-relaxed text-muted-strong">
-                      {point.description}
-                    </CardDescription>
-                  </CardHeader>
-                </div>
-              </Card>
-            ))}
+
+                  <div className="relative z-10">
+                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-white/55 bg-white/88 text-primary backdrop-blur-md">
+                      <IconMark name={point.icon} />
+                    </div>
+                    <CardHeader className="pt-5 text-center">
+                      <CardTitle className="text-lg leading-snug text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]">
+                        {point.title}
+                      </CardTitle>
+                      <CardDescription className="text-sm leading-relaxed text-green-50 [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]">
+                        {point.description}
+                      </CardDescription>
+                    </CardHeader>
+                  </div>
+                </Card>
+              );
+            })}
           </div>
         </div>
       </section>
@@ -497,8 +543,10 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell relative overflow-hidden bg-white/45">
-        <div className="absolute inset-0 -z-10" aria-hidden>
+      <section className="section-shell py-20">
+        <div className="container-shell">
+          <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(145deg,rgba(250,253,250,0.92),rgba(237,248,239,0.86)_42%,rgba(246,251,247,0.94)_100%)] shadow-[0_28px_90px_rgba(15,48,22,0.08)]">
+        <div className="absolute inset-0" aria-hidden>
           <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(247,252,248,0.78),rgba(232,247,235,0.94)_42%,rgba(244,250,245,0.98)_100%)]" />
           <div className="absolute -left-28 top-2 h-72 w-72 rounded-full bg-primary/[0.14] blur-[130px]" />
           <div className="absolute left-[32%] top-6 h-40 w-40 rounded-full bg-primary/[0.08] blur-[92px]" />
@@ -561,13 +609,14 @@ export default async function HomePage() {
             </svg>
           </div>
         </div>
-        <div className="container-shell relative z-10 space-y-10">
+        <div className="relative z-10 space-y-10 px-5 py-10 sm:px-8 sm:py-12 lg:px-10 lg:py-14">
           <SectionHeader
             eyebrow="პაციენტების ხმა"
             title="რას ამბობენ ჩვენზე"
             description="მოხერხებულობა, სითბო და ორგანიზებულობა ყველაზე ხშირად განმეორებადი შეფასებებია."
           />
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {false && (
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
             {testimonials.map((testimonial) => (
               <Card
                 key={testimonial.id}
@@ -618,6 +667,31 @@ export default async function HomePage() {
                 </CardContent>
               </Card>
             ))}
+            </div>
+          )}
+          <div className="relative overflow-hidden rounded-[1.65rem] border border-white/70 bg-white/34 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4 lg:p-5">
+            <div
+              className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#edf7ef] via-[#edf7ef]/94 to-transparent lg:w-24"
+              aria-hidden
+            />
+            <div
+              className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#edf7ef] via-[#edf7ef]/94 to-transparent lg:w-24"
+              aria-hidden
+            />
+            <div className="marquee-shell relative overflow-hidden rounded-[1.35rem] px-1 py-3 sm:px-2">
+              <div className="marquee-track flex w-max items-stretch" style={testimonialMarqueeStyle}>
+                <div className="flex shrink-0 items-stretch gap-6 pr-6">
+                  {testimonials.map((testimonial) => renderTestimonialCard(testimonial))}
+                </div>
+                <div className="flex shrink-0 items-stretch gap-6 pr-6" aria-hidden="true">
+                  {testimonials.map((testimonial) =>
+                    renderTestimonialCard(testimonial, "-duplicate"),
+                  )}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
           </div>
         </div>
       </section>

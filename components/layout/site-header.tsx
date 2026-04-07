@@ -14,9 +14,9 @@ export function SiteHeader() {
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3.5">
           <BrandLogo
             className="min-w-0"
-            markClassName="h-12 w-12 drop-shadow-[0_12px_24px_rgba(42,200,62,0.18)]"
-            titleClassName="whitespace-nowrap text-[1.16rem] leading-[1.04] sm:text-[1.24rem]"
-            subtitleClassName="whitespace-nowrap text-[0.68rem] leading-[1.15] sm:text-[0.72rem]"
+            markClassName="h-[3.35rem] w-[3.35rem] drop-shadow-[0_12px_24px_rgba(42,200,62,0.18)] sm:h-[3.5rem] sm:w-[3.5rem]"
+            titleClassName="whitespace-nowrap text-[1.15rem] sm:text-[1.24rem]"
+            subtitleClassName="whitespace-nowrap text-[0.7rem] sm:text-[0.74rem]"
             priority
           />
         </Link>

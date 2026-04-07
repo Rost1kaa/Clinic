@@ -34,9 +34,14 @@ export function buildMetadata({
     metadataBase: new URL(env.siteUrl),
     applicationName: siteConfig.name,
     icons: {
-      icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-      shortcut: ["/icon.svg"],
-      apple: [{ url: "/icon.svg" }],
+      icon: [
+        { url: "/favicon-32x32.png", sizes: "32x32", type: "image/png" },
+        { url: "/favicon-48x48.png", sizes: "48x48", type: "image/png" },
+        { url: "/favicon-64x64.png", sizes: "64x64", type: "image/png" },
+        { url: "/icon.svg", type: "image/svg+xml" },
+      ],
+      shortcut: ["/favicon.ico"],
+      apple: [{ url: "/apple-touch-icon.png", sizes: "180x180", type: "image/png" }],
     },
     title: resolvedTitle,
     description,
