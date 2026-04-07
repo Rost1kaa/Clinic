@@ -115,7 +115,7 @@ export default async function ServicesPage() {
                 <ServiceTile
                   service={service}
                 modeLabel="ბინაზე"
-                tone="bg-gradient-to-br from-[#dff4f2] via-[#edf8f7] to-[#f8fcfb]"
+                tone="bg-gradient-to-br from-[#e9f9ec] via-[#f2fcf3] to-[#fbfefb]"
                 Icon={HousePlus}
                 />
               </ScrollReveal>
@@ -140,7 +140,7 @@ export default async function ServicesPage() {
                 <ServiceTile
                   service={service}
                 modeLabel="ონლაინ"
-                tone="bg-gradient-to-br from-[#e5f2fb] via-[#f0f8ff] to-[#f8fbff]"
+                tone="bg-gradient-to-br from-[#edf9ef] via-[#f5fcf6] to-[#fbfefb]"
                 Icon={MonitorSmartphone}
                 />
               </ScrollReveal>

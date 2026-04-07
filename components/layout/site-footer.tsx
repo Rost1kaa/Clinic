@@ -1,7 +1,7 @@
 import Link from "next/link";
-import { CalendarDays, Mail, MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { BrandLogo } from "@/components/branding/brand-logo";
-import { footerNavigation, mainNavigation } from "@/lib/constants/site";
+import { footerMainNavigation, footerNavigation } from "@/lib/constants/site";
 import { getPublicSiteSettings } from "@/lib/data/public";
 import { formatPhoneHref } from "@/lib/utils/format";
 
@@ -9,13 +9,13 @@ export async function SiteFooter() {
   const settings = await getPublicSiteSettings();
 
   return (
-    <footer className="mt-20 border-t border-white/70 bg-[#f0f7f6]">
+    <footer className="mt-20 border-t border-white/70 bg-[#f3faf4]">
       <div className="container-shell grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-5">
           <div className="space-y-1.5">
             <Link href="/" className="inline-flex">
               <BrandLogo
-                markClassName="h-14 w-14 drop-shadow-[0_14px_26px_rgba(49,149,140,0.16)]"
+                markClassName="h-14 w-14 drop-shadow-[0_14px_26px_rgba(42,200,62,0.16)]"
                 titleClassName="text-3xl"
                 subtitleClassName="text-[0.72rem]"
               />
@@ -38,19 +38,12 @@ export async function SiteFooter() {
             </p>
           </div>
 
-          <Link
-            href="/booking"
-            className="inline-flex items-center gap-2 text-sm font-semibold text-primary hover:text-primary-strong"
-          >
-            <CalendarDays className="h-4 w-4" />
-            ვიზიტის დაჯავშნა
-          </Link>
         </div>
 
         <div className="space-y-4">
           <p className="text-sm font-semibold text-muted">ნავიგაცია</p>
           <div className="grid gap-3">
-            {mainNavigation.map((item) => (
+            {footerMainNavigation.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}

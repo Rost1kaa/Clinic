@@ -68,6 +68,12 @@ export const footerNavigation: NavigationItem[] = [
   { href: "/privacy-policy", label: "კონფიდენციალურობა" },
   { href: "/terms", label: "წესები და პირობები" },
 ];
+export const footerMainNavigation: NavigationItem[] = [
+  { href: '/', label: 'საწყისი' },
+  { href: '/services', label: 'სერვისები' },
+  { href: '/specialties', label: 'სპეციალობები' },
+  { href: '/diagnostics', label: 'დიაგნოსტიკა' },
+];
 
 export const adminNavigation: NavigationItem[] = [
   { href: "/admin", label: "Dashboard", description: "სწრაფი მიმოხილვა" },

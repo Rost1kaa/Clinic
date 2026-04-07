@@ -32,7 +32,7 @@ export function BrandLoader({
       aria-busy="true"
       className={cn("font-ka-ui relative isolate overflow-hidden", className)}
     >
-      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(12,140,143,0.12),transparent_24rem),radial-gradient(circle_at_bottom_right,rgba(191,165,113,0.1),transparent_18rem),linear-gradient(180deg,rgba(247,251,251,0.96),rgba(241,247,246,0.98))]" />
+      <div className="absolute inset-0 bg-[radial-gradient(circle_at_top_left,rgba(42,200,62,0.12),transparent_24rem),radial-gradient(circle_at_bottom_right,rgba(191,165,113,0.1),transparent_18rem),linear-gradient(180deg,rgba(248,252,248,0.96),rgba(242,248,243,0.98))]" />
 
       <div
         className={cn(
@@ -43,7 +43,7 @@ export function BrandLoader({
         <div className="loader-fade-in relative mb-6">
           <div className="loader-breathe absolute inset-0 rounded-full bg-primary/10 blur-2xl" />
           <LogoMark
-            className="relative h-20 w-20 drop-shadow-[0_20px_36px_rgba(49,149,140,0.18)]"
+            className="relative h-20 w-20 drop-shadow-[0_20px_36px_rgba(42,200,62,0.18)]"
             alt="მედსერვისის ლოგო"
             priority
           />

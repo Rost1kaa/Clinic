@@ -24,13 +24,13 @@ export function SpecialtyNavTile({
       aria-label={specialty.name}
       aria-current={isActive ? "page" : undefined}
       className={cn(
-        "group block min-h-[16.9rem] w-[10.75rem] shrink-0 cursor-pointer rounded-[1.08rem] border bg-white p-3.5 shadow-[0_14px_28px_rgba(17,43,45,0.08)] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[10px] hover:shadow-[0_28px_52px_rgba(17,43,45,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#0C8C8F]/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-[11.35rem] sm:min-h-[17.5rem]",
+        "group block min-h-[16.9rem] w-[10.75rem] shrink-0 cursor-pointer rounded-[1.08rem] border bg-white p-3.5 shadow-[0_14px_28px_rgba(17,43,45,0.08)] transition-all duration-[380ms] ease-[cubic-bezier(0.22,1,0.36,1)] hover:-translate-y-[10px] hover:shadow-[0_28px_52px_rgba(17,43,45,0.15)] focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-primary/35 focus-visible:ring-offset-2 focus-visible:ring-offset-background sm:w-[11.35rem] sm:min-h-[17.5rem]",
         isActive
-          ? "border-[#0C8C8F] shadow-[0_18px_36px_rgba(12,140,143,0.14)] ring-1 ring-[#0C8C8F]/16"
-          : "border-slate-200/90 hover:border-[#0C8C8F]/26",
+          ? "border-primary shadow-[0_18px_36px_rgba(42,200,62,0.16)] ring-1 ring-primary/18"
+          : "border-slate-200/90 hover:border-primary/26",
       )}
     >
-      <div className="rounded-[0.88rem] bg-[#0C8C8F] p-[1.125rem]">
+      <div className="rounded-[0.88rem] bg-primary p-[1.125rem]">
         <div className="flex aspect-square items-center justify-center">
           <IconMark name={specialty.icon} className="h-12 w-12 text-white sm:h-[3.35rem] sm:w-[3.35rem]" />
         </div>

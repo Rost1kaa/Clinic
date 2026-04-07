@@ -101,7 +101,7 @@ export function DashboardShell({
   }, [pathname]);
 
   return (
-    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(115,204,198,0.16),transparent_24rem),linear-gradient(180deg,#f7fbfb_0%,#eef6f5_100%)]">
+    <div className="min-h-screen bg-[radial-gradient(circle_at_top_left,rgba(42,200,62,0.13),transparent_24rem),linear-gradient(180deg,#f8fcf8_0%,#eff7f0_100%)]">
       {mobileSidebarOpen ? (
         <button
           type="button"
@@ -174,7 +174,7 @@ export function DashboardShell({
                   className={cn(
                     "group flex min-w-0 items-center gap-3 rounded-[1rem] px-4 py-3 text-sm transition",
                     isActive
-                      ? "bg-primary text-white shadow-lg shadow-primary/15"
+                      ? "bg-primary text-[#0f2f14] shadow-lg shadow-primary/20"
                       : "text-muted hover:bg-surface-muted hover:text-secondary",
                   )}
                 >
@@ -182,7 +182,7 @@ export function DashboardShell({
                     className={cn(
                       "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border transition",
                       isActive
-                        ? "border-white/15 bg-white/10 text-white"
+                        ? "border-[#1f8f2f]/20 bg-[#1f8f2f]/10 text-[#0f2f14]"
                         : "border-border bg-white text-secondary group-hover:border-primary/20 group-hover:bg-primary/5 group-hover:text-primary",
                     )}
                   >
@@ -193,7 +193,7 @@ export function DashboardShell({
                     <span
                       className={cn(
                         "block truncate text-xs",
-                        isActive ? "text-white/75" : "text-muted",
+                        isActive ? "text-[#19471f]/75" : "text-muted",
                       )}
                     >
                       {item.description ?? "მართვა და განახლება"}
@@ -202,7 +202,7 @@ export function DashboardShell({
                   <ChevronRight
                     className={cn(
                       "h-4 w-4 shrink-0 transition",
-                      isActive ? "text-white/80" : "text-muted/60 group-hover:text-primary",
+                      isActive ? "text-[#19471f]/80" : "text-muted/60 group-hover:text-primary",
                     )}
                   />
                 </Link>

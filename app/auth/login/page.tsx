@@ -73,7 +73,7 @@ export default async function LoginPage({ searchParams }: Props) {
           <button
             type="submit"
             disabled={!configured}
-            className="h-12 w-full rounded-full bg-primary px-5 text-sm font-semibold text-white disabled:opacity-50"
+            className="h-12 w-full rounded-full bg-primary px-5 text-sm font-semibold text-[#0f2f14] shadow-lg shadow-primary/20 disabled:opacity-50"
           >
             შესვლა
           </button>

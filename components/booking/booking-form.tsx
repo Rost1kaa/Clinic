@@ -303,7 +303,7 @@ export function BookingForm({
                       onClick={() => form.setValue("serviceType", option.value)}
                       className={`flex h-full min-w-0 flex-col rounded-[1.75rem] border px-5 py-5 text-left transition duration-200 sm:px-6 sm:py-6 ${
                         serviceType === option.value
-                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(12,140,143,0.08)]"
+                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(42,200,62,0.12)]"
                           : "border-border bg-white hover:border-primary/35 hover:bg-white/95"
                       }`}
                     >
@@ -340,7 +340,7 @@ export function BookingForm({
                       }}
                       className={`flex h-full min-w-0 items-start rounded-[1.75rem] border px-5 py-5 text-left transition duration-200 sm:px-6 ${
                         category === option.value
-                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(12,140,143,0.08)]"
+                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(42,200,62,0.12)]"
                           : "border-border bg-white hover:border-primary/35 hover:bg-white/95"
                       } ${!option.enabled ? "cursor-not-allowed opacity-45 hover:border-border hover:bg-white" : ""}`}
                     >
@@ -374,7 +374,7 @@ export function BookingForm({
                       }}
                       className={`flex h-full min-w-0 flex-col rounded-[1.75rem] border px-5 py-5 text-left transition duration-200 sm:px-6 ${
                         itemId === item.id
-                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(12,140,143,0.08)]"
+                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(42,200,62,0.12)]"
                           : "border-border bg-white hover:border-primary/35 hover:bg-white/95"
                       }`}
                     >
@@ -418,7 +418,7 @@ export function BookingForm({
                           }}
                           className={`flex h-full min-w-0 flex-col rounded-[1.75rem] border px-5 py-5 text-left transition duration-200 sm:px-6 ${
                             slotId === slot.id
-                              ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(12,140,143,0.08)]"
+                              ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(42,200,62,0.12)]"
                               : "border-border bg-white hover:border-primary/35 hover:bg-white/95"
                           }`}
                         >
@@ -530,7 +530,7 @@ export function BookingForm({
                       onClick={() => form.setValue("paymentMethod", option.value)}
                       className={`flex h-full min-w-0 flex-col rounded-[1.75rem] border px-5 py-5 text-left transition duration-200 sm:px-6 sm:py-6 ${
                         paymentMethod === option.value
-                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(12,140,143,0.08)]"
+                          ? "border-primary bg-primary/8 shadow-[0_18px_36px_rgba(42,200,62,0.12)]"
                           : "border-border bg-white hover:border-primary/35 hover:bg-white/95"
                       }`}
                     >

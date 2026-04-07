@@ -42,9 +42,9 @@ export default async function NewsPage({ searchParams }: Props) {
           <div className="flex flex-wrap gap-3">
             <Link
               href="/news"
-              className={`rounded-full px-4 py-2 text-sm ${
+                className={`rounded-full px-4 py-2 text-sm ${
                 activeCategory === "all"
-                  ? "bg-primary text-white"
+                  ? "bg-primary text-[#0f2f14]"
                   : "bg-white text-muted"
               }`}
             >
@@ -56,7 +56,7 @@ export default async function NewsPage({ searchParams }: Props) {
                 href={`/news?category=${item.slug}`}
                 className={`rounded-full px-4 py-2 text-sm ${
                   activeCategory === item.slug
-                    ? "bg-primary text-white"
+                    ? "bg-primary text-[#0f2f14]"
                     : "bg-white text-muted"
                 }`}
               >

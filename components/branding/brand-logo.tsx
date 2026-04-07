@@ -16,7 +16,7 @@ export function LogoMark({
   return (
     <span className={cn("relative block h-12 w-12 shrink-0", className)}>
       <Image
-        src="/brand/medservice.svg"
+        src="/brand/medservisi.svg"
         alt={decorative ? "" : alt ?? `${siteConfig.name} ლოგო`}
         fill
         sizes="(max-width: 768px) 48px, 64px"

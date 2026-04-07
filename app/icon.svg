@@ -4,8 +4,8 @@
       <circle cx="160" cy="160" r="108" />
     </clipPath>
   </defs>
-  <circle cx="160" cy="160" r="112" fill="none" stroke="#31958C" stroke-width="4" />
-  <circle cx="160" cy="160" r="108" fill="#31958C" />
+  <circle cx="160" cy="160" r="112" fill="none" stroke="#2ac83e" stroke-width="4" />
+  <circle cx="160" cy="160" r="108" fill="#2ac83e" />
   <polyline
     points="60,160 95,160 115,120 138,200 158,100 178,220 198,160 260,160"
     fill="none"

@@ -15,8 +15,8 @@ function OgBrandMark() {
           <circle cx="160" cy="160" r="108" />
         </clipPath>
       </defs>
-      <circle cx="160" cy="160" r="112" fill="none" stroke="#31958C" strokeWidth="4" />
-      <circle cx="160" cy="160" r="108" fill="#31958C" />
+      <circle cx="160" cy="160" r="112" fill="none" stroke="#2ac83e" strokeWidth="4" />
+      <circle cx="160" cy="160" r="108" fill="#2ac83e" />
       <polyline
         points="60,160 95,160 115,120 138,200 158,100 178,220 198,160 260,160"
         fill="none"
@@ -42,7 +42,7 @@ export default function OpenGraphImage() {
           justifyContent: "space-between",
           padding: "56px",
           background:
-            "linear-gradient(135deg, rgba(244,249,248,1) 0%, rgba(228,242,240,1) 55%, rgba(216,235,232,1) 100%)",
+            "linear-gradient(135deg, rgba(248,252,248,1) 0%, rgba(234,248,235,1) 55%, rgba(223,241,226,1) 100%)",
           color: "#123436",
           fontFamily: "sans-serif",
         }}
@@ -67,7 +67,7 @@ export default function OpenGraphImage() {
           </div>
           <div style={{ display: "flex", flexDirection: "column" }}>
             <div style={{ fontSize: 44, fontWeight: 700 }}>მედსერვისი</div>
-            <div style={{ fontSize: 20, color: "#587273" }}>სამედიცინო ჯგუფი</div>
+            <div style={{ fontSize: 20, color: "#5b7360" }}>სამედიცინო ჯგუფი</div>
           </div>
         </div>
 
@@ -75,8 +75,9 @@ export default function OpenGraphImage() {
           <div style={{ fontSize: 66, lineHeight: 1.12, fontWeight: 700, maxWidth: "900px" }}>
             სახლში ვიზიტი, ონლაინ კონსულტაცია და კოორდინირებული დიაგნოსტიკა
           </div>
-          <div style={{ fontSize: 28, color: "#375253", maxWidth: "850px" }}>
-            მულტიდისციპლინური ექიმთა გუნდი, მოქნილი დაჯავშნა და დაცული ადმინისტრაციული არქიტექტურა
+          <div style={{ fontSize: 28, color: "#35503b", maxWidth: "850px" }}>
+            მულტიდისციპლინური ექიმთა გუნდი, მოქნილი დაჯავშნა და დაცული ადმინისტრაციული
+            არქიტექტურა
           </div>
         </div>
       </div>
