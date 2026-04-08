@@ -1,4 +1,3 @@
-import type { CSSProperties } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { CalendarDays } from "lucide-react";
@@ -7,6 +6,7 @@ import { SpecialtiesNavRail } from "@/components/sections/specialties-nav-rail";
 import { SectionHeader } from "@/components/ui/section-header";
 import { Button } from "@/components/ui/button";
 import { IconMark } from "@/components/ui/icon-mark";
+import { LoopingCarousel } from "@/components/ui/looping-carousel";
 import { LogoMark } from "@/components/branding/brand-logo";
 import {
   Card,
@@ -40,29 +40,25 @@ export default async function HomePage() {
     services.find((service) => service.serviceMode === "home_visit") ?? services[0];
   const valuePointBackgrounds = [
     {
-      src: "/feature-cards/1.png",
-      position: "center 52%",
+      src: "/feature-cards/1.jpg",
+      position: "center 24%",
     },
     {
-      src: "/feature-cards/2.png",
-      position: "center center",
+      src: "/feature-cards/2.jpg",
+      position: "center 22%",
     },
     {
-      src: "/feature-cards/3.png",
-      position: "center center",
+      src: "/feature-cards/3.jpg",
+      position: "58% center",
     },
     {
-      src: "/feature-cards/4.png",
-      position: "60% center",
+      src: "/feature-cards/4.jpg",
+      position: "56% center",
     },
   ] as const;
-  const testimonialMarqueeStyle = {
-    "--marquee-duration": "34s",
-    "--marquee-distance": "50%",
-  } as CSSProperties;
-  const renderTestimonialCard = (testimonial: (typeof testimonials)[number], keySuffix = "") => (
+  const renderTestimonialCard = (testimonial: (typeof testimonials)[number]) => (
     <Card
-      key={`${testimonial.id}${keySuffix}`}
+      key={testimonial.id}
       className="group relative h-full w-[18.75rem] shrink-0 rounded-xl border border-white/60 bg-white/72 p-6 shadow-[0_2px_8px_rgba(15,48,22,0.035)] backdrop-blur-xl transition-all duration-300 ease-out hover:-translate-y-1.5 hover:border-white/75 hover:bg-white/76 hover:shadow-[0_6px_16px_rgba(15,48,22,0.05)] sm:w-[20rem] sm:p-7 lg:w-[21.5rem] xl:w-[22rem]"
     >
       <div className="pointer-events-none absolute inset-0" aria-hidden>
@@ -275,27 +271,55 @@ export default async function HomePage() {
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Link
                     href="/services#home-visit"
-                    className="rounded-2xl border border-white/65 bg-white/72 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary/30"
+                    className="group relative overflow-hidden rounded-2xl border border-white/25 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
                   >
-                    <p className="text-[0.98rem] font-semibold leading-6 text-primary sm:text-[1.05rem]">
-                      მომსახურეობა ბინაზე
-                    </p>
-                    <p className="mt-2 text-[0.95rem] leading-7 text-secondary sm:text-[0.99rem]">
-                      ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული
-                      დიაგნოსტიკა
-                    </p>
+                    <div className="pointer-events-none absolute inset-0" aria-hidden>
+                      <Image
+                        src="/hero-info-blocks/1.jpg"
+                        alt=""
+                        fill
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                        style={{ objectPosition: "62% center" }}
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,20,15,0.24),rgba(10,18,13,0.5))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(42,200,62,0.18),rgba(42,200,62,0.08))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_34%)]" />
+                    </div>
+                    <div className="relative z-10">
+                      <p className="text-[0.98rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[1.05rem]">
+                        მომსახურეობა ბინაზე
+                      </p>
+                      <p className="mt-2 text-[0.95rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[0.99rem]">
+                        ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული
+                        დიაგნოსტიკა
+                      </p>
+                    </div>
                   </Link>
 
                   <Link
                     href="/services#online-consultation"
-                    className="rounded-2xl border border-white/65 bg-white/72 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] backdrop-blur-sm transition duration-300 hover:-translate-y-0.5 hover:border-primary/30"
+                    className="group relative overflow-hidden rounded-2xl border border-white/25 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
                   >
-                    <p className="text-[0.98rem] font-semibold leading-6 text-primary sm:text-[1.05rem]">
-                      ონლაინ კონსულტაცია
-                    </p>
-                    <p className="mt-2 text-[0.95rem] leading-7 text-muted-strong sm:text-[0.99rem]">
-                      ვიდეოვიზიტი ანალიზების, სიმპტომებისა და შემდგომი მართვისთვის.
-                    </p>
+                    <div className="pointer-events-none absolute inset-0" aria-hidden>
+                      <Image
+                        src="/hero-info-blocks/2.jpg"
+                        alt=""
+                        fill
+                        className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
+                        style={{ objectPosition: "78% center" }}
+                      />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,20,15,0.24),rgba(10,18,13,0.5))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(42,200,62,0.18),rgba(42,200,62,0.08))]" />
+                      <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_34%)]" />
+                    </div>
+                    <div className="relative z-10">
+                      <p className="text-[0.98rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[1.05rem]">
+                        ონლაინ კონსულტაცია
+                      </p>
+                      <p className="mt-2 text-[0.95rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[0.99rem]">
+                        ვიდეოვიზიტი ანალიზების, სიმპტომებისა და შემდგომი მართვისთვის.
+                      </p>
+                    </div>
                   </Link>
                 </div>
 
@@ -670,26 +694,17 @@ export default async function HomePage() {
             </div>
           )}
           <div className="relative overflow-hidden rounded-[1.65rem] border border-white/70 bg-white/34 p-3 shadow-[inset_0_1px_0_rgba(255,255,255,0.82)] sm:p-4 lg:p-5">
-            <div
-              className="pointer-events-none absolute inset-y-0 left-0 z-20 w-16 bg-gradient-to-r from-[#edf7ef] via-[#edf7ef]/94 to-transparent lg:w-24"
-              aria-hidden
-            />
-            <div
-              className="pointer-events-none absolute inset-y-0 right-0 z-20 w-16 bg-gradient-to-l from-[#edf7ef] via-[#edf7ef]/94 to-transparent lg:w-24"
-              aria-hidden
-            />
-            <div className="marquee-shell relative overflow-hidden rounded-[1.35rem] px-1 py-3 sm:px-2">
-              <div className="marquee-track flex w-max items-stretch" style={testimonialMarqueeStyle}>
-                <div className="flex shrink-0 items-stretch gap-6 pr-6">
-                  {testimonials.map((testimonial) => renderTestimonialCard(testimonial))}
-                </div>
-                <div className="flex shrink-0 items-stretch gap-6 pr-6" aria-hidden="true">
-                  {testimonials.map((testimonial) =>
-                    renderTestimonialCard(testimonial, "-duplicate"),
-                  )}
-                </div>
-              </div>
-            </div>
+            <LoopingCarousel
+              className="rounded-[1.35rem]"
+              viewportClassName="px-3 py-3 sm:px-12 lg:px-14"
+              trackClassName="gap-6"
+              fadeClassName="from-[#edf7ef] via-[#edf7ef]/94 to-transparent"
+              fadeWidthClassName="w-14 lg:w-20"
+              previousLabel="წინა შეფასებები"
+              nextLabel="შემდეგი შეფასებები"
+            >
+              {testimonials.map((testimonial) => renderTestimonialCard(testimonial))}
+            </LoopingCarousel>
           </div>
         </div>
           </div>

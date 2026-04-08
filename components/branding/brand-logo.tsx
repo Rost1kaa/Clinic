@@ -43,12 +43,12 @@ export function BrandLogo({
   showSubtitle?: boolean;
 }) {
   return (
-    <div className={cn("font-ka-ui flex min-w-0 items-center gap-3.5", className)}>
+    <div className={cn("font-ka-ui flex min-w-0 items-center gap-2.5 sm:gap-3", className)}>
       <LogoMark className={markClassName} decorative priority={priority} />
-      <div className="flex min-w-0 flex-col justify-center gap-0.5">
+      <div className="flex min-w-0 flex-col justify-center self-center gap-px">
         <p
           className={cn(
-            "truncate font-ka-ui text-xl font-semibold leading-[1.04] text-secondary tracking-normal",
+            "truncate font-ka-ui text-xl font-semibold leading-[1.02] text-secondary tracking-normal",
             titleClassName,
           )}
         >
@@ -57,7 +57,7 @@ export function BrandLogo({
         {showSubtitle ? (
           <p
             className={cn(
-              "truncate text-xs font-medium leading-[1.2] text-muted tracking-normal",
+              "truncate text-xs font-medium leading-[1.08] text-muted tracking-normal",
               subtitleClassName,
             )}
           >

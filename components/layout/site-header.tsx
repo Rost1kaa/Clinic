@@ -11,10 +11,10 @@ export function SiteHeader() {
   return (
     <header className="sticky top-0 z-40 border-b border-white/70 bg-background/82 backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:px-8 lg:py-4">
-        <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3.5">
+        <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3">
           <BrandLogo
             className="min-w-0"
-            markClassName="h-[3.35rem] w-[3.35rem] drop-shadow-[0_12px_24px_rgba(42,200,62,0.18)] sm:h-[3.5rem] sm:w-[3.5rem]"
+            markClassName="h-[3.7rem] w-[3.7rem] drop-shadow-[0_12px_24px_rgba(42,200,62,0.18)] sm:h-[3.9rem] sm:w-[3.9rem]"
             titleClassName="whitespace-nowrap text-[1.15rem] sm:text-[1.24rem]"
             subtitleClassName="whitespace-nowrap text-[0.7rem] sm:text-[0.74rem]"
             priority

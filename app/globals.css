@@ -105,16 +105,6 @@
     }
   }
 
-  @keyframes marquee-x {
-    from {
-      transform: translate3d(0, 0, 0);
-    }
-
-    to {
-      transform: translate3d(calc(-1 * var(--marquee-distance, 0px)), 0, 0);
-    }
-  }
-
   .container-shell {
     margin-inline: auto;
     width: 100%;
@@ -178,15 +168,6 @@
     animation: loader-breathe 2.4s ease-in-out infinite;
   }
 
-  .marquee-track {
-    animation: marquee-x var(--marquee-duration, 24s) linear infinite;
-  }
-
-  .marquee-shell:hover .marquee-track,
-  .marquee-shell:focus-within .marquee-track {
-    animation-play-state: paused;
-  }
-
   .reveal-transition {
     transition-property: opacity, transform;
     transition-duration: var(--reveal-duration, 560ms);
@@ -208,7 +189,6 @@
   @media (prefers-reduced-motion: reduce) {
     .loader-fade-in,
     .loader-breathe,
-    .marquee-track,
     .reveal-transition,
     .reveal-hidden,
     .reveal-visible {
