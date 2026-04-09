@@ -259,10 +259,10 @@ export default async function HomePage() {
             <div className="mesh-panel flex h-full flex-col justify-center p-8 sm:p-10 lg:p-11 xl:p-12">
               <div className="mt-4 space-y-5">
                 <div className="space-y-4">
-                  <h1 className="max-w-3xl font-serif text-[2.55rem] leading-[1.03] text-secondary sm:text-[2.75rem] lg:text-[2.95rem] xl:text-[3.1rem]">
+                  <h1 className="max-w-3xl font-serif text-[2.4rem] leading-[1.03] text-secondary">
                     სამედიცინო მომსახურება იქ, სადაც თქვენ ხართ
                   </h1>
-                  <p className="max-w-2xl text-base leading-7 text-muted sm:text-[1.02rem] sm:leading-8">
+                  <p className="max-w-2xl text-base leading-[1.9rem] text-muted sm:text-[1.02rem] sm:leading-[1.9rem]">
                     სხვადასხვა დარგის სპეციალისტები, მობილური დიაგნოსტიკა. მოქნილი
                     დაჯავშნა ერთ ციფრულ სივრცეში.
                   </p>
@@ -271,7 +271,7 @@ export default async function HomePage() {
                 <div className="grid gap-3 sm:grid-cols-2">
                   <Link
                     href="/services#home-visit"
-                    className="group relative overflow-hidden rounded-2xl border border-white/25 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
+                    className="group relative min-h-[170px] overflow-hidden rounded-2xl border border-white/25 p-5 pt-[70px] shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
                   >
                     <div className="pointer-events-none absolute inset-0" aria-hidden>
                       <Image
@@ -286,10 +286,10 @@ export default async function HomePage() {
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_34%)]" />
                     </div>
                     <div className="relative z-10">
-                      <p className="text-[0.98rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[1.05rem]">
+                      <p className="text-[1.4rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
                         მომსახურეობა ბინაზე
                       </p>
-                      <p className="mt-2 text-[0.95rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[0.99rem]">
+                      <p className="mt-2 text-[1.1rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
                         ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული
                         დიაგნოსტიკა
                       </p>
@@ -298,7 +298,7 @@ export default async function HomePage() {
 
                   <Link
                     href="/services#online-consultation"
-                    className="group relative overflow-hidden rounded-2xl border border-white/25 px-4 py-4 shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
+                    className="group relative min-h-[170px] overflow-hidden rounded-2xl border border-white/25 p-5 pt-[70px] shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
                   >
                     <div className="pointer-events-none absolute inset-0" aria-hidden>
                       <Image
@@ -313,10 +313,10 @@ export default async function HomePage() {
                       <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_34%)]" />
                     </div>
                     <div className="relative z-10">
-                      <p className="text-[0.98rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[1.05rem]">
+                      <p className="text-[1.4rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
                         ონლაინ კონსულტაცია
                       </p>
-                      <p className="mt-2 text-[0.95rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)] sm:text-[0.99rem]">
+                      <p className="mt-2 text-[1.1rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
                         ვიდეოვიზიტი ანალიზების, სიმპტომებისა და შემდგომი მართვისთვის.
                       </p>
                     </div>
@@ -456,7 +456,7 @@ export default async function HomePage() {
           </svg>
         </div>
         <div
-          className="pointer-events-none absolute left-6 top-14 hidden h-44 w-64 opacity-55 md:block"
+          className="pointer-events-none absolute -left-[10px] -top-[10px] hidden h-44 w-64 opacity-55 md:block"
           aria-hidden
         >
           <svg
@@ -479,7 +479,7 @@ export default async function HomePage() {
               />
           </svg>
         </div>
-        <div className="container-shell relative z-10 space-y-12">
+        <div className="container-shell relative z-10 space-y-12 pt-[60px]">
           <SectionHeader
             eyebrow="რატომ მედსერვისი"
             title="მარტივი, სანდო და კომფორტული მომსახურება"
@@ -494,9 +494,9 @@ export default async function HomePage() {
               return (
                 <Card
                   key={point.title}
-                  className="group relative overflow-hidden rounded-xl border border-white/35 bg-white/14 p-6 text-center shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:border-white/55 hover:bg-white/18 hover:shadow-none sm:p-7"
+                  className="group relative overflow-hidden isolate rounded-xl border border-white/35 bg-white/14 p-6 text-center shadow-none transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:border-white/55 hover:bg-white/18 hover:shadow-none sm:p-7"
                 >
-                  <div className="pointer-events-none absolute inset-0" aria-hidden>
+                  <div className="pointer-events-none absolute inset-0 rounded-xl" aria-hidden>
                     <Image
                       src={cardBackground.src}
                       alt=""
@@ -504,20 +504,21 @@ export default async function HomePage() {
                       className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.06]"
                       style={{ objectPosition: cardBackground.position }}
                     />
+                    <div className="absolute inset-0 rounded-xl bg-[rgba(0,0,0,0.28)]" />
                     <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(0,0,0,0.35),rgba(0,0,0,0.5))] transition-opacity duration-300 ease-out group-hover:opacity-75" />
                     <div className="absolute inset-0 bg-[linear-gradient(150deg,rgba(12,140,143,0.2)_0%,rgba(42,200,62,0.12)_48%,rgba(0,0,0,0.02)_100%)] transition-opacity duration-300 ease-out group-hover:opacity-70" />
                     <div className="absolute inset-x-0 top-0 h-20 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.03),transparent)] transition-opacity duration-300 ease-out group-hover:opacity-60" />
-                    <div className="absolute inset-px rounded-[0.95rem] border border-white/34 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]" />
+                    <div className="absolute inset-0 rounded-xl border border-white/34 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),rgba(255,255,255,0.02))]" />
                     <div className="absolute -right-10 -top-10 h-28 w-28 rounded-full bg-primary/[0.12] blur-3xl transition-all duration-300 group-hover:bg-primary/[0.18] group-hover:scale-110" />
                     <div className="absolute -left-8 bottom-0 h-24 w-24 rounded-full bg-[#0C8C8F]/[0.12] blur-[68px] transition-all duration-300 group-hover:bg-[#0C8C8F]/[0.18]" />
                   </div>
 
-                  <div className="relative z-10">
-                    <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-xl border border-white/55 bg-white/88 text-primary backdrop-blur-md">
+                  <div className="relative z-10 pt-16 text-center">
+                    <div className="absolute left-0 top-0 flex h-12 w-12 items-center justify-center rounded-xl border border-white/55 bg-white/88 text-primary backdrop-blur-md">
                       <IconMark name={point.icon} />
                     </div>
-                    <CardHeader className="pt-5 text-center">
-                      <CardTitle className="text-lg leading-snug text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]">
+                    <CardHeader className="pt-4 text-center">
+                      <CardTitle className="text-[1.4rem] leading-snug text-white [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]">
                         {point.title}
                       </CardTitle>
                       <CardDescription className="text-sm leading-relaxed text-green-50 [text-shadow:0_2px_6px_rgba(0,0,0,0.4)]">
@@ -567,7 +568,7 @@ export default async function HomePage() {
         </div>
       </section>
 
-      <section className="section-shell py-20">
+      <section className="section-shell py-20 bg-[hsl(80,0%,90%)]">
         <div className="container-shell">
           <div className="relative isolate overflow-hidden rounded-[2rem] border border-white/80 bg-[linear-gradient(145deg,rgba(250,253,250,0.92),rgba(237,248,239,0.86)_42%,rgba(246,251,247,0.94)_100%)] shadow-[0_28px_90px_rgba(15,48,22,0.08)]">
         <div className="absolute inset-0" aria-hidden>
