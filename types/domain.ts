@@ -16,8 +16,15 @@ export interface NavigationItem {
   description?: string;
 }
 
+export interface HeaderNavigationSection {
+  title?: string;
+  items: NavigationItem[];
+}
+
 export interface HeaderNavigationItem extends NavigationItem {
   items?: NavigationItem[];
+  matchHrefs?: string[];
+  sections?: HeaderNavigationSection[];
 }
 
 export interface MarketingImage {
@@ -153,6 +160,7 @@ export interface StatItem {
   label: string;
   value: string;
   description: string;
+  icon: string;
 }
 
 export interface SiteSettings {

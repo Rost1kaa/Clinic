@@ -1,8 +1,10 @@
-import { Mail, MapPin, Phone } from "lucide-react";
+import type { LucideIcon } from "lucide-react";
+import { ArrowUpRight, Clock3, Mail, MapPin, Phone } from "lucide-react";
+import { Button } from "@/components/ui/button";
 import { PageHero } from "@/components/sections/page-hero";
-import { Alert } from "@/components/ui/alert";
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Card } from "@/components/ui/card";
 import { getPublicSiteSettings } from "@/lib/data/public";
+import { formatPhoneHref } from "@/lib/utils/format";
 import { buildMetadata } from "@/lib/utils/metadata";
 
 export const metadata = buildMetadata({
@@ -10,8 +12,49 @@ export const metadata = buildMetadata({
   path: "/contact",
 });
 
+type ContactCardItem = {
+  title: string;
+  value: string;
+  helper: string;
+  icon: LucideIcon;
+  href?: string;
+  lines?: string[];
+};
+
 export default async function ContactPage() {
   const settings = await getPublicSiteSettings();
+  const mapQuery = encodeURIComponent(settings.address);
+  const googleMapsEmbedUrl = `https://www.google.com/maps?q=${mapQuery}&z=15&output=embed`;
+  const googleMapsUrl = `https://www.google.com/maps/search/?api=1&query=${mapQuery}`;
+  const contactCards: ContactCardItem[] = [
+    {
+      title: "ტელეფონი",
+      value: settings.phone,
+      helper: "დაჯავშნა, კოორდინაცია და გადაუდებელი დაკავშირება.",
+      icon: Phone,
+      href: formatPhoneHref(settings.phone),
+    },
+    {
+      title: "ელფოსტა",
+      value: settings.email,
+      helper: "დოკუმენტები, პარტნიორობა და ზოგადი მიმოწერა.",
+      icon: Mail,
+      href: `mailto:${settings.email}`,
+    },
+    {
+      title: "მისამართი",
+      value: settings.address,
+      helper: "ვიზიტი და ადგილზე მომსახურება წინასწარი შეთანხმებით.",
+      icon: MapPin,
+    },
+    {
+      title: "სამუშაო საათები",
+      value: settings.hours[0] ?? "",
+      helper: "სამუშაო დროის მიღმა მოგვწერეთ და დაგიკავშირდებით.",
+      icon: Clock3,
+      lines: settings.hours,
+    },
+  ];
 
   return (
     <>
@@ -20,76 +63,111 @@ export default async function ContactPage() {
         title="დაგვიკავშირდით თქვენთვის სასურველი გზით"
         description="ჯავშნის, სერვისების, თანამშრომლობის ან ოჯახის მოვლის პროგრამების შესახებ ინფორმაცია ხელმისაწვდომია ტელეფონით, ელფოსტით და ადგილზე."
       />
-      <section className="section-shell pt-0">
-        <div className="container-shell grid gap-6 lg:grid-cols-[0.9fr_1.1fr]">
-          <div className="grid gap-6">
-            <Card className="p-6">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl">
-                  <Phone className="h-5 w-5 text-primary" />
-                  ტელეფონი
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <a href={`tel:${settings.phone}`} className="text-lg text-secondary">
-                  {settings.phone}
-                </a>
-              </CardContent>
-            </Card>
-            <Card className="p-6">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl">
-                  <Mail className="h-5 w-5 text-primary" />
-                  ელფოსტა
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <a href={`mailto:${settings.email}`} className="text-lg text-secondary">
-                  {settings.email}
-                </a>
-              </CardContent>
-            </Card>
-            <Card className="p-6">
-              <CardHeader>
-                <CardTitle className="flex items-center gap-3 text-2xl">
-                  <MapPin className="h-5 w-5 text-primary" />
-                  მისამართი
-                </CardTitle>
-              </CardHeader>
-              <CardContent>
-                <p className="text-lg text-secondary">{settings.address}</p>
-              </CardContent>
-            </Card>
-          </div>
 
-          <div className="space-y-6">
-            <Card className="p-8">
-              <CardHeader>
-                <CardTitle>სამუშაო საათები</CardTitle>
-              </CardHeader>
-              <CardContent className="space-y-3 text-muted">
-                {settings.hours.map((item) => (
-                  <p key={item}>{item}</p>
-                ))}
-              </CardContent>
-            </Card>
-            <Card className="p-8">
-              <CardHeader>
-                <CardTitle>რუკის ადგილი</CardTitle>
-              </CardHeader>
-              <CardContent>
-                <div className="flex min-h-72 items-center justify-center rounded-[2rem] border border-dashed border-border-strong bg-surface-muted text-center text-muted">
-                  ინტერაქტიული რუკის ინტეგრაცია შეიძლება დაემატოს deployment-ის დროს
+      <section className="section-shell pt-0">
+        <div className="container-shell">
+          <div className="mx-auto max-w-5xl space-y-7 sm:space-y-8">
+            <div className="max-w-[38rem] space-y-2.5">
+              <h2 className="font-serif text-[2rem] leading-tight text-secondary sm:text-[2.15rem]">
+                საკონტაქტო ინფორმაცია ერთ სუფთა სივრცეში
+              </h2>
+              <p className="max-w-[34rem] text-base leading-7 text-muted">
+                აირჩიეთ თქვენთვის მოსახერხებელი არხი და დაგვიკავშირდით სწრაფად, ზედმეტი
+                ნაბიჯების გარეშე.
+              </p>
+            </div>
+
+            <div className="grid gap-4 sm:gap-5 md:grid-cols-2">
+              {contactCards.map((item) => (
+                <ContactInfoCard key={item.title} item={item} />
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section className="section-shell pt-0">
+        <div className="container-shell">
+          <div className="mx-auto max-w-5xl space-y-5 sm:space-y-6">
+            <div className="max-w-[38rem] space-y-2">
+              <p className="text-sm font-semibold tracking-[0.01em] text-muted-strong">რუკა</p>
+              <h2 className="font-serif text-[2rem] leading-tight text-secondary sm:text-[2.35rem]">
+                მარტივად მოსაძებნი მისამართი
+              </h2>
+              <p className="text-base leading-7 text-muted">
+                სივრცე განთავსებულია ცენტრალურ ლოკაციაზე, რათა ვიზიტი და ადგილზე
+                კოორდინაცია მაქსიმალურად მარტივი იყოს.
+              </p>
+            </div>
+
+            <div className="surface-card overflow-hidden p-2.5 sm:p-3">
+              <div className="overflow-hidden rounded-[1.6rem] border border-white/70 bg-white">
+                <iframe
+                  title="მედსერვისის მდებარეობა რუკაზე"
+                  src={googleMapsEmbedUrl}
+                  className="h-[21rem] w-full border-0 sm:h-[25rem] lg:h-[29rem]"
+                  loading="lazy"
+                  referrerPolicy="no-referrer-when-downgrade"
+                />
+              </div>
+
+              <div className="flex flex-col gap-4 px-4 pb-4 pt-4 sm:px-5 sm:pb-5 sm:pt-5 lg:flex-row lg:items-center lg:justify-between">
+                <div className="space-y-1">
+                  <p className="text-sm font-semibold text-secondary">{settings.address}</p>
+                  <p className="text-sm leading-6 text-muted">
+                    გახსენით სრული რუკა და გამოიყენეთ ნავიგაცია პირდაპირ Google Maps-იდან.
+                  </p>
                 </div>
-              </CardContent>
-            </Card>
-            <Alert
-              title="ოპერატიული პასუხი"
-              description="თუ ჯავშნის გადაუდებელი დადასტურება გჭირდებათ, გამოიყენეთ ტელეფონი ან პირდაპირ გადადით დაჯავშნის გვერდზე."
-            />
+
+                <Button asChild variant="secondary" className="w-full lg:w-auto">
+                  <a href={googleMapsUrl} target="_blank" rel="noreferrer">
+                    Google Maps-ში გახსნა
+                    <ArrowUpRight className="h-4 w-4" />
+                  </a>
+                </Button>
+              </div>
+            </div>
           </div>
         </div>
       </section>
     </>
+  );
+}
+
+function ContactInfoCard({ item }: { item: ContactCardItem }) {
+  const Icon = item.icon;
+  const valueContent = item.href ? (
+    <a
+      href={item.href}
+      className="break-words text-[1.02rem] font-medium leading-7 text-secondary transition hover:text-primary"
+    >
+      {item.value}
+    </a>
+  ) : item.lines?.length ? (
+    <div className="space-y-1.5">
+      {item.lines.map((line) => (
+        <p key={line} className="text-[1.02rem] font-medium leading-7 text-secondary">
+          {line}
+        </p>
+      ))}
+    </div>
+  ) : (
+    <p className="text-[1.02rem] font-medium leading-7 text-secondary">{item.value}</p>
+  );
+
+  return (
+    <Card className="h-full p-5 sm:p-[1.35rem]">
+      <div className="flex items-start gap-3.5">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.95rem] border border-primary/12 bg-primary-soft text-primary shadow-[0_8px_18px_rgba(42,200,62,0.08)]">
+          <Icon className="h-[1.05rem] w-[1.05rem]" />
+        </div>
+
+        <div className="min-w-0 space-y-2">
+          <p className="text-sm font-semibold tracking-[0.01em] text-muted-strong">{item.title}</p>
+          {valueContent}
+          <p className="max-w-[31ch] text-sm leading-6 text-muted">{item.helper}</p>
+        </div>
+      </div>
+    </Card>
   );
 }

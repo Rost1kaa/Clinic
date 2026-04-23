@@ -19,7 +19,6 @@ export const mainNavigation: NavigationItem[] = [
   { href: "/", label: "საწყისი" },
   { href: "/services", label: "სერვისები" },
   { href: "/specialties", label: "სპეციალობები" },
-  { href: "/diagnostics", label: "დიაგნოსტიკა" },
   { href: "/laboratory", label: "ლაბორატორია" },
   { href: "/news", label: "სიახლეები" },
   { href: "/about", label: "ჩვენ შესახებ" },
@@ -27,40 +26,35 @@ export const mainNavigation: NavigationItem[] = [
   { href: "/booking", label: "დაჯავშნა" },
 ];
 
+const specialtyDropdownItems: NavigationItem[] = [
+  { href: "/specialties/therapist", label: "თერაპევტი" },
+  { href: "/specialties/cardiologist", label: "კარდიოლოგი" },
+  { href: "/specialties/neurologist", label: "ნევროლოგი" },
+  { href: "/specialties/endocrinologist", label: "ენდოკრინოლოგი" },
+  { href: "/specialties/palliative-care", label: "პალიატიური სპეციალისტი" },
+  { href: "/specialties/nurse-home-visit", label: "ექთანი ბინაზე" },
+];
+
 export const headerNavigation: HeaderNavigationItem[] = [
   { href: "/", label: "საწყისი" },
   {
     href: "/services",
     label: "სერვისები",
-    items: [
-      { href: "/services#home-visit", label: "ბინაზე მომსახურება" },
-      { href: "/services#online-consultation", label: "ონლაინ კონსულტაცია" },
+    matchHrefs: ["/specialties"],
+    sections: [
+      {
+        items: [
+          { href: "/services#home-visit", label: "ბინაზე მომსახურება" },
+          { href: "/services#online-consultation", label: "ონლაინ კონსულტაცია" },
+        ],
+      },
+      {
+        title: "სპეციალობები",
+        items: specialtyDropdownItems,
+      },
     ],
   },
-  {
-    href: "/specialties",
-    label: "სპეციალობები",
-    items: [
-      { href: "/specialties/therapist", label: "თერაპევტი" },
-      { href: "/specialties/cardiologist", label: "კარდიოლოგი" },
-      { href: "/specialties/neurologist", label: "ნევროლოგი" },
-      { href: "/specialties/endocrinologist", label: "ენდოკრინოლოგი" },
-      { href: "/specialties/palliative-care", label: "პალიატიური სპეციალისტი" },
-      { href: "/specialties/nurse-home-visit", label: "ექთანი ბინაზე" },
-    ],
-  },
-  {
-    href: "/diagnostics",
-    label: "დიაგნოსტიკა",
-    items: [
-      { href: "/diagnostics#electrocardiography-ecg", label: "ელექტროკარდიოგრაფია" },
-      { href: "/diagnostics#echocardiography", label: "ექოკარდიოსკოპია" },
-      { href: "/diagnostics#abdominal-ultrasound", label: "მუცლის ექოსკოპია" },
-      { href: "/diagnostics#radiology-xray", label: "რენტგენოლოგია" },
-      { href: "/diagnostics#holter-monitoring", label: "ჰოლტერის მონიტორინგი" },
-      { href: "/diagnostics#instrumental-diagnostics", label: "ინსტრუმენტული კვლევები" },
-    ],
-  },
+  { href: "/contact", label: "კონტაქტი" },
 ];
 
 export const footerNavigation: NavigationItem[] = [
@@ -69,10 +63,10 @@ export const footerNavigation: NavigationItem[] = [
   { href: "/terms", label: "წესები და პირობები" },
 ];
 export const footerMainNavigation: NavigationItem[] = [
-  { href: '/', label: 'საწყისი' },
-  { href: '/services', label: 'სერვისები' },
-  { href: '/specialties', label: 'სპეციალობები' },
-  { href: '/diagnostics', label: 'დიაგნოსტიკა' },
+  { href: "/", label: "საწყისი" },
+  { href: "/services", label: "სერვისები" },
+  { href: "/specialties", label: "სპეციალობები" },
+  { href: "/contact", label: "კონტაქტი" },
 ];
 
 export const adminNavigation: NavigationItem[] = [

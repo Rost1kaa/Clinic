@@ -1,5 +1,4 @@
 import { cache } from "react";
-import { siteConfig } from "@/lib/constants/site";
 import {
   availabilitySlots,
   diagnostics,
@@ -12,7 +11,6 @@ import {
   siteSettings,
   specialties,
   stats,
-  testimonials,
   valuePoints,
 } from "@/lib/data/seed";
 import { createServerSupabaseClient } from "@/lib/supabase/server";
@@ -361,20 +359,12 @@ export const getCatalogData = cache(async () => {
 export const getHomePageData = cache(async () => {
   const catalog = await getCatalogData();
   return {
-    siteConfig,
     siteSettings: await getPublicSiteSettings(),
     services: catalog.services,
     specialties: catalog.specialties,
     diagnostics: catalog.diagnostics,
-    laboratoryServices: catalog.laboratoryServices,
-    doctors: catalog.doctors,
-    availabilitySlots: catalog.availabilitySlots,
     stats,
     valuePoints,
-    testimonials,
-    latestNews: [...newsPosts].sort((a, b) =>
-      new Date(b.publishedAt).getTime() - new Date(a.publishedAt).getTime(),
-    ),
   };
 });
 

@@ -3,17 +3,9 @@
 import Link from "next/link";
 import { ChevronDown } from "lucide-react";
 import { usePathname } from "next/navigation";
+import { isHeaderNavigationItemActive, NavSections } from "@/components/layout/nav-sections";
 import { cn } from "@/lib/utils/cn";
 import type { HeaderNavigationItem } from "@/types/domain";
-
-function getPathWithoutHash(href: string) {
-  return href.split("#")[0] ?? href;
-}
-
-function isActivePath(pathname: string, href: string) {
-  const targetPath = getPathWithoutHash(href);
-  return pathname === targetPath || (targetPath !== "/" && pathname.startsWith(targetPath));
-}
 
 export function NavDropdown({
   item,
@@ -31,9 +23,7 @@ export function NavDropdown({
   onHoverEnd: () => void;
 }) {
   const pathname = usePathname();
-  const active =
-    isActivePath(pathname, item.href) ||
-    (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
+  const active = isHeaderNavigationItemActive(pathname, item);
 
   return (
     <div
@@ -48,14 +38,15 @@ export function NavDropdown({
             ? "bg-surface-muted text-secondary"
             : "text-muted hover:bg-surface-muted/80 hover:text-secondary",
         )}
-      >
-        <Link
-          href={item.href}
-          className="inline-flex min-w-0 items-center whitespace-nowrap px-3.5"
-          onClick={onClose}
         >
-          {item.label}
-        </Link>
+          <Link
+            href={item.href}
+            aria-current={active ? "page" : undefined}
+            className="inline-flex min-w-0 items-center whitespace-nowrap px-3.5"
+            onClick={onClose}
+          >
+            {item.label}
+          </Link>
         <button
           type="button"
           aria-expanded={open}
@@ -67,38 +58,20 @@ export function NavDropdown({
             className={cn("h-4 w-4 transition-transform duration-200", open && "rotate-180")}
           />
         </button>
-      </div>
-
-      <div
-        aria-hidden="true"
-        className="absolute left-1/2 top-full h-3 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2"
-      />
+        </div>
 
       <div
         role="menu"
         aria-label={item.label}
         className={cn(
-          "absolute left-1/2 top-full z-50 mt-2.5 w-80 max-w-[min(24rem,calc(100vw-2rem))] -translate-x-1/2 transition duration-200 ease-out",
+          "absolute left-0 top-full z-50 w-80 max-w-[min(24rem,calc(100vw-2rem))] origin-top-left pt-2.5 transition duration-200 ease-out",
           open
-            ? "pointer-events-auto translate-y-0 opacity-100"
-            : "pointer-events-none translate-y-1 opacity-0",
+            ? "pointer-events-auto translate-y-0 scale-100 opacity-100"
+            : "pointer-events-none -translate-y-1 scale-[0.98] opacity-0",
         )}
       >
         <div className="overflow-hidden rounded-[1.15rem] border border-border bg-white/98 p-2 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
-          {item.items?.map((child) => (
-            <Link
-              key={child.href}
-              href={child.href}
-              role="menuitem"
-              className={cn(
-                "block rounded-[0.85rem] px-3.5 py-3 text-sm leading-6 text-muted transition hover:bg-surface-muted hover:text-secondary",
-                isActivePath(pathname, child.href) && "bg-surface-muted text-secondary",
-              )}
-              onClick={onClose}
-            >
-              <span className="block break-words">{child.label}</span>
-            </Link>
-          ))}
+          <NavSections item={item} pathname={pathname} onNavigate={onClose} linkRole="menuitem" />
         </div>
       </div>
     </div>

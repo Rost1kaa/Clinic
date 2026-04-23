@@ -48,13 +48,13 @@ export function ScrollToTopButton() {
       aria-label="ზემოთ დაბრუნება"
       onClick={handleClick}
       className={cn(
-        "fixed bottom-5 right-5 z-50 flex h-11 w-11 items-center justify-center rounded-xl border border-white/35 bg-primary text-white shadow-[0_8px_20px_rgba(42,200,62,0.18)] backdrop-blur-md transition-all duration-300 ease-out hover:scale-[1.05] hover:bg-primary-strong hover:shadow-[0_12px_24px_rgba(42,200,62,0.22)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)] sm:bottom-6 sm:right-6 sm:h-12 sm:w-12",
+        "fixed bottom-4 right-4 z-50 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/55 bg-primary text-white shadow-[0_18px_34px_rgba(37,155,59,0.26)] backdrop-blur-md transition-all duration-300 ease-out hover:-translate-y-1 hover:scale-[1.03] hover:bg-primary-strong hover:shadow-[0_22px_40px_rgba(37,155,59,0.32)] focus-visible:outline-none focus-visible:ring-4 focus-visible:ring-[var(--ring)] sm:bottom-6 sm:right-6 sm:h-14 sm:w-14",
         isVisible
           ? "translate-y-0 opacity-100"
           : "pointer-events-none translate-y-3 opacity-0",
       )}
     >
-      <ArrowUp className="h-4 w-4 sm:h-[1.05rem] sm:w-[1.05rem]" strokeWidth={2.4} />
+      <ArrowUp className="h-[1.05rem] w-[1.05rem] sm:h-[1.15rem] sm:w-[1.15rem]" strokeWidth={2.6} />
     </button>
   );
 }

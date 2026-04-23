@@ -20,6 +20,7 @@ export function SectionHeader({
   const { ref, revealClassName, revealStyle } = useScrollReveal<HTMLDivElement>({
     variant: "heading",
   });
+  const isCentered = align === "center";
 
   return (
     <div
@@ -27,18 +28,28 @@ export function SectionHeader({
       className={cn(
         "space-y-4",
         revealClassName,
-        align === "center" && "mx-auto max-w-3xl text-center",
+        isCentered && "mx-auto text-center",
         className,
       )}
       style={revealStyle}
     >
-      {eyebrow ? <Badge>{eyebrow}</Badge> : null}
-      <div className="space-y-3">
-        <h2 className="font-serif text-3xl leading-tight text-secondary sm:text-4xl">
+      {eyebrow ? <Badge className={cn(isCentered && "mx-auto")}>{eyebrow}</Badge> : null}
+      <div className={cn("space-y-3", isCentered && "mx-auto text-center")}>
+        <h2
+          className={cn(
+            "font-serif text-3xl leading-tight text-secondary sm:text-4xl",
+            isCentered && "mx-auto text-center",
+          )}
+        >
           {title}
         </h2>
         {description ? (
-          <p className="max-w-3xl text-base leading-7 text-muted sm:text-lg">
+          <p
+            className={cn(
+              "text-base leading-7 text-muted sm:text-lg",
+              isCentered ? "mx-auto max-w-[42rem] text-center" : "max-w-3xl",
+            )}
+          >
             {description}
           </p>
         ) : null}

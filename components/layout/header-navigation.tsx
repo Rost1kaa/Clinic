@@ -5,20 +5,16 @@ import { CalendarDays, ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import { useEffect, useRef, useState } from "react";
 import { NavDropdown } from "@/components/layout/nav-dropdown";
+import {
+  isActivePath,
+  isHeaderNavigationItemActive,
+  NavSections,
+} from "@/components/layout/nav-sections";
 import { NavLink } from "@/components/layout/nav-link";
 import { Button } from "@/components/ui/button";
 import { headerNavigation } from "@/lib/constants/site";
 import { cn } from "@/lib/utils/cn";
 import type { HeaderNavigationItem } from "@/types/domain";
-
-function getPathWithoutHash(href: string) {
-  return href.split("#")[0] ?? href;
-}
-
-function isActivePath(pathname: string, href: string) {
-  const targetPath = getPathWithoutHash(href);
-  return pathname === targetPath || (targetPath !== "/" && pathname.startsWith(targetPath));
-}
 
 export function DesktopHeaderNavigation() {
   const desktopNavRef = useRef<HTMLDivElement>(null);
@@ -91,7 +87,7 @@ export function DesktopHeaderNavigation() {
         className="inline-flex items-center gap-1 rounded-2xl border border-border/80 bg-white/90 p-1 shadow-[0_14px_32px_rgba(8,46,48,0.08)] backdrop-blur-xl"
       >
         {headerNavigation.map((item) =>
-          item.items?.length ? (
+          item.sections?.length ? (
             <NavDropdown
               key={item.href}
               item={item}
@@ -179,7 +175,7 @@ export function MobileHeaderNavigation() {
       >
         <div className="space-y-2 rounded-[1.35rem] border border-border bg-white/96 p-4 shadow-[0_24px_60px_rgba(8,46,48,0.14)] backdrop-blur-xl">
           {headerNavigation.map((item) =>
-            item.items?.length ? (
+            item.sections?.length ? (
               <MobileDropdownGroup
                 key={item.href}
                 item={item}
@@ -230,9 +226,7 @@ function MobileDropdownGroup({
   onToggle: () => void;
   onNavigate: () => void;
 }) {
-  const active =
-    isActivePath(pathname, item.href) ||
-    (item.items?.some((child) => isActivePath(pathname, child.href)) ?? false);
+  const active = isHeaderNavigationItemActive(pathname, item);
 
   return (
     <div className="rounded-[1.05rem] bg-surface-muted/60 p-1">
@@ -266,21 +260,16 @@ function MobileDropdownGroup({
         )}
       >
         <div className="overflow-hidden">
-          <div className="space-y-1 px-2 pb-2 pt-1">
-            {item.items?.map((child) => (
-              <Link
-                key={child.href}
-                href={child.href}
-                className={cn(
-                  "block rounded-[0.85rem] px-3.5 py-2.5 text-sm leading-6 text-muted transition hover:bg-white hover:text-secondary",
-                  isActivePath(pathname, child.href) && "bg-white text-secondary shadow-sm",
-                )}
-                onClick={onNavigate}
-              >
-                <span className="block break-words">{child.label}</span>
-              </Link>
-            ))}
-          </div>
+          <NavSections
+            item={item}
+            pathname={pathname}
+            onNavigate={onNavigate}
+            linksContainerClassName="px-2 pb-2 pt-1"
+            sectionDividerClassName="bg-border/70"
+            sectionTitleClassName="text-secondary"
+            linkClassName="py-2.5 hover:bg-white"
+            activeLinkClassName="bg-white text-secondary shadow-sm"
+          />
         </div>
       </div>
     </div>
