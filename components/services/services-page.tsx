@@ -60,7 +60,7 @@ export function ServicesPage() {
 
               {/* LEFT GROUP — ბინაზე მომსახურება */}
               <div className="flex flex-col" style={{ width: "900px", flexShrink: 0 }}>
-                <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "16px", textAlign: "center" }}>ბინაზე მომსახურება</h3>
+                <h3 style={{ fontSize: "36px", fontWeight: 700, marginBottom: "16px", marginLeft: "10px", textAlign: "start" }}>ბინაზე მომსახურება</h3>
                 <div className="pricing-grid items-stretch" style={{ display: "flex", flexDirection: "row", gap: "16px" }}>
                   {pricingCards.map((card) => (
                     <div
@@ -93,7 +93,7 @@ export function ServicesPage() {
 
               {/* RIGHT GROUP — ონლაინ კონსულტაცია */}
               <div className="flex flex-1 items-stretch">
-                <div className="pricing-card flex min-h-full w-full flex-col justify-between" style={{  background: "#197258", color: "#ffffff" }}>
+                <div className="pricing-card flex min-h-full w-full flex-col gap-5" style={{  background: "#197258", color: "#ffffff" }}>
                   <h3 style={{ color: "#ffffff" }}>ონლაინ კონსულტაცია</h3>
                   <div className="price">
                     <strong style={{ color: "#ffffff" }}>60 ₾</strong>
