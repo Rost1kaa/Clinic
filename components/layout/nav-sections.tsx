@@ -98,7 +98,7 @@ export function NavSections({
                   >
                     <span style={{ display: 'flex', alignItems: 'center' }}>
                       {child.href.startsWith('/specialties/') && (
-                        <Diamond size={14} style={{ marginRight: '8px', flexShrink: 0 }} />
+                        <Diamond size={10} style={{ marginRight: '8px', flexShrink: 0 }} />
                       )}
                       {child.href.startsWith('/services#') && (
                         <ChevronRight size={14} style={{ marginRight: '8px', flexShrink: 0 }} />
