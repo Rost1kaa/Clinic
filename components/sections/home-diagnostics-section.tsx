@@ -54,7 +54,7 @@ export function HomeDiagnosticsSection() {
           className="max-w-[46rem] space-y-5"
         />
 
-        <div className="grid auto-rows-fr grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
+        <div className="grid auto-rows-fr grid-cols-1 gap-8 min-[900px]:grid-cols-2 xl:grid-cols-3">
           {diagnosticCards.map((item, index) => (
             <ScrollReveal
               key={item.id}
@@ -63,12 +63,12 @@ export function HomeDiagnosticsSection() {
               className="h-full"
             >
               <article className="relative flex h-[21rem] min-w-0 flex-col overflow-visible rounded-[28px] bg-white p-8 shadow-[0_24px_56px_rgba(10,55,58,0.07)] transition-all duration-300 ease-out hover:shadow-[0_32px_72px_rgba(10,55,58,0.11)]">
-                <div className="relative z-[3] flex min-w-0 items-start justify-between gap-6">
-                  <h3 className="max-w-[15ch] break-words font-serif text-[26px] font-semibold leading-[1.08] text-[#102b35] [overflow-wrap:anywhere] [text-wrap:balance] lg:max-w-[220px] xl:max-w-[240px]">
+                <div className="relative z-[3] flex min-w-0 flex-wrap items-start justify-between gap-6">
+                  <h3 lang="ka" className="max-w-[15ch] break-words hyphens-auto font-serif text-[26px] max-[470px]:text-[23px] font-semibold leading-[1.08] text-[#102b35] [overflow-wrap:anywhere] [text-wrap:balance] lg:max-w-[220px] xl:max-w-[240px]">
                     {item.title}
                   </h3>
 
-                  <div className="flex h-[4.75rem] w-[4.75rem] shrink-0 items-center justify-center rounded-full bg-[#7df36b] text-[#102b35]">
+                  <div className="flex h-[4.75rem] w-[4.75rem] shrink-0 basis-full items-center justify-center rounded-full bg-[#7df36b] text-[#102b35] sm:basis-auto">
                     <IconMark
                       name={item.icon}
                       className={item.id === "electrocardiography-ecg" ? "h-8 w-8" : "h-9 w-9"}

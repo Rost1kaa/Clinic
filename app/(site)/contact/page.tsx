@@ -62,6 +62,7 @@ export default async function ContactPage() {
         eyebrow="კონტაქტი"
         title="დაგვიკავშირდით მარტივად"
         description="ინფორმაცია და ჯავშანი ერთ სივრცეში."
+        panelClassName="border-0 shadow-none"
       />
 
       <section className="section-shell pt-0">
@@ -98,8 +99,8 @@ export default async function ContactPage() {
               </p>
             </div>
 
-            <div className="surface-card overflow-hidden p-2.5 sm:p-3">
-              <div className="overflow-hidden rounded-[1.6rem] border border-white/70 bg-white">
+            <div className="surface-card overflow-hidden p-2.5 sm:p-3" style={{ border: "none", boxShadow: "none" }}>
+              <div className="overflow-hidden rounded-[1.6rem] bg-white">
                 <iframe
                   title="მედსერვისის მდებარეობა რუკაზე"
                   src={googleMapsEmbedUrl}
@@ -154,9 +155,9 @@ function ContactInfoCard({ item }: { item: ContactCardItem }) {
   );
 
   return (
-    <Card className="h-full p-5 sm:p-[1.35rem]">
+    <Card className="h-full p-5 sm:p-[1.35rem] border-0 shadow-none">
       <div className="flex items-start gap-3.5">
-        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.95rem] border border-primary/12 bg-primary-soft text-primary shadow-[0_8px_18px_rgba(42,200,62,0.08)]">
+        <div className="flex h-11 w-11 shrink-0 items-center justify-center rounded-[0.95rem] bg-primary-soft text-primary">
           <Icon className="h-[1.05rem] w-[1.05rem]" />
         </div>
 

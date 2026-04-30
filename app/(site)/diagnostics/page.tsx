@@ -73,6 +73,7 @@ export default async function DiagnosticsPage() {
         eyebrow="დიაგნოსტიკა"
         title="მობილური დიაგნოსტიკა და სწრაფი შეფასება"
         description="კვლევები მარტივად, ერთიან პროცესში."
+        panelClassName="border-0 shadow-none"
       />
       <section className="section-shell pt-0">
         <div className="container-shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
@@ -80,7 +81,7 @@ export default async function DiagnosticsPage() {
             <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
               <ServiceOptionCard
                 id={item.slug}
-                className="scroll-mt-28"
+                className="scroll-mt-28 border-0 shadow-none"
                 price={formatMoney(item.price)}
                 title={item.name}
                 description={diagnosticsCardContent[item.slug].description}

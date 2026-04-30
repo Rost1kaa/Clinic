@@ -76,7 +76,7 @@ export default async function HomePage() {
               style={{
                 display: "flex",
                 flexDirection: "column",
-                justifyContent: "center",
+                justifyContent: "flex-start",
                 gap: "1.75rem",
                 paddingRight: "2.5rem",
                 flexShrink: 0,
@@ -105,7 +105,7 @@ export default async function HomePage() {
               </p>
 
               {/* Buttons — nowrap keeps button + phone side by side always */}
-              <div className="hero-actions w-full sm:w-auto" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
+              <div className="hero-actions w-full sm:w-auto" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "20px", flexWrap: "nowrap", marginTop: "auto" }}>
                 <Link
                   href="/booking"
                   className="w-full justify-center sm:w-auto"
@@ -115,7 +115,7 @@ export default async function HomePage() {
                     gap: "0.625rem",
                     background: "#3dba6f",
                     borderRadius: "50px",
-                    padding: "12px 24px",
+                    padding: "16px 28px",
                     fontSize: "15px",
                     fontWeight: 600,
                     color: "#ffffff",
@@ -131,10 +131,10 @@ export default async function HomePage() {
                 <div className="w-full sm:w-auto" style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
                   <Phone style={{ width: 18, height: 18, color: "#3dba6f", flexShrink: 0 }} />
                   <div>
-                    <p style={{ color: "#8bbda8", fontSize: "11px", margin: 0, whiteSpace: "nowrap" }}>გინდათ დახმარება?</p>
+                    <p style={{ color: "#8bbda8", fontSize: "12px", margin: 0, whiteSpace: "nowrap" }}>გინდათ დახმარება?</p>
                     <a
                       href={formatPhoneHref(heroPhoneNumber)}
-                      style={{ fontWeight: 700, color: "#ffffff", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
+                      style={{ fontWeight: 700, color: "#ffffff", fontSize: "16px", textDecoration: "none", whiteSpace: "nowrap" }}
                     >
                       (+995 555) 12 34 56
                     </a>
@@ -170,29 +170,29 @@ export default async function HomePage() {
                 flexDirection: "column",
                 justifyContent: "center",
                 paddingLeft: "2.5rem",
+                paddingTop: "44px",
+                paddingBottom: "44px",
+                gap: "100px",
               }}
             >
               {/* Block 1 — მომსახურება ადგილზე */}
-              <div style={{ paddingBottom: "1.375rem" }}>
+              <div style={{ background: "rgba(255, 255, 255, 0.07)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: "14px", padding: "18px 20px" }}>
                 <MapPin style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
                 <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
                   მომსახურება ადგილზე
                 </div>
-                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.55, margin: 0 }}>
+                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.5, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                   ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული დიაგნოსტიკა
                 </p>
               </div>
 
-              {/* Separator */}
-              <div style={{ height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "1.375rem" }} />
-
               {/* Block 2 — ონლაინ კონსულტაცია */}
-              <div>
+              <div style={{ background: "rgba(255, 255, 255, 0.07)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: "14px", padding: "18px 20px" }}>
                 <Video style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
                 <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
                   ონლაინ კონსულტაცია
                 </div>
-                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.55, margin: 0 }}>
+                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.5, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                   ვიდეოკონფერენციის საშუალებით, სმარტფონისა და კომპიუტერის გამოყენებით.
                 </p>
               </div>
