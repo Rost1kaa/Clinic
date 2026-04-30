@@ -12,7 +12,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="ka" suppressHydrationWarning>
-      <body className="min-h-screen bg-background font-sans text-foreground antialiased">
+      <body className="min-h-screen bg-background text-foreground antialiased">
         <AppProviders>{children}</AppProviders>
       </body>
     </html>

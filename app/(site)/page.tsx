@@ -1,12 +1,9 @@
 import Image from "next/image";
 import Link from "next/link";
-import { CalendarDays, Phone } from "lucide-react";
-import { LogoMark } from "@/components/branding/brand-logo";
+import { MapPin, Phone, Video } from "lucide-react";
 import { JsonLd } from "@/components/json-ld/json-ld";
 import { HomeDiagnosticsSection } from "@/components/sections/home-diagnostics-section";
-import { HomeTrustStatsSection } from "@/components/sections/home-trust-stats-section";
 import { SpecialtiesNavRail } from "@/components/sections/specialties-nav-rail";
-import { Button } from "@/components/ui/button";
 import { SectionHeader } from "@/components/ui/section-header";
 import { siteConfig } from "@/lib/constants/site";
 import { getHomePageData } from "@/lib/data/public";
@@ -20,32 +17,10 @@ export const metadata = buildMetadata({
 
 const heroPhoneNumber = "+995 555 12 34 56";
 
-const heroHighlights = [
-  {
-    href: "/services#home-visit",
-    title: "მომსახურება ბინაზე",
-    description:
-      "ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული დიაგნოსტიკა",
-    imageSrc: "/hero-info-blocks/1.jpg",
-    imagePosition: "62% center",
-  },
-  {
-    href: "/services#online-consultation",
-    title: "ონლაინ კონსულტაცია",
-    description:
-      "ვიდეოვიზიტი ანალიზების, სიმპტომებისა და შემდგომი მართვისთვის.",
-    imageSrc: "/hero-info-blocks/2.jpg",
-    imagePosition: "78% center",
-  },
-] as const;
-
 export default async function HomePage() {
-  const { services, specialties, stats, siteSettings } = await getHomePageData();
+  const { specialties, siteSettings } = await getHomePageData();
 
   const featuredSpecialties = specialties.slice(0, 6);
-  const homeVisitService =
-    services.find((service) => service.serviceMode === "home_visit") ?? services[0];
-  const heroImage = homeVisitService?.image ?? services[0]?.image;
 
   return (
     <>
@@ -65,134 +40,169 @@ export default async function HomePage() {
         }}
       />
 
-      <section className="section-shell pt-8">
-        <div className="container-shell relative">
-          <div
-            className="pointer-events-none absolute -left-2 top-24 h-36 w-36 rounded-full bg-primary/[0.08] blur-3xl sm:h-44 sm:w-44"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute right-4 top-20 h-44 w-44 rounded-full bg-primary/[0.1] blur-3xl"
-            aria-hidden
-          />
-          <div
-            className="pointer-events-none absolute bottom-10 left-[42%] hidden h-24 w-24 rounded-full bg-primary/[0.07] blur-3xl lg:block"
-            aria-hidden
-          />
+      {/* ─── HERO ─── */}
+      {/* section-shell matches the padding-block: 4.5rem used by every other page section */}
+      <section
+        className="hero-dark-section section-shell"
+        style={{ background: "#0a3d2e", overflow: "hidden", position: "relative", minHeight: "520px" }}
+      >
+        {/* Decorative Georgian watermark */}
+        <div
+          className="pointer-events-none select-none"
+          style={{
+            position: "absolute",
+            bottom: 0,
+            left: "50%",
+            transform: "translateX(-50%)",
+            fontSize: "clamp(80px, 14vw, 200px)",
+            fontWeight: 700,
+            color: "rgba(255,255,255,0.025)",
+            whiteSpace: "nowrap",
+            lineHeight: 1,
+            zIndex: 0,
+          }}
+          aria-hidden
+        >
+          მედსერვისი
+        </div>
 
-          <div className="relative z-10 grid items-stretch gap-8 lg:grid-cols-[1.16fr_0.84fr] lg:gap-10">
-            <div className="mesh-panel flex h-full flex-col justify-center p-8 sm:p-10 lg:p-11 xl:p-12">
-              <div className="mt-4 space-y-5">
-                <div className="space-y-4">
-                  <h1 className="max-w-3xl font-serif text-[2.4rem] leading-[1.03] text-secondary">
-                    სამედიცინო მომსახურება იქ, სადაც თქვენ ხართ
-                  </h1>
-                  <p className="max-w-2xl text-base leading-[1.9rem] text-muted sm:text-[1.02rem] sm:leading-[1.9rem]">
-                    სხვადასხვა დარგის სპეციალისტები, მობილური დიაგნოსტიკა და მოქნილი
-                    დაჯავშნა ერთ ციფრულ სივრცეში.
-                  </p>
-                </div>
+        {/* container-shell: same max-width (84rem) as every other section; width: 85% narrows the hero content */}
+        <div className="hero-content container-shell" style={{ position: "relative", zIndex: 5, width: "85%" }}>
+          {/* hero-grid: columns + responsive behaviour live in globals.css */}
+          <div className="hero-grid">
+            {/* LEFT: logo + heading + subtext + buttons */}
+            <div
+              className="hero-left"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                gap: "1.75rem",
+                paddingRight: "2.5rem",
+                flexShrink: 0,
+                minWidth: "420px",
+              }}
+            >
+              {/* Logo mark */}
+              <div className="hero-label" style={{ display: "flex", alignItems: "center", gap: "0.625rem" }}>
+                <div style={{ width: 16, height: 16, borderRadius: "50%", background: "#3dba6f", flexShrink: 0 }} />
+                <span style={{ fontWeight: 700, color: "#ffffff", fontSize: "14px", letterSpacing: "0.025em" }}>
+                  მედსერვისი
+                </span>
+              </div>
 
-                <div className="space-y-3.5">
-                  <div className="grid gap-3 md:grid-cols-2">
-                    {heroHighlights.map((item) => (
-                      <Link
-                        key={item.href}
-                        href={item.href}
-                        className="group relative min-h-[170px] overflow-hidden rounded-2xl border border-white/25 p-5 pt-[70px] shadow-[0_10px_30px_rgba(15,64,67,0.05)] transition duration-300 hover:-translate-y-0.5 hover:border-white/35"
-                      >
-                        <div className="pointer-events-none absolute inset-0" aria-hidden>
-                          <Image
-                            src={item.imageSrc}
-                            alt=""
-                            fill
-                            className="object-cover transition-transform duration-500 ease-out group-hover:scale-[1.04]"
-                            style={{ objectPosition: item.imagePosition }}
-                          />
-                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(12,20,15,0.24),rgba(10,18,13,0.5))]" />
-                          <div className="absolute inset-0 bg-[linear-gradient(135deg,rgba(42,200,62,0.18),rgba(42,200,62,0.08))]" />
-                          <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.08),transparent_34%)]" />
-                        </div>
-                        <div className="relative z-10">
-                          <p className="text-[1.4rem] font-semibold leading-6 text-white [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
-                            {item.title}
-                          </p>
-                          <p className="mt-2 text-[1.1rem] leading-6 text-white/90 [text-shadow:0_2px_8px_rgba(0,0,0,0.35)]">
-                            {item.description}
-                          </p>
-                        </div>
-                      </Link>
-                    ))}
-                  </div>
+              {/* H1 — 38px keeps the phrase on 2 lines inside the 420px column */}
+              <h1 className="hero-title" style={{ fontWeight: 700, lineHeight: 1.12, fontSize: "38px", margin: 0, whiteSpace: "nowrap" }}>
+                <span style={{ color: "#ffffff", display: "block" }}>სამედიცინო მომსახურება იქ,</span>
+                <span style={{ color: "#4ade80" }}>სადაც თქვენ</span>{" "}
+                <span style={{ color: "#ffffff" }}>ხართ</span>
+              </h1>
 
-                  <div className="mx-auto grid max-w-[38rem] justify-items-center gap-2.5 sm:grid-cols-[minmax(0,1fr)_auto_minmax(0,1fr)] sm:items-center">
-                    <Button
-                      asChild
-                      size="md"
-                      className="h-11 w-full rounded-[1.1rem] justify-center px-4 shadow-[0_12px_26px_rgba(42,200,62,0.14)]"
+              {/* Subtext */}
+              <p className="hero-description" style={{ color: "#8bbda8", fontSize: "16px", lineHeight: 1.6, margin: 0 }}>
+                სხვადასხვა დარგის სპეციალისტები, მობილური დიაგნოსტიკა და მოქნილი
+                დაჯავშნა ერთ ციფრულ სივრცეში.
+              </p>
+
+              {/* Buttons — nowrap keeps button + phone side by side always */}
+              <div className="hero-actions" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "1.5rem", flexWrap: "nowrap" }}>
+                <Link
+                  href="/booking"
+                  style={{
+                    display: "inline-flex",
+                    alignItems: "center",
+                    gap: "0.625rem",
+                    background: "#3dba6f",
+                    borderRadius: "50px",
+                    padding: "12px 24px",
+                    fontSize: "15px",
+                    fontWeight: 600,
+                    color: "#ffffff",
+                    textDecoration: "none",
+                    whiteSpace: "nowrap",
+                    flexShrink: 0,
+                  }}
+                >
+                  ვიზიტის დაჯავშნა
+                  <span aria-hidden>→</span>
+                </Link>
+
+                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
+                  <Phone style={{ width: 18, height: 18, color: "#3dba6f", flexShrink: 0 }} />
+                  <div>
+                    <p style={{ color: "#8bbda8", fontSize: "11px", margin: 0, whiteSpace: "nowrap" }}>გინდათ დახმარება?</p>
+                    <a
+                      href={formatPhoneHref(heroPhoneNumber)}
+                      style={{ fontWeight: 700, color: "#ffffff", fontSize: "13px", textDecoration: "none", whiteSpace: "nowrap" }}
                     >
-                      <Link href="/booking">
-                        <CalendarDays className="h-4 w-4" />
-                        ვიზიტის დაჯავშნა
-                      </Link>
-                    </Button>
-
-                    <div className="flex justify-center">
-                      <span className="inline-flex h-9 w-9 items-center justify-center rounded-full border border-border/80 bg-surface-muted/88 text-[0.82rem] font-semibold text-secondary shadow-[0_8px_18px_rgba(10,55,58,0.05)]">
-                        ან
-                      </span>
-                    </div>
-
-                    <Button
-                      asChild
-                      variant="secondary"
-                      size="md"
-                      className="h-11 w-full rounded-[1.1rem] justify-center border border-border-strong bg-white/86 px-4 text-secondary shadow-[0_10px_22px_rgba(10,55,58,0.05)] hover:bg-white"
-                    >
-                      <a href={formatPhoneHref(heroPhoneNumber)}>
-                        <Phone className="h-4 w-4" />
-                        {heroPhoneNumber}
-                      </a>
-                    </Button>
+                      (+995 555) 12 34 56
+                    </a>
                   </div>
                 </div>
               </div>
             </div>
 
-            <div className="mx-auto flex h-full w-full max-w-[32rem] lg:max-w-[34rem]">
-              <div className="surface-card h-full w-full p-4 sm:p-5">
-                <div className="relative h-[22rem] overflow-hidden rounded-[1.65rem] border border-white/70 bg-gradient-to-br from-white via-[#f6fcf6] to-[#ebf9ed] shadow-[0_28px_58px_rgba(15,64,67,0.12)] sm:h-[25rem] lg:h-full">
-                  <div className="pointer-events-none absolute -right-2 top-6 h-24 w-24 rounded-full bg-primary/10 blur-3xl" />
-                  <div className="pointer-events-none absolute bottom-6 left-4 h-20 w-20 rounded-full bg-accent/10 blur-3xl" />
+            {/* CENTER: photo is position:absolute inside its own column — never overlaps neighbours */}
+            <div className="hero-center hero-image-wrap">
+              {/* Left edge blend */}
+              <div
+                style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "80px", background: "linear-gradient(to right, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
+                aria-hidden
+              />
+              {/* Right edge blend */}
+              <div
+                style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "80px", background: "linear-gradient(to left, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
+                aria-hidden
+              />
+              {/* Bottom edge blend */}
+              <div
+                style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60px", background: "linear-gradient(to top, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
+                aria-hidden
+              />
+              <Image
+                id="hero-photo"
+                src="/hero-photo.png"
+                alt="ექიმი პაციენტთან კონსულტაციაზე"
+                width={1270}
+                height={953}
+                className="hero-photo"
+                priority
+              />
+            </div>
 
-                  <div className="absolute inset-[0.42rem] overflow-hidden rounded-[1.42rem] border border-white/75 bg-gradient-to-br from-white via-[#f3fbf6] to-[#e6f7ec] shadow-[0_18px_40px_rgba(15,64,67,0.1)]">
-                    <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(circle_at_18%_84%,rgba(42,200,62,0.16),transparent_24%),radial-gradient(circle_at_24%_76%,rgba(255,255,255,0.68),transparent_26%),linear-gradient(180deg,rgba(255,255,255,0.18),transparent_38%)]" />
-
-                    {heroImage ? (
-                      <div className="diagonal-media-clip absolute inset-0">
-                        <Image
-                          src={heroImage.src}
-                          alt={heroImage.alt}
-                          fill
-                          className="object-cover"
-                          priority
-                        />
-                        <div className="absolute inset-0 bg-[linear-gradient(180deg,rgba(255,255,255,0.06),rgba(19,70,72,0.16))]" />
-                        <div className="absolute inset-0 bg-[radial-gradient(circle_at_18%_84%,rgba(42,200,62,0.14),transparent_24%),radial-gradient(circle_at_24%_76%,rgba(255,255,255,0.46),transparent_26%)]" />
-                        <div className="pointer-events-none absolute inset-x-0 top-0 h-24 bg-gradient-to-b from-white/20 to-transparent" />
-                      </div>
-                    ) : null}
-                  </div>
-
-                  <div className="absolute bottom-[4%] left-[5.5%] transition-transform duration-300 ease-out hover:scale-[1.05]">
-                    <div className="absolute inset-0 scale-[1.44] rounded-full bg-primary/[0.14] blur-[30px]" />
-                    <div className="absolute inset-0 scale-[1.16] rounded-full bg-white/28 blur-[16px]" />
-                    <LogoMark
-                      className="relative h-[6.3rem] w-[6.3rem] drop-shadow-[0_10px_24px_rgba(42,200,62,0.26)] sm:h-[7.4rem] sm:w-[7.4rem]"
-                      decorative
-                    />
-                  </div>
+            {/* RIGHT: service blocks */}
+            <div
+              className="hero-right hero-info"
+              style={{
+                display: "flex",
+                flexDirection: "column",
+                justifyContent: "center",
+                paddingLeft: "2.5rem",
+              }}
+            >
+              {/* Block 1 — მომსახურება ადგილზე */}
+              <div style={{ paddingBottom: "1.375rem" }}>
+                <MapPin style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
+                <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
+                  მომსახურება ადგილზე
                 </div>
+                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.55, margin: 0 }}>
+                  ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული დიაგნოსტიკა
+                </p>
+              </div>
+
+              {/* Separator */}
+              <div style={{ height: "1px", background: "rgba(255,255,255,0.1)", marginBottom: "1.375rem" }} />
+
+              {/* Block 2 — ონლაინ კონსულტაცია */}
+              <div>
+                <Video style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
+                <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
+                  ონლაინ კონსულტაცია
+                </div>
+                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.55, margin: 0 }}>
+                  ვიდეოკონფერენციის საშუალებით, სმარტფონისა და კომპიუტერის გამოყენებით.
+                </p>
               </div>
             </div>
           </div>
@@ -203,16 +213,14 @@ export default async function HomePage() {
         <div className="container-shell space-y-10">
           <SectionHeader
             eyebrow="სპეციალობები"
-            title="ექიმთა გუნდები სხვადასხვა საჭიროებისთვის"
-            description="მედსერვისი აერთიანებს მულტიდისციპლინურ გუნდს, მობილურ დიაგნოსტიკასა და მოქნილ მომსახურებას პაციენტის ცხოვრების რიტმზე მორგებით."
+            title="ერთიანი სამედიცინო გუნდი"
+            description="კოორდინირებული და მოქნილი მომსახურება ერთ სივრცეში."
             align="center"
             className="max-w-[46rem]"
           />
           <SpecialtiesNavRail specialties={featuredSpecialties} />
         </div>
       </section>
-
-      <HomeTrustStatsSection stats={stats} />
       <HomeDiagnosticsSection />
     </>
   );

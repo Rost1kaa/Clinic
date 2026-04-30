@@ -48,8 +48,8 @@ export function HomeDiagnosticsSection() {
       <div className="container-shell space-y-12 sm:space-y-14">
         <SectionHeader
           eyebrow="დიაგნოსტიკა"
-          title="კვლევები სწრაფი შეფასებისა და კოორდინირებული მართვისთვის"
-          description="კარდიოლოგიური, ულტრაბგერითი და ინსტრუმენტული კვლევები ერთ სუფთა სივრცეშია თავმოყრილი, რომ არჩევა სწრაფი, მშვიდი და მკაფიო იყოს."
+          title="ზუსტი დიაგნოსტიკა სწრაფად"
+          description="ყველა ძირითადი კვლევა ერთ სივრცეში."
           align="center"
           className="max-w-[46rem] space-y-5"
         />

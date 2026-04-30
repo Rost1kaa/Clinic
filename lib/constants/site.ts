@@ -35,6 +35,11 @@ const specialtyDropdownItems: NavigationItem[] = [
   { href: "/specialties/nurse-home-visit", label: "ექთანი ბინაზე" },
 ];
 
+const diagnosticsDropdownItems: NavigationItem[] = [
+  { href: "/diagnostics", label: "ინსტრუმენტული კვლევა" },
+  { href: "/laboratory", label: "ლაბორატორიული კვლევა" },
+];
+
 export const headerNavigation: HeaderNavigationItem[] = [
   { href: "/", label: "საწყისი" },
   {
@@ -51,6 +56,16 @@ export const headerNavigation: HeaderNavigationItem[] = [
       {
         title: "სპეციალობები",
         items: specialtyDropdownItems,
+      },
+    ],
+  },
+  {
+    href: "/diagnostics",
+    label: "დიაგნოსტიკა",
+    matchHrefs: ["/laboratory"],
+    sections: [
+      {
+        items: diagnosticsDropdownItems,
       },
     ],
   },

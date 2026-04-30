@@ -1,14 +1,8 @@
-import Link from "next/link";
-import { Button } from "@/components/ui/button";
-import {
-  Card,
-  CardContent,
-  CardDescription,
-  CardHeader,
-  CardTitle,
-} from "@/components/ui/card";
+import { ScrollReveal } from "@/components/motion/scroll-reveal";
+import { ServiceOptionCard } from "@/components/services/service-option-card";
 import { PageHero } from "@/components/sections/page-hero";
 import { getCatalogData } from "@/lib/data/public";
+import type { DiagnosticService } from "@/types/domain";
 import { formatMoney } from "@/lib/utils/format";
 import { buildMetadata } from "@/lib/utils/metadata";
 
@@ -17,6 +11,59 @@ export const metadata = buildMetadata({
   path: "/diagnostics",
 });
 
+const diagnosticsCardContent: Record<
+  string,
+  {
+    description: string;
+    serviceLine: string;
+    duration: string;
+    availability: string;
+  }
+> = {
+  "instrumental-diagnostics": {
+    description: "მობილური დიაგნოსტიკა და შედეგების ორგანიზებული მიწოდება.",
+    serviceLine: "დიაგნოსტიკური პაკეტი ინდივიდუალური საჭიროებისთვის",
+    duration: "60 წუთი",
+    availability: "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც.",
+  },
+  "electrocardiography-ecg": {
+    description: "გულის რითმის სწრაფი შეფასება ადგილზე.",
+    serviceLine: "ECG კვლევა სწრაფი შეფასებისთვის",
+    duration: "25 წუთი",
+    availability: "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც.",
+  },
+  echocardiography: {
+    description: "გულის ფუნქციის და სტრუქტურის შეფასება სპეციალისტის დასკვნით.",
+    serviceLine: "ექოკარდიოგრაფიული შეფასება",
+    duration: "45 წუთი",
+    availability: "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც.",
+  },
+  "abdominal-ultrasound": {
+    description: "მუცლის ღრუს ორგანოების სწრაფი ულტრაბგერითი შეფასება.",
+    serviceLine: "მუცლის ღრუს ულტრაბგერითი კვლევა",
+    duration: "35 წუთი",
+    availability: "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც.",
+  },
+  "radiology-xray": {
+    description: "რადიოლოგიური კვლევის კოორდინაცია ერთ პროცესში.",
+    serviceLine: "X-ray კვლევის ორგანიზებული მხარდაჭერა",
+    duration: "50 წუთი",
+    availability: "საჭიროებს წინასწარ კოორდინაციას.",
+  },
+  "holter-monitoring": {
+    description: "გულის რითმის ხანგრძლივი მონიტორინგი ყოველდღიურ რეჟიმში.",
+    serviceLine: "24-საათიანი ჰოლტერ მონიტორინგი",
+    duration: "30 წუთი",
+    availability: "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც.",
+  },
+};
+
+function getDiagnosticServices(item: DiagnosticService) {
+  const content = diagnosticsCardContent[item.slug];
+
+  return [content.serviceLine, content.duration, content.availability];
+}
+
 export default async function DiagnosticsPage() {
   const { diagnostics } = await getCatalogData();
 
@@ -24,32 +71,25 @@ export default async function DiagnosticsPage() {
     <>
       <PageHero
         eyebrow="დიაგნოსტიკა"
-        title="მობილური და კოორდინირებული დიაგნოსტიკური სერვისები"
-        description="ECG-დან ჰოლტერ მონიტორინგამდე, კვლევები ინტეგრირებულია ექიმის ვიზიტსა და შემდგომ შეფასებაში."
+        title="მობილური დიაგნოსტიკა და სწრაფი შეფასება"
+        description="კვლევები მარტივად, ერთიან პროცესში."
       />
       <section className="section-shell pt-0">
-        <div className="container-shell grid gap-6 lg:grid-cols-2">
-          {diagnostics.map((item) => (
-            <Card key={item.id} id={item.slug} className="scroll-mt-28 p-6">
-              <CardHeader>
-                <CardTitle>{item.name}</CardTitle>
-                <CardDescription>{item.description}</CardDescription>
-              </CardHeader>
-              <CardContent>
-                <div className="flex items-center justify-between text-sm text-muted">
-                  <span>{item.durationMinutes} წუთი</span>
-                  <span>{formatMoney(item.price)}</span>
-                </div>
-                <p className="mt-3 text-sm text-muted">
-                  {item.homeAvailable
-                    ? "ხელმისაწვდომია სახლში ვიზიტის ფორმატშიც."
-                    : "ხელმისაწვდომობა საჭიროებს წინასწარ კოორდინაციას."}
-                </p>
-                <Button asChild className="mt-4">
-                  <Link href="/booking">დაჯავშნა</Link>
-                </Button>
-              </CardContent>
-            </Card>
+        <div className="container-shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          {diagnostics.map((item, index) => (
+            <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
+              <ServiceOptionCard
+                id={item.slug}
+                className="scroll-mt-28"
+                price={formatMoney(item.price)}
+                title={item.name}
+                description={diagnosticsCardContent[item.slug].description}
+                services={getDiagnosticServices(item)}
+                detailHref={`/diagnostics#${item.slug}`}
+                bookingHref="/booking"
+                plainServices
+              />
+            </ScrollReveal>
           ))}
         </div>
       </section>

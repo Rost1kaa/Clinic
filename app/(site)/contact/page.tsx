@@ -60,8 +60,8 @@ export default async function ContactPage() {
     <>
       <PageHero
         eyebrow="კონტაქტი"
-        title="დაგვიკავშირდით თქვენთვის სასურველი გზით"
-        description="ჯავშნის, სერვისების, თანამშრომლობის ან ოჯახის მოვლის პროგრამების შესახებ ინფორმაცია ხელმისაწვდომია ტელეფონით, ელფოსტით და ადგილზე."
+        title="დაგვიკავშირდით მარტივად"
+        description="ინფორმაცია და ჯავშანი ერთ სივრცეში."
       />
 
       <section className="section-shell pt-0">
@@ -69,11 +69,10 @@ export default async function ContactPage() {
           <div className="mx-auto max-w-5xl space-y-7 sm:space-y-8">
             <div className="max-w-[38rem] space-y-2.5">
               <h2 className="font-serif text-[2rem] leading-tight text-secondary sm:text-[2.15rem]">
-                საკონტაქტო ინფორმაცია ერთ სუფთა სივრცეში
+                კონტაქტი ერთ სივრცეში
               </h2>
               <p className="max-w-[34rem] text-base leading-7 text-muted">
-                აირჩიეთ თქვენთვის მოსახერხებელი არხი და დაგვიკავშირდით სწრაფად, ზედმეტი
-                ნაბიჯების გარეშე.
+                აირჩიეთ სასურველი გზა.
               </p>
             </div>
 
@@ -92,11 +91,10 @@ export default async function ContactPage() {
             <div className="max-w-[38rem] space-y-2">
               <p className="text-sm font-semibold tracking-[0.01em] text-muted-strong">რუკა</p>
               <h2 className="font-serif text-[2rem] leading-tight text-secondary sm:text-[2.35rem]">
-                მარტივად მოსაძებნი მისამართი
+                კომფორტული მდებარეობა
               </h2>
               <p className="text-base leading-7 text-muted">
-                სივრცე განთავსებულია ცენტრალურ ლოკაციაზე, რათა ვიზიტი და ადგილზე
-                კოორდინაცია მაქსიმალურად მარტივი იყოს.
+                მარტივი კოორდინაცია ადგილზე.
               </p>
             </div>
 

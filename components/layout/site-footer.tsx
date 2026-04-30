@@ -12,10 +12,7 @@ export async function SiteFooter() {
   const settings = await getPublicSiteSettings();
 
   return (
-    <footer
-      className="mt-20 border-t border-white/70 bg-[#f0f7f6]"
-      style={{ fontFamily: "inherit", letterSpacing: "normal" }}
-    >
+    <footer className="mt-20 border-t border-white/70 bg-[#f0f7f6]">
       <div className="container-shell grid gap-10 py-12 lg:grid-cols-[1.4fr_1fr_1fr]">
         <div className="space-y-5">
           <div className="space-y-1.5">
