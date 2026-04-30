@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { ChevronRight, Diamond } from "lucide-react";
 import { Fragment, useId } from "react";
 import { cn } from "@/lib/utils/cn";
 import type { HeaderNavigationItem } from "@/types/domain";
@@ -95,7 +96,15 @@ export function NavSections({
                     )}
                     onClick={onNavigate}
                   >
-                    <span className="block break-words">{child.label}</span>
+                    <span style={{ display: 'flex', alignItems: 'center' }}>
+                      {child.href.startsWith('/specialties/') && (
+                        <Diamond size={14} style={{ marginRight: '8px', flexShrink: 0 }} />
+                      )}
+                      {child.href.startsWith('/services#') && (
+                        <ChevronRight size={14} style={{ marginRight: '8px', flexShrink: 0 }} />
+                      )}
+                      <span className="break-words">{child.label}</span>
+                    </span>
                   </Link>
                 ))}
               </div>
