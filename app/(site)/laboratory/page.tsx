@@ -1,5 +1,4 @@
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
-import { PageHero } from "@/components/sections/page-hero";
 import { ServiceOptionCard } from "@/components/services/service-option-card";
 import { getCatalogData } from "@/lib/data/public";
 import type { LaboratoryService } from "@/types/domain";
@@ -61,32 +60,32 @@ export default async function LaboratoryPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="ლაბორატორია"
-        title="ლაბორატორიული ანალიზები სახლში აღებით"
-        description="პასუხები სწრაფად და ციფრულად."
-      />
-      <section className="section-shell pt-0">
-        <div className="container-shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {laboratoryServices.map((item, index) => {
-            const content = laboratoryCardContent[item.slug];
+      <section className="section-shell">
+        <div className="container-shell space-y-6">
+          <h2 className="font-serif text-3xl leading-tight text-secondary sm:text-4xl flex justify-center">
+            ლაბორატიული კვლევა
+          </h2>
+          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+            {laboratoryServices.map((item, index) => {
+              const content = laboratoryCardContent[item.slug];
 
-            return (
-              <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
-                <ServiceOptionCard
-                  id={item.slug}
-                  className="scroll-mt-28"
-                price={content.price}
-                title={item.name}
-                description={content.description}
-                services={getLaboratoryServices(item)}
-                detailHref={`/laboratory#${item.slug}`}
-                bookingHref="/booking"
-                plainServices
-              />
-            </ScrollReveal>
-          );
-          })}
+              return (
+                <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
+                  <ServiceOptionCard
+                    id={item.slug}
+                    className="scroll-mt-28"
+                    price={content.price}
+                    title={item.name}
+                    description={content.description}
+                    services={getLaboratoryServices(item)}
+                    detailHref={`/laboratory#${item.slug}`}
+                    bookingHref="/booking"
+                    plainServices
+                  />
+                </ScrollReveal>
+              );
+            })}
+          </div>
         </div>
       </section>
     </>

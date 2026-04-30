@@ -1,10 +1,10 @@
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { ServiceOptionCard } from "@/components/services/service-option-card";
-import { PageHero } from "@/components/sections/page-hero";
 import { getCatalogData } from "@/lib/data/public";
 import type { DiagnosticService } from "@/types/domain";
 import { formatMoney } from "@/lib/utils/format";
 import { buildMetadata } from "@/lib/utils/metadata";
+import LaboratoryPage from "@/app/(site)/laboratory/page";
 
 export const metadata = buildMetadata({
   title: "დიაგნოსტიკა",
@@ -69,31 +69,47 @@ export default async function DiagnosticsPage() {
 
   return (
     <>
-      <PageHero
-        eyebrow="დიაგნოსტიკა"
-        title="მობილური დიაგნოსტიკა და სწრაფი შეფასება"
-        description="კვლევები მარტივად, ერთიან პროცესში."
-        panelClassName="border-0 shadow-none"
-      />
-      <section className="section-shell pt-0">
-        <div className="container-shell grid gap-6 md:grid-cols-2 xl:grid-cols-3">
-          {diagnostics.map((item, index) => (
-            <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
-              <ServiceOptionCard
-                id={item.slug}
-                className="scroll-mt-28 border-0 shadow-none"
-                price={formatMoney(item.price)}
-                title={item.name}
-                description={diagnosticsCardContent[item.slug].description}
-                services={getDiagnosticServices(item)}
-                detailHref={`/diagnostics#${item.slug}`}
-                bookingHref="/booking"
-                plainServices
-              />
-            </ScrollReveal>
-          ))}
+      <section className="section-shell pb-0">
+        <div className="container-shell">
+          <div className="research-block-grid">
+            <a href="#instrumental" className="research-block research-block--instrumental">
+              <span>ინსტრუმენტული კვლევა</span>
+            </a>
+            <a href="#laboratory" className="research-block research-block--laboratory">
+              <span>ლაბორატიული კვლევა</span>
+            </a>
+          </div>
         </div>
       </section>
+      <div id="instrumental" className="scroll-mt-28">
+        <section className="section-shell">
+          <div className="container-shell space-y-6">
+            <h2 className="font-serif text-3xl leading-tight text-secondary sm:text-4xl flex justify-center">
+              ინსტრუმენტული კვლევა
+            </h2>
+            <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+              {diagnostics.map((item, index) => (
+                <ScrollReveal key={item.id} delay={index * 70} variant="card" className="h-full">
+                  <ServiceOptionCard
+                    id={item.slug}
+                    className="scroll-mt-28 border-0 shadow-none"
+                    price={formatMoney(item.price)}
+                    title={item.name}
+                    description={diagnosticsCardContent[item.slug].description}
+                    services={getDiagnosticServices(item)}
+                    detailHref={`/diagnostics#${item.slug}`}
+                    bookingHref="/booking"
+                    plainServices
+                  />
+                </ScrollReveal>
+              ))}
+            </div>
+          </div>
+        </section>
+      </div>
+      <div id="laboratory" className="scroll-mt-28">
+        <LaboratoryPage />
+      </div>
     </>
   );
 }

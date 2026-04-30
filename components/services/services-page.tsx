@@ -68,7 +68,7 @@ export function ServicesPage() {
                       className={`pricing-card${card.featured ? " pricing-card-featured" : ""}`}
                     >
                       <h3>{card.title}</h3>
-                      <div className="price">
+                      <div className="price mt-[20px]">
                         <strong>{card.price}</strong>
                       </div>
 
@@ -94,7 +94,7 @@ export function ServicesPage() {
               {/* RIGHT GROUP — ონლაინ კონსულტაცია */}
               <div className="flex flex-1 items-stretch">
                 <div className="pricing-card flex min-h-full w-full flex-col gap-5" style={{  background: "#197258", color: "#ffffff" }}>
-                  <h3 style={{ color: "#ffffff" }}>ონლაინ კონსულტაცია</h3>
+                  <h3 className="mt-[20px]" style={{ color: "#ffffff" }}>ონლაინ კონსულტაცია</h3>
                   <div className="price">
                     <strong style={{ color: "#ffffff" }}>60 ₾</strong>
                   </div>

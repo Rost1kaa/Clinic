@@ -36,8 +36,8 @@ const specialtyDropdownItems: NavigationItem[] = [
 ];
 
 const diagnosticsDropdownItems: NavigationItem[] = [
-  { href: "/diagnostics", label: "ინსტრუმენტული კვლევა" },
-  { href: "/laboratory", label: "ლაბორატორიული კვლევა" },
+  { href: "/diagnostics#instrumental", label: "ინსტრუმენტული კვლევა" },
+  { href: "/diagnostics#laboratory", label: "ლაბორატორიული კვლევა" },
 ];
 
 export const headerNavigation: HeaderNavigationItem[] = [

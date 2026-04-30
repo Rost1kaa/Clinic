@@ -2,7 +2,6 @@
 
 import { useScrollReveal } from "@/components/motion/scroll-reveal";
 import { Badge } from "@/components/ui/badge";
-import { Button } from "@/components/ui/button";
 import { cn } from "@/lib/utils/cn";
 
 export function PageHero({
@@ -38,13 +37,7 @@ export function PageHero({
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-muted">{description}</p>
             </div>
-            {actions ? (
-              <div className="flex flex-wrap items-center gap-3">{actions}</div>
-            ) : (
-              <Button asChild variant="secondary">
-                <a href="/booking">ახლავე დაჯავშნა</a>
-              </Button>
-            )}
+            {actions ? <div className="flex flex-wrap items-center gap-3">{actions}</div> : null}
           </div>
         </div>
       </div>
