@@ -1,3 +1,4 @@
+import { FlaskConical, ScanSearch } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { ServiceOptionCard } from "@/components/services/service-option-card";
 import { getCatalogData } from "@/lib/data/public";
@@ -73,10 +74,16 @@ export default async function DiagnosticsPage() {
         <div className="container-shell">
           <div className="research-block-grid">
             <a href="#instrumental" className="research-block research-block--instrumental">
-              <span>ინსტრუმენტული კვლევა</span>
+              <span className="research-block__icon" aria-hidden="true">
+                <ScanSearch className="research-block__icon-mark" strokeWidth={1.9} />
+              </span>
+              <span className="research-block__label">ინსტრუმენტული კვლევა</span>
             </a>
             <a href="#laboratory" className="research-block research-block--laboratory">
-              <span>ლაბორატიული კვლევა</span>
+              <span className="research-block__icon" aria-hidden="true">
+                <FlaskConical className="research-block__icon-mark" strokeWidth={1.9} />
+              </span>
+              <span className="research-block__label">ლაბორატიული კვლევა</span>
             </a>
           </div>
         </div>
