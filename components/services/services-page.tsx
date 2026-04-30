@@ -1,6 +1,5 @@
 import Link from "next/link";
 import { SpecialistsSection } from "@/components/services/specialists-section";
-import { SectionHeader } from "@/components/ui/section-header";
 
 type PricingCardData = {
   title: string;
@@ -28,7 +27,7 @@ const pricingCards: PricingCardData[] = [
     title: "სტანდარტი",
     price: "120 ₾-დან",
     features: [
-      "ბინაზე ვიზიტი ან ონლაინ",
+      "ბინაზე ვიზიტი",
       "სპეციალისტის შეფასება",
       "მომსახურების კოორდინაცია",
       "პაციენტზე მორგებული გეგმა",
@@ -56,41 +55,65 @@ export function ServicesPage() {
     <>
       <section className="section-shell pt-8">
         <div className="container-shell">
-          <SectionHeader
-            title="აირჩიეთ მომსახურება"
-            description="მარტივი არჩევანი, წინასწარ ცნობილი ფასით და სწრაფი დაჯავშნით."
-            align="center"
-            className="mx-auto max-w-[42rem]"
-          />
-
           <div className="pricing-section">
-            <div className="pricing-grid">
-              {pricingCards.map((card) => (
-                <div
-                  key={card.title}
-                  className={`pricing-card${card.featured ? " pricing-card-featured" : ""}`}
-                >
-                  <h3>{card.title}</h3>
+            <div className="flex items-stretch" style={{ gap: "32px" }}>
+
+              {/* LEFT GROUP — ბინაზე მომსახურება */}
+              <div className="flex flex-col" style={{ width: "900px", flexShrink: 0 }}>
+                <h3 style={{ fontSize: "18px", fontWeight: 700, marginBottom: "16px", textAlign: "center" }}>ბინაზე მომსახურება</h3>
+                <div className="pricing-grid items-stretch" style={{ display: "flex", flexDirection: "row", gap: "16px" }}>
+                  {pricingCards.map((card) => (
+                    <div
+                      key={card.title}
+                      className={`pricing-card${card.featured ? " pricing-card-featured" : ""}`}
+                    >
+                      <h3>{card.title}</h3>
+                      <div className="price">
+                        <strong>{card.price}</strong>
+                      </div>
+
+                      <div className="divider" />
+
+                      <ul className="features">
+                        {card.features.map((feature) => (
+                          <li key={feature}>
+                            <span className="check">✓</span>
+                            {feature}
+                          </li>
+                        ))}
+                      </ul>
+
+                      <Link href={card.ctaHref} className="choose-btn">
+                        {card.ctaLabel} →
+                      </Link>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* RIGHT GROUP — ონლაინ კონსულტაცია */}
+              <div className="flex flex-1 items-stretch">
+                <div className="pricing-card flex min-h-full w-full flex-col justify-between" style={{  background: "#197258", color: "#ffffff" }}>
+                  <h3 style={{ color: "#ffffff" }}>ონლაინ კონსულტაცია</h3>
                   <div className="price">
-                    <strong>{card.price}</strong>
+                    <strong style={{ color: "#ffffff" }}>60 ₾</strong>
                   </div>
 
                   <div className="divider" />
 
                   <ul className="features">
-                    {card.features.map((feature) => (
-                      <li key={feature}>
-                        <span className="check">✓</span>
-                        {feature}
-                      </li>
-                    ))}
+                    <li style={{ color: "#ffffff" }}><span className="check" style={{ color: "#ffffff" }}>✓</span>ვიდეო კონსულტაცია</li>
+                    <li style={{ color: "#ffffff" }}><span className="check" style={{ color: "#ffffff" }}>✓</span>სპეციალისტის შეფასება</li>
+                    <li style={{ color: "#ffffff" }}><span className="check" style={{ color: "#ffffff" }}>✓</span>რეცეპტი / რეკომენდაცია</li>
+                    <li style={{ color: "#ffffff" }}><span className="check" style={{ color: "#ffffff" }}>✓</span>ჩაწერა 24 საათში</li>
                   </ul>
 
-                  <Link href={card.ctaHref} className="choose-btn">
-                    {card.ctaLabel} →
+                  <Link href="/booking" className="choose-btn" style={{ background: "#ffffff", color: "#197258" }}>
+                    არჩევა →
                   </Link>
                 </div>
-              ))}
+              </div>
+
             </div>
           </div>
         </div>

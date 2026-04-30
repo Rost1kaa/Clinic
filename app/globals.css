@@ -3826,11 +3826,11 @@
     margin-top: 2.5rem;
     padding: 0 30px;
   }
-  .pricing-grid {
+.pricing-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1080px;
+    gap: 16px;
+    max-width: 900px;
     margin: 0 auto;
   }
   .pricing-card {
