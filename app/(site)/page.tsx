@@ -144,7 +144,7 @@ export default async function HomePage() {
             </div>
 
             {/* CENTER: photo is position:absolute inside its own column — never overlaps neighbours */}
-            <div className="hero-center hero-image-wrap">
+            <div className="hero-center hero-image-wrap" style={{ left: "-26px" }}>
               {/* Bottom edge blend */}
               <div
                 style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60px", background: "linear-gradient(to top, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
@@ -169,30 +169,33 @@ export default async function HomePage() {
                 display: "flex",
                 flexDirection: "column",
                 justifyContent: "center",
-                paddingLeft: "2.5rem",
                 paddingTop: "44px",
                 paddingBottom: "44px",
-                gap: "100px",
+                gap: "50px",
               }}
             >
               {/* Block 1 — მომსახურება ადგილზე */}
-              <div style={{ background: "rgba(255, 255, 255, 0.07)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: "14px", padding: "18px 20px" }}>
-                <MapPin style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
-                <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
+              <div style={{ background: "rgba(255, 255, 255, 0.87)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: "14px", padding: "18px 20px", borderLeft: "15px solid #2ac73e", position: "relative", overflow: "hidden" }}>
+                <div className="morphing-bg">
+                  <div className="morph-shape"></div>
+                  <div className="morph-shape-2"></div>
+                </div>
+                <MapPin style={{ width: 30, height: 30, color: "#3dba6f", marginBottom: "0.625rem", display: "block", position: "relative", zIndex: 1 }} />
+                <div style={{ fontWeight: 700, color: "#2b2b2b", fontSize: "15px", marginBottom: "0.375rem", position: "relative", zIndex: 1 }}>
                   მომსახურება ადგილზე
                 </div>
-                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.5, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                <p style={{ color: "#197258", fontSize: "13px", lineHeight: 1.5, margin: 0, marginTop: "20px", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden", position: "relative", zIndex: 1 }}>
                   ექიმის, ექთნის ვიზიტი, ლაბორატორიული და ინსტრუმენტული დიაგნოსტიკა
                 </p>
               </div>
 
               {/* Block 2 — ონლაინ კონსულტაცია */}
               <div style={{ background: "rgba(255, 255, 255, 0.07)", border: "1px solid rgba(255, 255, 255, 0.1)", borderRadius: "14px", padding: "18px 20px" }}>
-                <Video style={{ width: 18, height: 18, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
+                <Video style={{ width: 30, height: 30, color: "#3dba6f", marginBottom: "0.625rem", display: "block" }} />
                 <div style={{ fontWeight: 700, color: "#ffffff", fontSize: "15px", marginBottom: "0.375rem" }}>
                   ონლაინ კონსულტაცია
                 </div>
-                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.5, margin: 0, display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
+                <p style={{ color: "#7eb89a", fontSize: "13px", lineHeight: 1.5, margin: 0, marginTop: "20px", display: "-webkit-box", WebkitLineClamp: 3, WebkitBoxOrient: "vertical", overflow: "hidden" }}>
                   ვიდეოკონფერენციის საშუალებით, სმარტფონისა და კომპიუტერის გამოყენებით.
                 </p>
               </div>
