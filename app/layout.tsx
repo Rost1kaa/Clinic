@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import { AppProviders } from "@/components/providers/app-providers";
 import { buildMetadata } from "@/lib/utils/metadata";
+import "lenis/dist/lenis.css";
 import "./globals.css";
 
 export const metadata: Metadata = buildMetadata();

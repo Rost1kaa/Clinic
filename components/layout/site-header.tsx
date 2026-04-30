@@ -1,4 +1,7 @@
+"use client";
+
 import Link from "next/link";
+import { useEffect } from "react";
 import { CalendarDays } from "lucide-react";
 import { BrandLogo } from "@/components/branding/brand-logo";
 import {
@@ -8,8 +11,34 @@ import {
 import { Button } from "@/components/ui/button";
 
 export function SiteHeader() {
+  useEffect(() => {
+    const header = document.getElementById("site-header");
+
+    if (!header) {
+      return;
+    }
+
+    const setHeaderHeight = () => {
+      document.documentElement.style.setProperty(
+        "--header-height",
+        `${header.offsetHeight}px`,
+      );
+    };
+
+    setHeaderHeight();
+
+    const resizeObserver = new ResizeObserver(setHeaderHeight);
+    resizeObserver.observe(header);
+    window.addEventListener("resize", setHeaderHeight);
+
+    return () => {
+      resizeObserver.disconnect();
+      window.removeEventListener("resize", setHeaderHeight);
+    };
+  }, []);
+
   return (
-    <header className="sticky top-0 z-40 border-b border-white/70 bg-background/82 backdrop-blur-xl">
+    <header id="site-header" className="sticky top-0 z-40 border-b border-white/70 bg-background/82 backdrop-blur-xl">
       <div className="mx-auto grid w-full max-w-7xl grid-cols-[minmax(0,1fr)_auto] items-center gap-x-4 gap-y-3 px-4 py-3.5 sm:px-6 lg:grid-cols-[auto_minmax(0,1fr)_auto] lg:gap-x-6 lg:px-8 lg:py-4">
         <Link href="/" className="flex min-w-0 shrink-0 items-center gap-3">
           <BrandLogo

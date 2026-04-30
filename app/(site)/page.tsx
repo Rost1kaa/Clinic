@@ -43,8 +43,8 @@ export default async function HomePage() {
       {/* ─── HERO ─── */}
       {/* section-shell matches the padding-block: 4.5rem used by every other page section */}
       <section
-        className="hero-dark-section section-shell"
-        style={{ background: "#0a3d2e", overflow: "hidden", position: "relative", minHeight: "520px" }}
+        className="hero-dark-section section-shell w-full"
+        style={{ background: "#0a3d2e", overflow: "hidden", position: "relative", minHeight: "calc(100vh - var(--header-height, 0px))" }}
       >
         {/* Decorative Georgian watermark */}
         <div
@@ -67,12 +67,12 @@ export default async function HomePage() {
         </div>
 
         {/* container-shell: same max-width (84rem) as every other section; width: 85% narrows the hero content */}
-        <div className="hero-content container-shell" style={{ position: "relative", zIndex: 5, width: "85%" }}>
+        <div className="hero-content container-shell w-full" style={{ position: "relative", zIndex: 5, width: "85%" }}>
           {/* hero-grid: columns + responsive behaviour live in globals.css */}
-          <div className="hero-grid">
+          <div className="hero-grid min-w-0">
             {/* LEFT: logo + heading + subtext + buttons */}
             <div
-              className="hero-left"
+              className="hero-left min-w-0"
               style={{
                 display: "flex",
                 flexDirection: "column",
@@ -92,22 +92,23 @@ export default async function HomePage() {
               </div>
 
               {/* H1 — 38px keeps the phrase on 2 lines inside the 420px column */}
-              <h1 className="hero-title" style={{ fontWeight: 700, lineHeight: 1.12, fontSize: "38px", margin: 0, whiteSpace: "nowrap" }}>
-                <span style={{ color: "#ffffff", display: "block" }}>სამედიცინო მომსახურება იქ,</span>
+              <h1 className="hero-title break-words" style={{ fontWeight: 700, lineHeight: 1.12, fontSize: "38px", margin: 0, whiteSpace: "normal" }}>
+                <span className="lg:whitespace-nowrap" style={{ color: "#ffffff", display: "block" }}>სამედიცინო მომსახურება იქ,</span>
                 <span style={{ color: "#4ade80" }}>სადაც თქვენ</span>{" "}
                 <span style={{ color: "#ffffff" }}>ხართ</span>
               </h1>
 
               {/* Subtext */}
-              <p className="hero-description" style={{ color: "#8bbda8", fontSize: "16px", lineHeight: 1.6, margin: 0 }}>
+              <p className="hero-description max-w-xl" style={{ color: "#8bbda8", fontSize: "16px", lineHeight: 1.6, margin: 0 }}>
                 სხვადასხვა დარგის სპეციალისტები, მობილური დიაგნოსტიკა და მოქნილი
                 დაჯავშნა ერთ ციფრულ სივრცეში.
               </p>
 
               {/* Buttons — nowrap keeps button + phone side by side always */}
-              <div className="hero-actions" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "1.5rem", flexWrap: "nowrap" }}>
+              <div className="hero-actions w-full sm:w-auto" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "1.5rem", flexWrap: "wrap" }}>
                 <Link
                   href="/booking"
+                  className="w-full justify-center sm:w-auto"
                   style={{
                     display: "inline-flex",
                     alignItems: "center",
@@ -127,7 +128,7 @@ export default async function HomePage() {
                   <span aria-hidden>→</span>
                 </Link>
 
-                <div style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
+                <div className="w-full sm:w-auto" style={{ display: "flex", alignItems: "center", gap: "0.625rem", flexShrink: 0 }}>
                   <Phone style={{ width: 18, height: 18, color: "#3dba6f", flexShrink: 0 }} />
                   <div>
                     <p style={{ color: "#8bbda8", fontSize: "11px", margin: 0, whiteSpace: "nowrap" }}>გინდათ დახმარება?</p>
@@ -144,16 +145,6 @@ export default async function HomePage() {
 
             {/* CENTER: photo is position:absolute inside its own column — never overlaps neighbours */}
             <div className="hero-center hero-image-wrap">
-              {/* Left edge blend */}
-              <div
-                style={{ position: "absolute", top: 0, bottom: 0, left: 0, width: "80px", background: "linear-gradient(to right, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
-                aria-hidden
-              />
-              {/* Right edge blend */}
-              <div
-                style={{ position: "absolute", top: 0, bottom: 0, right: 0, width: "80px", background: "linear-gradient(to left, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
-                aria-hidden
-              />
               {/* Bottom edge blend */}
               <div
                 style={{ position: "absolute", bottom: 0, left: 0, right: 0, height: "60px", background: "linear-gradient(to top, #0a3d2e, transparent)", zIndex: 2, pointerEvents: "none" }}
@@ -166,6 +157,7 @@ export default async function HomePage() {
                 width={1270}
                 height={953}
                 className="hero-photo"
+                sizes="(max-width: 768px) 100vw, (max-width: 1180px) 42vw, 420px"
                 priority
               />
             </div>

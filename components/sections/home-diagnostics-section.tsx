@@ -1,4 +1,4 @@
-import Link from "next/link";
+import { ArrowUpRight } from "lucide-react";
 import { ScrollReveal } from "@/components/motion/scroll-reveal";
 import { SectionHeader } from "@/components/ui/section-header";
 import { IconMark } from "@/components/ui/icon-mark";
@@ -8,7 +8,7 @@ const diagnosticCards = [
     id: "instrumental-diagnostics",
     title: "ინსტრუმენტული დიაგნოსტიკა",
     icon: "stethoscope",
-    blurb: "თანმიმდევრული ინსტრუმენტული შეფასება სწრაფი გადაწყვეტილებისთვის.",
+    blurb: "სწრაფი და ზუსტი ინსტრუმენტული შეფასება",
   },
   {
     id: "electrocardiography-ecg",
@@ -44,7 +44,7 @@ const diagnosticCards = [
 
 export function HomeDiagnosticsSection() {
   return (
-    <section className="section-shell bg-[linear-gradient(180deg,rgba(255,255,255,0.24)_0%,rgba(236,247,238,0.72)_100%)] pt-6 pb-16 sm:pt-8 sm:pb-20">
+    <section className="section-shell bg-background pt-6 pb-16 sm:pt-8 sm:pb-20">
       <div className="container-shell space-y-12 sm:space-y-14">
         <SectionHeader
           eyebrow="დიაგნოსტიკა"
@@ -54,7 +54,7 @@ export function HomeDiagnosticsSection() {
           className="max-w-[46rem] space-y-5"
         />
 
-        <div className="grid auto-rows-fr gap-5 md:grid-cols-2 md:gap-5 lg:grid-cols-3 xl:gap-5">
+        <div className="grid auto-rows-fr grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
           {diagnosticCards.map((item, index) => (
             <ScrollReveal
               key={item.id}
@@ -62,41 +62,38 @@ export function HomeDiagnosticsSection() {
               variant="card"
               className="h-full"
             >
-              <article className="group relative flex h-full min-w-0 flex-col rounded-[2rem] border border-white/85 bg-white px-7 py-6 shadow-[0_24px_56px_rgba(10,55,58,0.07)] transition-all duration-300 ease-out hover:-translate-y-1 hover:shadow-[0_32px_72px_rgba(10,55,58,0.11)] sm:px-8 sm:py-7">
-                <div
-                  className="pointer-events-none absolute inset-0 rounded-[2rem] bg-[radial-gradient(circle_at_top_right,rgba(42,200,62,0.12),transparent_24%),linear-gradient(180deg,rgba(255,255,255,0.22),transparent_44%)]"
-                  aria-hidden
-                />
-                <div
-                  className="pointer-events-none absolute bottom-5 right-0 h-[4.5rem] w-[4.5rem] rounded-full bg-[linear-gradient(180deg,rgba(255,255,255,0.24)_0%,rgba(236,247,238,0.72)_100%)] shadow-[0_0_0_16px_rgba(255,255,255,0.96)]"
-                  aria-hidden
-                />
-
-                <div className="relative z-10 flex h-full min-w-0 flex-col">
-                  <h3 className="max-w-[15ch] break-words font-serif text-[1.56rem] font-semibold leading-[1.08] tracking-[-0.03em] text-secondary [overflow-wrap:anywhere] [text-wrap:balance] sm:text-[1.72rem]">
+              <article className="relative flex h-[21rem] min-w-0 flex-col overflow-visible rounded-[28px] bg-white p-8 shadow-[0_24px_56px_rgba(10,55,58,0.07)] transition-all duration-300 ease-out hover:shadow-[0_32px_72px_rgba(10,55,58,0.11)]">
+                <div className="relative z-[3] flex min-w-0 items-start justify-between gap-6">
+                  <h3 className="max-w-[15ch] break-words font-serif text-[26px] font-semibold leading-[1.08] text-[#102b35] [overflow-wrap:anywhere] [text-wrap:balance] lg:max-w-[220px] xl:max-w-[240px]">
                     {item.title}
                   </h3>
 
-                  <div className="mt-7 flex justify-start">
-                    <div className="flex h-[5.6rem] w-[5.6rem] items-center justify-center rounded-full border border-primary/10 bg-primary-soft text-secondary shadow-[inset_0_1px_0_rgba(255,255,255,0.96),0_14px_30px_rgba(42,200,62,0.1)]">
-                      <IconMark name={item.icon} className="h-12 w-12" />
-                    </div>
+                  <div className="flex h-[4.75rem] w-[4.75rem] shrink-0 items-center justify-center rounded-full bg-[#7df36b] text-[#102b35]">
+                    <IconMark
+                      name={item.icon}
+                      className={item.id === "electrocardiography-ecg" ? "h-8 w-8" : "h-9 w-9"}
+                    />
                   </div>
-
-                  <div className="mt-7 flex-1 border-t border-[#E5E7EB] pt-5 pr-16 pb-16">
-                    <p className="max-w-[28ch] text-[0.98rem] leading-7 text-muted">
-                      {item.blurb}
-                    </p>
-                  </div>
-
-                  <Link
-                    href="/booking"
-                    className="absolute bottom-4 right-4 z-20 inline-flex h-12 w-12 items-center justify-center rounded-full border border-border/80 bg-white text-secondary shadow-[0_10px_24px_rgba(10,55,58,0.08)] transition-all duration-200 group-hover:border-primary group-hover:bg-primary group-hover:text-white"
-                    aria-label={`${item.title} - დაჯავშნა`}
-                  >
-                    <IconMark name="arrow-right" className="h-4 w-4" />
-                  </Link>
                 </div>
+
+                <div className="relative z-[3] mt-auto border-t border-[#d8ded8] pt-5 pr-16">
+                  <p className="max-w-[28ch] text-[0.98rem] leading-7 text-[#5f6f72]">
+                    {item.blurb}
+                  </p>
+                </div>
+
+                <div className="absolute -right-px -bottom-px w-[76px] h-[57px] bg-background rounded-tl-[31px] z-[2]" />
+
+                <a
+                  href="#"
+                  className="group/button absolute right-0 -bottom-[10px] z-[5] flex h-14 w-14 items-center justify-center overflow-hidden rounded-full bg-white text-[#102b35] no-underline shadow-sm transition-all duration-300 ease-out hover:scale-105"
+                  aria-label="Open service"
+                >
+                  <span className="absolute inset-0 translate-y-full bg-[#7df36b] transition-transform duration-500 ease-out group-hover/button:translate-y-0" />
+                  <span className="relative z-10 text-[#102b35]">
+                    <ArrowUpRight className="h-5 w-5" aria-hidden />
+                  </span>
+                </a>
               </article>
             </ScrollReveal>
           ))}

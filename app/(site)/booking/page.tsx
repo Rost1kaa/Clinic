@@ -15,8 +15,8 @@ export default async function BookingPage() {
     <>
       <PageHero
         eyebrow="დაჯავშნა"
-        title="დაჯავშნეთ მომსახურება რამდენიმე მკაფიო ნაბიჯში"
-        description="აირჩიეთ ფორმატი, კატეგორია, ზუსტი სერვისი, თავისუფალი დრო და გადახდის მეთოდი. ყველა ველი სერვერზე დამატებით მოწმდება უსაფრთხოებისთვის."
+        title="დაჯავშნეთ მომსახურება მარტივად"
+        description="აირჩიეთ სერვისი, დრო და გადახდა."
       />
       <section className="section-shell pt-0">
         <div className="container-shell">

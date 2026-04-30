@@ -48,7 +48,6 @@ export function BookingForm({
   services,
   diagnostics,
   laboratoryServices,
-  specialties,
   doctors,
   availabilitySlots,
 }: BookingCatalogProps) {
@@ -586,34 +585,6 @@ export function BookingForm({
             doctorName={selectedDoctor?.fullName}
             paymentMethod={paymentMethod}
           />
-
-          <Card className="min-w-0 p-5 sm:p-6">
-          <p className="text-sm font-semibold text-primary">
-            სასარგებლო ინფორმაცია
-          </p>
-          <div className="mt-4 space-y-4 break-words text-sm leading-7 text-muted">
-            <p>მხოლოდ სახლში ვიზიტისთვის გამოჩნდება მისამართის ველი.</p>
-            <p>ონლაინ კონსულტაცია ამ ეტაპზე ხელმისაწვდომია სპეციალისტების სერვისებისთვის.</p>
-            <p>სლოტის საბოლოო დაკავება ხდება მხოლოდ სერვერული შემოწმებისა და ჩანაწერის შექმნის შემდეგ.</p>
-            {selectedItem ? (
-              <div className="rounded-[1.5rem] bg-surface-muted p-4 sm:p-5">
-                <p className="break-words font-medium text-secondary">{selectedItem.name}</p>
-                <p className="mt-2 break-words">{selectedItem.description}</p>
-                {"price" in selectedItem ? (
-                  <p className="mt-3 font-medium text-secondary">
-                    {formatMoney(selectedItem.price)}
-                  </p>
-                ) : null}
-              </div>
-            ) : null}
-            {category === "specialty" ? (
-              <div className="rounded-[1.5rem] border border-border bg-white p-4 sm:p-5">
-                <p className="font-medium text-secondary">ხელმისაწვდომი სპეციალობები</p>
-                <p className="mt-2 break-words">{specialties.map((item) => item.name).join(", ")}</p>
-              </div>
-            ) : null}
-          </div>
-          </Card>
         </div>
       </div>
     </div>
