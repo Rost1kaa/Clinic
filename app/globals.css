@@ -4362,12 +4362,13 @@
 .morph-shape {
   position: absolute;
   top: -30px;
-  left: -30px;
+  left: 0px;
   width: 160px;
   height: 160px;
   background: linear-gradient(135deg, #2ac73e, #197258, #0d9488);
   opacity: 0.35;
   animation: morphShape 8s ease-in-out infinite;
+  filter: blur(18px);
 }
 
 .morph-shape-2 {
@@ -4381,6 +4382,7 @@
   background: linear-gradient(135deg, #4ade80, #2ac73e);
   opacity: 0.2;
   animation: morphShape 11s ease-in-out infinite reverse;
+  filter: blur(18px);
 }
 
 @keyframes morphShape {

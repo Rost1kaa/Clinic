@@ -105,7 +105,7 @@ export default async function HomePage() {
               </p>
 
               {/* Buttons — nowrap keeps button + phone side by side always */}
-              <div className="hero-actions w-full sm:w-auto" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "20px", flexWrap: "nowrap", marginTop: "auto" }}>
+              <div className="hero-actions w-full sm:w-auto" style={{ display: "flex", flexDirection: "row", alignItems: "center", gap: "20px", flexWrap: "nowrap", marginTop: "15px" }}>
                 <Link
                   href="/booking"
                   className="w-full justify-center sm:w-auto"
